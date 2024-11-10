@@ -52,9 +52,7 @@ namespace SquarePlatformer
             {
                 if (jumpable && timeSinceOnFloor <= 10) 
                 {
-                    jumpable = false;
-                    velocity.y = jumpHeight;
-                    jumping = true;
+                    Jump(jumpHeight);
                 }
             }
             else if (jumping)
@@ -62,25 +60,33 @@ namespace SquarePlatformer
                 if (velocity.y > 0) velocity.y -= velocity.y * 0.25 * gravity * weight;
             }
         }
-        public override void CollisionEnd(PhysicsObject obj, bool onSide)
+        public override void CollisionEnd(CollisionInformation info)
         {
-            if (onSide || obj.position.y > position.y) return;
+            //if (info.obj.name == "Enemy" && onSide) Kill();
+            if (info.side == Side.Left || info.side == Side.Right || info.obj.position.y > position.y) return;
             jumpable = true;
             timeSinceOnFloor = 0;
             jumping = false;
-            if (obj.name == "Enemy" && onSide) Kill();
-            if (obj.name == "Enemy" && !onSide)
+            /*
+            if (info.obj.name == "Enemy")
             {
                 velocity.y = 10;
                 jumping = true;
                 jumpable = false;
             }
+            */
         }
         public void Kill()
         {
             ObjectManager.AddToDestroy(this);
             LevelManager.alivePlayers--;
             Camera.targets.Remove(this);
+        }
+        public void Jump(int height)
+        {
+            jumpable = false;
+            velocity.y = height;
+            jumping = true;
         }
     }
 }

@@ -32,17 +32,22 @@ namespace SquarePlatformer
             }
             velocity.x += facingRight ? 1 : -1;
         }
-        public override void CollisionEnd(PhysicsObject obj, bool onSide)
+        public override void CollisionEnd(CollisionInformation info)
         {
-            if (onSide)
+            if (info.side == Side.Left || info.side == Side.Right)
             {
                 facingRight = !facingRight;
                 flipTexture = !facingRight;
-                return;
             }
-            if (obj.name == "Player") 
+            if (info.obj.name == "Player" && info.side == Side.Up) 
             {
                 ObjectManager.AddToDestroy(this);
+                ((Player)info.obj).Jump(16);
+                return;
+            }
+            if (info.obj.name == "Player")
+            {
+                ((Player)info.obj).Kill();
             }
         }
     }

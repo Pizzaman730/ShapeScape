@@ -44,35 +44,33 @@ namespace SquarePlatformer
             velocity = Vec2.Clamp(velocity, maxVelocity * -1, maxVelocity);  
             Move(velocity * new Vec2(0, 1));
         }
-        public void Collision(PhysicsObject obj, bool onSide, bool firstUpdate)
+        public void Collision(CollisionInformation info)
         {
-            CollisionStart(obj, onSide);
+            CollisionStart(info);
             
-            if (!pushable || (!obj.pushable && !firstUpdate))
+            if (!pushable || (!info.obj.pushable && !info.firstUpdate))
             {
-                CollisionEnd(obj, onSide);
+                CollisionEnd(info);
                 return;
             }
-            if (onSide)
+            if (info.side == Side.Left || info.side == Side.Right)
             {
-                bool right = velocity.x > 0;
-                double overlapAmountX = (size.x + obj.size.x) / 2 - Math.Abs(position.x - obj.position.x);
-                SetPos(new Vec2(position.x + overlapAmountX * (right ? -1 : 1), position.y));
+                double overlapAmountX = (size.x + info.obj.size.x) / 2 - Math.Abs(position.x - info.obj.position.x);
+                SetPos(new Vec2(position.x + overlapAmountX * (info.side == Side.Right ? -1 : 1), position.y));
                 velocity.x = 0;
-                CollisionEnd(obj, onSide);
+                CollisionEnd(info);
                 return;
             }
-            bool up = velocity.y < 0;
-            double overlapAmountY = (size.y + obj.size.y) / 2 - Math.Abs(position.y - obj.position.y);
-            SetPos(new Vec2(position.x, position.y + overlapAmountY * (up ? 1 : -1)));
+            double overlapAmountY = (size.y + info.obj.size.y) / 2 - Math.Abs(position.y - info.obj.position.y);
+            SetPos(new Vec2(position.x, position.y + overlapAmountY * (info.side == Side.Up ? -1 : 1)));
             velocity.y = 0;
-            CollisionEnd(obj, onSide);
+            CollisionEnd(info);
         }
-        public virtual void CollisionStart(PhysicsObject obj, bool onSide)
+        public virtual void CollisionStart(CollisionInformation info)
         {
 
         }
-        public virtual void CollisionEnd(PhysicsObject obj, bool onSide)
+        public virtual void CollisionEnd(CollisionInformation info)
         {
             
         }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
+using MonoGame.Extended.Particles.Modifiers;
 
 namespace SquarePlatformer
 {
@@ -75,8 +76,16 @@ namespace SquarePlatformer
             bool collide = collideX && collideY;
             if (collide)
             {
-                obj1.Collision(obj2, onSide, true);
-                obj2.Collision(obj1, onSide, false);
+                if (onSide)
+                {
+                    obj1.Collision(new CollisionInformation(obj2, obj1.velocity.x > 0 ? Side.Right : Side.Left, true));
+                    obj2.Collision(new CollisionInformation(obj1, obj1.velocity.x > 0 ? Side.Left : Side.Right, false));
+                }
+                else
+                {
+                    obj1.Collision(new CollisionInformation(obj2, obj1.velocity.y > 0 ? Side.Up : Side.Down, true));
+                    obj2.Collision(new CollisionInformation(obj1, obj1.velocity.y > 0 ? Side.Down : Side.Up, false));
+                }
                 return true;
             }
             return false;
