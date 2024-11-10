@@ -67,11 +67,17 @@ namespace SquarePlatformer
         }
         public override void CollisionEnd(PhysicsObject obj, bool onSide)
         {
-            if (obj.name == "Enemy") Kill();
             if (onSide || obj.position.y > position.y) return;
             jumpable = true;
             timeSinceOnFloor = 0;
             jumping = false;
+            if (obj.name == "Enemy" && onSide) Kill();
+            if (obj.name == "Enemy" && !onSide)
+            {
+                velocity.y = 10;
+                jumping = true;
+                jumpable = false;
+            }
         }
         public void Kill()
         {
@@ -81,3 +87,4 @@ namespace SquarePlatformer
         }
     }
 }
+//TODO: Add side enum and more advanced collision information, and make enemy do all of it's stuff for collision instead of getting help by the player

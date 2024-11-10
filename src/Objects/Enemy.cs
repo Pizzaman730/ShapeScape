@@ -38,6 +38,11 @@ namespace SquarePlatformer
             {
                 facingRight = !facingRight;
                 flipTexture = !facingRight;
+                return;
+            }
+            if (obj.name == "Player") 
+            {
+                ObjectManager.AddToDestroy(this);
             }
         }
     }
