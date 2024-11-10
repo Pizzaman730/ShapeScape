@@ -1,0 +1,48 @@
+[
+    {
+        "name": "Player",
+        "textures":
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Player" 
+            }
+        ]
+    },
+    {
+        "name": "Enemy",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Enemy"
+            }
+        ]
+    },
+    {
+        "name": "Platform",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Grass"
+            },
+            {
+                "offset": { "x": 0, "y": -100}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Dirt"
+            }
+        ]
+    }
+]

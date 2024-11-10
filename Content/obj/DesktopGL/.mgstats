@@ -1,0 +1,6 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Enemy/Enemy.png","c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Enemy.xnb","TextureProcessor","Texture2DContent",297,1109,0.0583801
+"c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Ground/Dirt.png","c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Dirt.xnb","TextureProcessor","Texture2DContent",702,4181,0.0020116
+"c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Ground/Grass.png","c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Grass.xnb","TextureProcessor","Texture2DContent",708,4181,0.0015732
+"c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Player/Player.png","c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Player.xnb","TextureProcessor","Texture2DContent",261,1109,0.0009396
+"c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/texturedata.json","c:\Users\ajarc\My Programs\C#\SquarePlatformer\SquarePlatformer\Content\bin\DesktopGL\texturedata.json","CopyItem","File",1162,1162,0.000812
