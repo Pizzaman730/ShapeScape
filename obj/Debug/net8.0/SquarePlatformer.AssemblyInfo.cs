@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SquarePlatformer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f73db85b99d7f8b4ace1b246cbfdd37adc66d0c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SquarePlatformer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SquarePlatformer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
