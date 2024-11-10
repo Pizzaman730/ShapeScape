@@ -9,9 +9,10 @@ namespace SquarePlatformer
     public static class ObjectManager
     {
         public static List<Object> objects { get; private set; } = new();
+        public static List<Object> toDestroy { get; private set; } = new();
         public static void Init()
         {
-            //objects = new();
+            
         }
         public static void AddObject(Object obj)
         {
@@ -37,23 +38,37 @@ namespace SquarePlatformer
         }
         public static void UpdateAll()
         {
-            foreach (Object obj in objects)
+            List<Object> oldObjects = objects;
+            foreach (Object obj in oldObjects)
             {
                 if (obj == null)
                 {
-                    DestroyObject(obj);
+                    AddToDestroy(obj);
                     continue;
                 }
                 obj.Update();
             }
+            DestroyNeededObjects();
         }
         public static void DestroyAllObjects()
         {
-            List<Object> oldObjects = objects;
+            List<Object> oldObjects = new(objects);
             foreach (Object obj in oldObjects)
             {
                 DestroyObject(obj);
             }
+        }
+        private static void DestroyNeededObjects()
+        {
+            foreach (Object obj in toDestroy)
+            {
+                DestroyObject(obj);
+            }
+            toDestroy = new();
+        }
+        public static void AddToDestroy(Object obj)
+        {
+            toDestroy.Add(obj);
         }
     }
 }
