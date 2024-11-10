@@ -43,9 +43,7 @@ namespace SquarePlatformer
                     effects,
                     0
                     );
-                //Console.WriteLine(Camera.TranslatePos((obj.corner + obj.size + info.offset)));
             }
-            //Draw(Texture2D texture, Vector2 position, Rectangle? sourceRectangle, Color color, float rotation, Vector2 origin, Vector2 scale, SpriteEffects effects, float layerDepth)
         }
     }
 }

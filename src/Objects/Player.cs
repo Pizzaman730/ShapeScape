@@ -21,11 +21,8 @@ namespace SquarePlatformer
         }
         public override void Update()
         {
-            //Console.WriteLine("Test");
-            //Move(new Vec2(1,0));
             if (position.y <= -800)
             {
-                //SetPos(new Vec2(position.x, 800));
                 Kill();
             }
             if (velocity.x > 0) velocity.x --;

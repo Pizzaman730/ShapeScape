@@ -23,7 +23,6 @@ namespace SquarePlatformer
                 new Platform(new Vec2(-1400, -100), new Vec2(1000, 600));
                 new Platform(new Vec2(1650, -100), new Vec2(500, 600));
                 Camera.FollowTargets(false);
-                //Platform platform2 = new Platform(new Vec2(100, 0), new Vec2(200, 400));
             }
             if (alivePlayers == 0)
             {

@@ -34,9 +34,7 @@ namespace SquarePlatformer
         public static Vec2 TranslatePos(Vec2 startPos)
         {
             return startPos + (center * new Vec2(-1, 1)) + (WindowManager.size / 2);
-            //return startPos - center + (new Vec2(800, 400) / 2);
         }
         
     }
 }
-//TODO: Make camera target center of object.

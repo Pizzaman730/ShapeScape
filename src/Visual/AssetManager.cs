@@ -48,13 +48,11 @@ namespace SquarePlatformer
                 Console.WriteLine("Can't fetch content, not initialized yet");
                 return;
             }
-            //spriteBatch.Begin(SpriteSortMode.Deferred, null, samplerState);
             textureDataFile = File.ReadAllText("Content/texturedata.json");
             CreateTexture("Player", 50, 50);
             CreateTexture("Enemy", 50, 50);
             CreateTexture("Grass", 100, 100);
             CreateTexture("Dirt", 100, 100);
-            //spriteBatch.End();
             
             CreateAllObjectTextures();
         }
@@ -65,7 +63,7 @@ namespace SquarePlatformer
                 PropertyNameCaseInsensitive = true
             };
             var data = JsonSerializer.Deserialize<ObjectTexture[]>(textureDataFile, options);
-            //List<ObjectTexture> objectTextures = new List<ObjectTexture>();
+
             foreach (var obj in data)
             {
                 objectTextures.Add(obj.name, obj);
@@ -137,7 +135,3 @@ namespace SquarePlatformer
         }
     }
 }
-// TODO: 
-// - Let the code find the texturedata file
-// - Make CreateAllObjectTextures() go through each part of the texturedata file and construct an ObjectTexture using that information
-// - Fix any other unwanted bugs

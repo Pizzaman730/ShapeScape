@@ -12,7 +12,6 @@ namespace SquarePlatformer
         public bool affectedByGravity = true;
         public double gravity = 1;
         public double weight = 1;
-        //public double drag = 0.99;
         public Vec2 maxVelocity = new Vec2(10, 100);
         public Vec2 velocity = new();
         public bool pushable = false;
@@ -34,7 +33,6 @@ namespace SquarePlatformer
         public void UpdatePhysicsSide()
         {
             velocity = Vec2.Clamp(velocity, maxVelocity * -1, maxVelocity);  
-            //velocity.x *= drag;
             Move(velocity * new Vec2(1, 0));
         }
         public void UpdatePhysicsVertical()
@@ -87,4 +85,3 @@ namespace SquarePlatformer
         }
     }
 }
-// Get physics working

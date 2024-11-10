@@ -26,7 +26,6 @@ namespace SquarePlatformer
             } 
         }
         
-        //public Vec2 center { get; private set; }
         public Vec2 size; //{ get; private set; }
         public Object()
         {
