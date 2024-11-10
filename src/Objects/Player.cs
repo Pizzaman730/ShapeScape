@@ -67,6 +67,7 @@ namespace SquarePlatformer
         }
         public override void CollisionEnd(PhysicsObject obj, bool onSide)
         {
+            if (obj.name == "Enemy") Kill();
             if (onSide || obj.position.y > position.y) return;
             jumpable = true;
             timeSinceOnFloor = 0;

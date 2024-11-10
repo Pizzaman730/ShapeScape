@@ -15,6 +15,9 @@ namespace SquarePlatformer
             {
                 levelStarted = true;
                 new Player(new Vec2(0, 100));
+                new Enemy(new Vec2(-200, 100));
+                new Enemy(new Vec2(200, 100));
+                new Enemy(new Vec2(1000, 100));
                 new Platform(new Vec2(0, -200), new Vec2(1000, 400));
                 new Platform(new Vec2(1400, -200), new Vec2(1000, 400));
                 new Platform(new Vec2(-1400, -100), new Vec2(1000, 600));

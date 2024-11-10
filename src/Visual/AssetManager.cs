@@ -127,18 +127,6 @@ namespace SquarePlatformer
         }
         public static ObjectTexture GetObjectTexture(string name)
         {
-            /*
-            ObjectTexture objectTexture = objectTextures[name];
-            ObjectTexture newObjTexture = new();
-            newObjTexture.textures = new TextureInfo[objectTextures.Count()];
-            for (int i = 0; i < objectTexture.textures.Count(); i++)
-            {
-                newObjTexture.textures[i] = objectTexture.textures[i];
-            }
-            //newObjTexture.textures = objectTexture.textures;
-            newObjTexture.name = objectTexture.name;
-            return newObjTexture;
-            */
             ObjectTexture objTexture = objectTextures[name];
             return new ObjectTexture
             {
