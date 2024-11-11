@@ -53,6 +53,7 @@ namespace SquarePlatformer
             CreateTexture("Enemy", 50, 50);
             CreateTexture("Grass", 100, 100);
             CreateTexture("Dirt", 100, 100);
+            CreateTexture("StartButton", 200, 100);
             
             CreateAllObjectTextures();
         }

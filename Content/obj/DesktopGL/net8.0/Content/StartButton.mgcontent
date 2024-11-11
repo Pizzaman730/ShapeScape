@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Enemy/Enemy.png</SourceFile>
-  <SourceTime>2024-05-13T21:01:29.883-04:00</SourceTime>
-  <DestFile>c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Enemy.xnb</DestFile>
-  <DestTime>2024-11-10T23:47:05.9404892-05:00</DestTime>
+  <SourceFile>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/StartButton/StartButton.png</SourceFile>
+  <SourceTime>2024-05-14T12:05:53.449-04:00</SourceTime>
+  <DestFile>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Content/StartButton.xnb</DestFile>
+  <DestTime>2024-11-10T23:47:12.3053741-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T13:05:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

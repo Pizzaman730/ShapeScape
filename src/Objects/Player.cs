@@ -12,6 +12,7 @@ namespace SquarePlatformer
         private bool jumping = false;
         private int jumpHeight = 15;
         private int timeSinceOnFloor = 0;
+        private InputProfile inputs = new InputProfile([Keys.Up, Keys.W, Keys.Space], [Keys.Right, Keys.D], [Keys.Down, Keys.S], [Keys.Left, Keys.A]);
         public Player(Vec2 pos) : base("Player", pos, new Vec2(50, 50))
         {
             LevelManager.alivePlayers++;
@@ -33,7 +34,7 @@ namespace SquarePlatformer
         }
         public void UpdateControls()
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.D)) 
+            if (InputManager.GetKeyDown(inputs.right)) 
             {
                 velocity.x += 2;
                 if (flipTexture)
@@ -41,7 +42,7 @@ namespace SquarePlatformer
                     flipTexture = false;
                 }
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.A)) 
+            if (InputManager.GetKeyDown(inputs.left)) 
             {
                 velocity.x -= 2;
                 if (!flipTexture)
@@ -49,7 +50,7 @@ namespace SquarePlatformer
                     flipTexture = true;
                 }
             }
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            if (InputManager.GetKeyDown(inputs.up))
             {
                 if (jumpable && timeSinceOnFloor <= 10) 
                 {
@@ -59,6 +60,10 @@ namespace SquarePlatformer
             else if (jumping)
             {
                 if (velocity.y > 0) velocity.y -= velocity.y * 0.25 * gravity * weight;
+            }
+            if (InputManager.GetKeyDown(inputs.down))
+            {
+                velocity.y -= 1;
             }
         }
         public override void CollisionEnd(CollisionInformation info)

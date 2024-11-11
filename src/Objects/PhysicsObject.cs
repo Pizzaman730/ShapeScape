@@ -77,10 +77,7 @@ namespace SquarePlatformer
         }
         public bool CollisionAtPoint(Vec2 point)
         {
-            bool collideX = position.x + (size.x/2) > point.x && position.x - size.x/2 < point.x;
-            bool collideY = position.y + (size.y/2) > point.y && position.y - size.y/2 < point.y;
-            bool collide = collideX && collideY;
-            return collide;
+            return TouchesPoint(point);
         }
     }
 }

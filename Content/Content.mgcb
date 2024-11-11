@@ -61,6 +61,18 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Player/Player.png;Player.png
 
+#begin Textures/StartButton/StartButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/StartButton/StartButton.png;StartButton.png
+
 #begin Textures/texturedata.json
 /copy:Textures/texturedata.json;texturedata.json
 

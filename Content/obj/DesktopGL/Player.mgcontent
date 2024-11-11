@@ -3,7 +3,7 @@
   <SourceFile>c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Player/Player.png</SourceFile>
   <SourceTime>2024-05-13T20:33:35.277-04:00</SourceTime>
   <DestFile>c:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Player.xnb</DestFile>
-  <DestTime>2024-11-08T23:16:54.3558049-05:00</DestTime>
+  <DestTime>2024-11-10T23:47:05.9464927-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2024-08-16T13:05:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

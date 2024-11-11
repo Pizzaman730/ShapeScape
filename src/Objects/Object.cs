@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -67,6 +68,13 @@ namespace SquarePlatformer
         public void Move(Vec2 movement)
         {
             position += movement;
+        }
+        public bool TouchesPoint(Vec2 point)
+        {
+            bool collideX = position.x + (size.x/2) > point.x && position.x - size.x/2 < point.x;
+            bool collideY = position.y + (size.y/2) > point.y && position.y - size.y/2 < point.y;
+            bool collide = collideX && collideY;
+            return collide;
         }
     }
 }

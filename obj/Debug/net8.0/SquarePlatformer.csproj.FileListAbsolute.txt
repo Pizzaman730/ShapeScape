@@ -32,3 +32,4 @@ C:\Users\ajarc\My Programs\C#\SquarePlatformer\SquarePlatformer\bin\Debug\net8.0
 C:\Users\ajarc\My Programs\C#\SquarePlatformer\SquarePlatformer\bin\Debug\net8.0\Content\Dirt.xnb
 C:\Users\ajarc\My Programs\C#\SquarePlatformer\SquarePlatformer\bin\Debug\net8.0\Content\Grass.xnb
 C:\Users\ajarc\My Programs\C#\SquarePlatformer\SquarePlatformer\obj\Debug\net8.0\SquarePlatformer.sourcelink.json
+C:\Users\ajarc\My Programs\C#\SquarePlatformer\SquarePlatformer\bin\Debug\net8.0\Content\StartButton.xnb
