@@ -14,14 +14,15 @@ namespace SquarePlatformer
             if (!levelStarted)
             {
                 levelStarted = true;
-                new Player(new Vec2(0, 100));
-                new Enemy(new Vec2(-200, 100));
-                new Enemy(new Vec2(200, 100));
-                new Enemy(new Vec2(1000, 100));
-                new Platform(new Vec2(0, -200), new Vec2(1000, 400));
-                new Platform(new Vec2(1400, -200), new Vec2(1000, 400));
-                new Platform(new Vec2(-1400, -100), new Vec2(1000, 600));
-                new Platform(new Vec2(1650, -100), new Vec2(500, 600));
+                new Player(new Vec2(0, 25));
+                //new Enemy(new Vec2(-200, 25));
+                //new Enemy(new Vec2(200, 25));
+                new Enemy(new Vec2(1600, 225));
+                new Enemy(new Vec2(1200, 25));
+                new Ground(new Vec2(0, -200), new Vec2(1000, 400));
+                new Ground(new Vec2(1400, -200), new Vec2(1000, 400));
+                new Ground(new Vec2(-1400, -100), new Vec2(1000, 600));
+                new Ground(new Vec2(1650, -100), new Vec2(500, 600));
                 Camera.FollowTargets(false);
             }
             if (alivePlayers == 0)

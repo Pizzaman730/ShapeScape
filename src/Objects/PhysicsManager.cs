@@ -24,7 +24,7 @@ namespace SquarePlatformer
                 physicsObjects.Add(obj);
                 return;
             }
-            Console.WriteLine("PhysicsObject already added to object list!");
+            Console.WriteLine("PhysicsObject " + obj.name + " already added to object list!");
         }
         public static void RemovePhysicsObject(PhysicsObject obj)
         {
@@ -33,7 +33,7 @@ namespace SquarePlatformer
                 physicsObjects.Remove(obj);
                 return;
             }
-            Console.WriteLine("PhysicsObject not added to object list!");
+            Console.WriteLine("PhysicsObject " + obj.name + " not added to object list!");
         }
         public static void UpdateAll()
         {

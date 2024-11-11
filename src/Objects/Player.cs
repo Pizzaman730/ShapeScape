@@ -17,6 +17,7 @@ namespace SquarePlatformer
             LevelManager.alivePlayers++;
             affectedByGravity = true;
             pushable = true;
+            tags.Add("Player");
             Camera.targets.Add(this);
         }
         public override void Update()
@@ -62,19 +63,10 @@ namespace SquarePlatformer
         }
         public override void CollisionEnd(CollisionInformation info)
         {
-            //if (info.obj.name == "Enemy" && onSide) Kill();
             if (info.side == Side.Left || info.side == Side.Right || info.obj.position.y > position.y) return;
             jumpable = true;
             timeSinceOnFloor = 0;
             jumping = false;
-            /*
-            if (info.obj.name == "Enemy")
-            {
-                velocity.y = 10;
-                jumping = true;
-                jumpable = false;
-            }
-            */
         }
         public void Kill()
         {
