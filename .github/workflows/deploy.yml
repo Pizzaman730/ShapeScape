@@ -1,0 +1,46 @@
+name: Deploy Windows 64-bit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: windows-latest # Use a Windows runner to build and deploy
+
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up .NET SDK
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Publish the app with the specified options
+      - name: Publish project
+        run: |
+          dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true
+
+      # Zip the publish output into a file
+      - name: Zip published files
+        run: |
+          $publishDir = "bin\Release\net8.0\win-x64\publish"
+          $zipFile = "SquarePlatformer-Windows64.zip"
+          Compress-Archive -Path "$publishDir\*" -DestinationPath "$zipFile"
+
+      # Upload the zip file to GitHub as a release asset
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: SquarePlatformer-Windows64.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
