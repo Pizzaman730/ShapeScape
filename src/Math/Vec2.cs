@@ -8,8 +8,8 @@ namespace SquarePlatformer
 {
     public struct Vec2
     {
-        public double x;
-        public double y;   
+        public double x { get; set; }
+        public double y { get; set; } 
         public Vec2()
         {
             x = 0;
