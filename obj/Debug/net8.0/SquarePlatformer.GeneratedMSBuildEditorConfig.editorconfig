@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SquarePlatformer
-build_property.ProjectDir = C:\Users\ajarc\My Programs\C#\SquarePlatformer\SquarePlatformer\
+build_property.ProjectDir = /run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Enemy/Enemy.png</SourceFile>
-  <SourceTime>2024-05-13T21:01:29.883-04:00</SourceTime>
-  <DestFile>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/bin/DesktopGL/Content/Enemy.xnb</DestFile>
-  <DestTime>2024-10-31T22:16:15.5595237-04:00</DestTime>
+  <SourceFile>/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/Content/Textures/Enemy/Enemy.png</SourceFile>
+  <SourceTime>2024-11-11T17:04:58.3269199-07:00</SourceTime>
+  <DestFile>/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/Content/bin/DesktopGL/Content/Enemy.xnb</DestFile>
+  <DestTime>2024-11-11T17:11:51.3375981-07:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2024-08-16T13:05:56-04:00</ImporterTime>
+  <ImporterTime>2024-08-16T11:05:56-06:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2024-08-16T13:05:56-04:00</ProcessorTime>
+  <ProcessorTime>2024-08-16T11:05:56-06:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>

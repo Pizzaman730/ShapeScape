@@ -95,7 +95,7 @@
           "runtimes/win-x64/native/SDL2.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "2.26.5.0"
+            "fileVersion": "0.0.0.0"
           }
         }
       },

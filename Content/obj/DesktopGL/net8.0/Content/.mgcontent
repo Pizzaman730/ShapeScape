@@ -4,11 +4,11 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Enemy/Enemy.png</File>
-    <File>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Ground/Dirt.png</File>
-    <File>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Ground/Grass.png</File>
-    <File>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/Player/Player.png</File>
-    <File>C:/Users/ajarc/My Programs/C#/SquarePlatformer/SquarePlatformer/Content/Textures/StartButton/StartButton.png</File>
+    <File>/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/Content/Textures/Enemy/Enemy.png</File>
+    <File>/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/Content/Textures/Ground/Dirt.png</File>
+    <File>/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/Content/Textures/Ground/Grass.png</File>
+    <File>/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/Content/Textures/Player/Player.png</File>
+    <File>/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/Content/Textures/StartButton/StartButton.png</File>
   </SourceFiles>
   <DestFiles>
     <File>Enemy.png</File>

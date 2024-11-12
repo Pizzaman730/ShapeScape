@@ -1,32 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ajarc\\My Programs\\C#\\SquarePlatformer\\SquarePlatformer\\SquarePlatformer.csproj": {}
+    "/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/SquarePlatformer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ajarc\\My Programs\\C#\\SquarePlatformer\\SquarePlatformer\\SquarePlatformer.csproj": {
+    "/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/SquarePlatformer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ajarc\\My Programs\\C#\\SquarePlatformer\\SquarePlatformer\\SquarePlatformer.csproj",
+        "projectUniqueName": "/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/SquarePlatformer.csproj",
         "projectName": "SquarePlatformer",
-        "projectPath": "C:\\Users\\ajarc\\My Programs\\C#\\SquarePlatformer\\SquarePlatformer\\SquarePlatformer.csproj",
-        "packagesPath": "C:\\Users\\ajarc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ajarc\\My Programs\\C#\\SquarePlatformer\\SquarePlatformer\\obj\\",
+        "projectPath": "/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/SquarePlatformer.csproj",
+        "packagesPath": "/home/kyles/.nuget/packages/",
+        "outputPath": "/run/media/kyles/Game Storage/Important Files/Projects/SquarePlatformer/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ajarc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/kyles/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -39,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -78,12 +66,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.10, 8.0.10]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
