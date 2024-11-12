@@ -61,6 +61,9 @@ jobs:
           Write-Host "Extracted version: $version"
 
       # Create a Git tag for the version
+      - name: Checkout the main branch
+        run: git checkout main
+
       - name: Create Git tag
         run: |
           git tag ${{ env.VERSION }}
