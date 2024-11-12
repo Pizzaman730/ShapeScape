@@ -60,6 +60,12 @@ jobs:
           Write-Host "VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Append
           Write-Host "Extracted version: $version"
 
+      # Create a Git tag for the version
+      - name: Create Git tag
+        run: |
+          git tag ${{ env.VERSION }}
+          git push origin ${{ env.VERSION }}
+
       # Create GitHub Release using the version from PR title
       - name: Create GitHub Release
         id: create_release
