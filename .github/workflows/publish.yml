@@ -1,0 +1,83 @@
+name: Build, Release, and Publish
+
+on:
+  push:
+    branches:
+      - main
+    # This will trigger on any push to main, but we'll filter by commit message in the next steps
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check if commit message matches pattern
+        id: commit_message_check
+        run: |
+          # Get the latest commit message
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+
+          # Regular expression for matching the commit message
+          # It should start with 'update:' followed by a name, and then ' - v' followed by a version (e.g., v1.2.0)
+          if [[ ! "$COMMIT_MSG" =~ ^update:.+ - v[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+            echo "Commit message does not match the required pattern."
+            exit 1  # Exit with an error code to stop the workflow if the message doesn't match
+          fi
+
+          echo "Commit message matches pattern: $COMMIT_MSG"
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0"
+
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Publish for Windows
+        run: dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o ./publish/win
+
+      - name: Publish for Linux
+        run: dotnet publish -c Release -r linux-x64 --self-contained -p:PublishSingleFile=true -o ./publish/linux
+
+      - name: Publish for macOS
+        run: dotnet publish -c Release -r osx-x64 --self-contained -p:PublishSingleFile=true -o ./publish/osx
+
+      - name: Create GitHub Release
+        id: release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ./publish/win/*
+            ./publish/linux/*
+            ./publish/osx/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Changelog
+        id: changelog
+        run: |
+          VERSION=$(git log -1 --format=%s | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+')
+          echo "Changelog for version $VERSION" > changelog.md
+          echo "## Changes:" >> changelog.md
+          git log --oneline --no-merges --since="1 week ago" >> changelog.md
+          echo "Changelog for version $VERSION" >> changelog.md
+          cat changelog.md
+
+      - name: Upload Changelog as Release Asset
+        uses: softprops/action-gh-release@v1
+        with:
+          files: changelog.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Optional: Notify on failure (you can disable this step if unnecessary)
+  notify:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify failure (optional)
+        run: echo "Build or release process failed, please check the logs!"
