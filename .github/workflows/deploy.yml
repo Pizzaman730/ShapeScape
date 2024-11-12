@@ -62,7 +62,9 @@ jobs:
 
       # Create a Git tag for the version
       - name: Checkout the main branch
-        run: git checkout main
+        uses: actions/checkout@v3
+        with:
+          ref: main
 
       - name: Create Git tag
         run: |
