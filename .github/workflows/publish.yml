@@ -46,6 +46,21 @@ jobs:
       - name: Publish for macOS
         run: dotnet publish -c Release -r osx-x64 --self-contained -p:PublishSingleFile=true -o ./publish/osx
 
+      - name: Create and Push Git Tag
+        id: create_tag
+        run: |
+          # Extract version from commit message
+          VERSION=$(git log -1 --format=%s | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+')
+
+          if [ -z "$VERSION" ]; then
+            echo "Version not found in commit message."
+            exit 1
+          fi
+
+          # Create and push the tag
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+
       - name: Create GitHub Release
         id: release
         uses: softprops/action-gh-release@v1
