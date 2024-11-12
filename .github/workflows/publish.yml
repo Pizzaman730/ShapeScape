@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Check if commit message matches pattern
+        - name: Check if commit message matches pattern
         id: commit_message_check
         shell: bash
         run: |
@@ -22,12 +22,13 @@ jobs:
 
           # Regular expression for matching the commit message
           # It should start with 'update:' followed by a name, and then ' - v' followed by a version (e.g., v1.2.0)
-          if [[ ! "$COMMIT_MSG" =~ ^update:.+ - v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          if ! echo "$COMMIT_MSG" | grep -Pq '^update:.+ - v[0-9]+\.[0-9]+\.[0-9]+$'; then
             echo "Commit message does not match the required pattern: $COMMIT_MSG"
             exit 1  # Exit with an error code to stop the workflow if the message doesn't match
           fi
 
           echo "Commit message matches pattern: $COMMIT_MSG"
+
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
