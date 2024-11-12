@@ -14,7 +14,7 @@ namespace SquarePlatformer
         public ObjectTexture objectTexture;
         public Vec2 corner { get; private set; }
         public bool flipTexture = false;
-        public bool isPhysicsObject = false;
+        public List<string> tags = new();
         public Vec2 position 
         { 
             get 

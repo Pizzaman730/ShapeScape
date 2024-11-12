@@ -28,7 +28,7 @@ namespace SquarePlatformer
             if (objects.Contains(obj))
             {
                 objects.Remove(obj);
-                if (obj.isPhysicsObject)
+                if (obj.tags.Contains("Physics"))
                 {
                     PhysicsManager.RemovePhysicsObject((PhysicsObject)obj);
                 }
