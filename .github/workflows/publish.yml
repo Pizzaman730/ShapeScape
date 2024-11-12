@@ -46,6 +46,11 @@ jobs:
       - name: Publish for macOS
         run: dotnet publish -c Release -r osx-x64 --self-contained -p:PublishSingleFile=true -o ./publish/osx
 
+      - name: Fetch remote tags
+        run: |
+          # Fetch all tags from the remote repository
+          git fetch --tags
+
       - name: Create and Push Git Tag
         id: create_tag
         run: |
@@ -60,6 +65,11 @@ jobs:
           # Create and push the tag
           git tag "v$VERSION"
           git push origin "v$VERSION"
+
+      - name: Fetch tags after tag creation
+        run: |
+          # Fetch the updated list of tags after pushing the new tag
+          git fetch --tags
 
       - name: Create GitHub Release
         id: release
