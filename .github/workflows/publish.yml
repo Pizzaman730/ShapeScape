@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-        - name: Check if commit message matches pattern
+      - name: Check if commit message matches pattern
         id: commit_message_check
         shell: bash
         run: |
@@ -28,7 +28,6 @@ jobs:
           fi
 
           echo "Commit message matches pattern: $COMMIT_MSG"
-
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
