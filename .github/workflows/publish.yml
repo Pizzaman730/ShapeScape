@@ -12,10 +12,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        run: |
-          echo "Checking out the repository..."
-          git status
-          git log --oneline -n 5  # Show last 5 commits for context
 
       - name: Check if commit message matches pattern
         id: commit_message_check
@@ -37,9 +33,6 @@ jobs:
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "8.0"
-        run: |
-          echo "Setting up .NET SDK version 8.0..."
-          dotnet --version  # Log the installed .NET version
 
       - name: Install dependencies
         run: |
@@ -104,10 +97,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        run: |
-          echo "Checking out the repository again..."
-          git status
-          git log --oneline -n 5  # Show last 5 commits for context
 
       - name: Fetch remote tags again (make sure latest tag is available)
         run: |
@@ -123,19 +112,47 @@ jobs:
 
       - name: Create GitHub Release
         id: release
-        uses: softprops/action-gh-release@v1
+        uses: actions/create-release@v1
         with:
           tag_name: ${{ env.VERSION }} # Use the tag created in the 'build' job
-          files: |
-            ./publish/win/*
-            ./publish/linux/*
-            ./publish/osx/*
+          release_name: "Release ${{ env.VERSION }}"
+          body: "Release notes for version ${{ env.VERSION }}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Publish Files as Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ./publish/win/*
+          asset_name: win_publish.zip
+          asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "Creating GitHub release for tag ${{ env.VERSION }}..."
-          ls ./publish/  # Log the contents of the publish directory
-          echo "Creating release and uploading assets..."
+          echo "Uploading Windows publish assets to release..."
+
+      - name: Upload Linux Publish Files as Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ./publish/linux/*
+          asset_name: linux_publish.zip
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload macOS Publish Files as Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ./publish/osx/*
+          asset_name: osx_publish.zip
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Changelog
         id: changelog
@@ -149,15 +166,14 @@ jobs:
           cat changelog.md  # Print the changelog content to the logs
 
       - name: Upload Changelog as Release Asset
-        uses: softprops/action-gh-release@v1
+        uses: actions/upload-release-asset@v1
         with:
-          files: changelog.md
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: changelog.md
+          asset_name: changelog.md
+          asset_content_type: text/markdown
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "Uploading changelog as a release asset..."
-          ls changelog.md  # Log the changelog file to confirm it's created
-          echo "Changelog uploaded as release asset."
 
   # Optional: Notify on failure
   notify:
