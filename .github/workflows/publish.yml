@@ -12,13 +12,18 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        run: |
+          echo "Checking out the repository..."
+          git status
+          git log --oneline -n 5  # Show last 5 commits for context
 
       - name: Check if commit message matches pattern
         id: commit_message_check
         shell: bash
         run: |
-          # Get the latest commit message
+          echo "Getting the latest commit message..."
           COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "Latest commit message: $COMMIT_MSG"
 
           # Regular expression for matching the commit message
           if ! echo "$COMMIT_MSG" | grep -Pq '^update:.+ - v[0-9]+\.[0-9]+\.[0-9]+$'; then
@@ -26,34 +31,50 @@ jobs:
             exit 1  # Exit with an error code to stop the workflow if the message doesn't match
           fi
 
-          echo "Commit message matches pattern: $COMMIT_MSG"
+          echo "Commit message matches the required pattern."
 
       - name: Setup .NET SDK
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: "8.0"
+        run: |
+          echo "Setting up .NET SDK version 8.0..."
+          dotnet --version  # Log the installed .NET version
 
       - name: Install dependencies
-        run: dotnet restore
+        run: |
+          echo "Restoring .NET dependencies..."
+          dotnet restore
+          echo ".NET dependencies restored."
 
       - name: Publish for Windows
-        run: dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o ./publish/win
+        run: |
+          echo "Publishing for Windows..."
+          dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o ./publish/win
+          echo "Windows publish output directory: ./publish/win"
 
       - name: Publish for Linux
-        run: dotnet publish -c Release -r linux-x64 --self-contained -p:PublishSingleFile=true -o ./publish/linux
+        run: |
+          echo "Publishing for Linux..."
+          dotnet publish -c Release -r linux-x64 --self-contained -p:PublishSingleFile=true -o ./publish/linux
+          echo "Linux publish output directory: ./publish/linux"
 
       - name: Publish for macOS
-        run: dotnet publish -c Release -r osx-x64 --self-contained -p:PublishSingleFile=true -o ./publish/osx
+        run: |
+          echo "Publishing for macOS..."
+          dotnet publish -c Release -r osx-x64 --self-contained -p:PublishSingleFile=true -o ./publish/osx
+          echo "macOS publish output directory: ./publish/osx"
 
       - name: Fetch remote tags
         run: |
-          # Fetch all tags from the remote repository
+          echo "Fetching remote tags..."
           git fetch --tags
+          git tag --list  # Log fetched tags
 
       - name: Create and Push Git Tag
         id: create_tag
         run: |
-          # Extract version from commit message
+          echo "Extracting version from commit message..."
           VERSION=$(git log -1 --format=%s | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+')
 
           if [ -z "$VERSION" ]; then
@@ -61,13 +82,20 @@ jobs:
             exit 1
           fi
 
+          echo "Version extracted: $VERSION"
+
           # Create and push the tag
+          echo "Creating Git tag: v$VERSION"
           git tag "v$VERSION"
           git push origin "v$VERSION"
+          echo "Git tag v$VERSION pushed to remote."
 
       - name: Set Version as Output
         id: set_version
-        run: echo "VERSION=$(git log -1 --format=%s | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+')" >> $GITHUB_ENV
+        run: |
+          VERSION=$(git log -1 --format=%s | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+')
+          echo "Setting version as environment variable: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
   release:
     runs-on: ubuntu-latest
@@ -76,10 +104,22 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Fetch remote tags again (ensure latest tag is available)
         run: |
+          echo "Checking out the repository again..."
+          git status
+          git log --oneline -n 5  # Show last 5 commits for context
+
+      - name: Fetch remote tags again (make sure latest tag is available)
+        run: |
+          echo "Fetching remote tags again to ensure the latest tags are available..."
           git fetch --tags
+          TAG_NAME="v${{ env.VERSION }}"
+          echo "Checking if tag $TAG_NAME exists..."
+          if ! git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME does not exist."
+            exit 1
+          fi
+          echo "Tag $TAG_NAME is available."
 
       - name: Create GitHub Release
         id: release
@@ -92,16 +132,21 @@ jobs:
             ./publish/osx/*
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Creating GitHub release for tag ${{ env.VERSION }}..."
+          ls ./publish/  # Log the contents of the publish directory
+          echo "Creating release and uploading assets..."
 
       - name: Generate Changelog
         id: changelog
         run: |
           VERSION=${{ env.VERSION }}
+          echo "Generating changelog for version $VERSION..."
           echo "Changelog for version $VERSION" > changelog.md
           echo "## Changes:" >> changelog.md
           git log --oneline --no-merges --since="1 week ago" >> changelog.md
           echo "Changelog for version $VERSION" >> changelog.md
-          cat changelog.md
+          cat changelog.md  # Print the changelog content to the logs
 
       - name: Upload Changelog as Release Asset
         uses: softprops/action-gh-release@v1
@@ -109,6 +154,10 @@ jobs:
           files: changelog.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Uploading changelog as a release asset..."
+          ls changelog.md  # Log the changelog file to confirm it's created
+          echo "Changelog uploaded as release asset."
 
   # Optional: Notify on failure
   notify:
@@ -116,4 +165,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Notify failure (optional)
-        run: echo "Build or release process failed, please check the logs!"
+        run: |
+          echo "Build or release process failed, please check the logs!"
+          echo "Failure details: $GITHUB_RUN_ID"
