@@ -15,21 +15,10 @@ namespace SquarePlatformer
         public Vec2 maxVelocity = new Vec2(10, 100);
         public Vec2 velocity = new();
         public bool pushable = false;
-        public List<string> tags = new();
-        public PhysicsObject(string name) : base(name)
-        {
-            PhysicsManager.AddPhysicsObject(this);
-            isPhysicsObject = true;
-        }
-        public PhysicsObject(string name, Vec2 pos) : base(name, pos)
-        {
-            PhysicsManager.AddPhysicsObject(this);
-            isPhysicsObject = true;
-        }
         public PhysicsObject(string name, Vec2 pos, Vec2 size) : base(name, pos, size)
         {
             PhysicsManager.AddPhysicsObject(this);
-            isPhysicsObject = true;
+            tags.Add("Physics");
         }
         public void UpdatePhysicsSide()
         {
