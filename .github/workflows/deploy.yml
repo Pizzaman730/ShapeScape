@@ -50,9 +50,9 @@ jobs:
           VERSION=$(echo "$PR_TITLE" | sed -E 's/.*v([0-9]+\.[0-9]+).*/v\1/')
 
           # If no version found in the PR title, default to v1.0.0
-          if [ -z "$VERSION" ]; then
-              VERSION="v1.0.0"
-          fi
+          if (-not $VERSION) {
+              $VERSION = "v1.0.0"
+          }
 
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Extracted version: $VERSION"
