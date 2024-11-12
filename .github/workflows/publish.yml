@@ -131,8 +131,6 @@ jobs:
           asset_content_type: application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "Uploading Windows publish assets to release..."
 
       - name: Upload Linux Publish Files as Release Assets
         uses: actions/upload-release-asset@v1
