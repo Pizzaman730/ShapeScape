@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-    # This will trigger on any push to main, but we'll filter by commit message in the next steps
 
 jobs:
   build:
@@ -22,8 +21,8 @@ jobs:
 
           # Regular expression for matching the commit message
           # It should start with 'update:' followed by a name, and then ' - v' followed by a version (e.g., v1.2.0)
-          if [[ ! "$COMMIT_MSG" =~ ^update:.+ - v[0-9]+\.[0-9]+\.[0-9]+ ]]; then
-            echo "Commit message does not match the required pattern."
+          if [[ ! "$COMMIT_MSG" =~ ^update:.+ - v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Commit message does not match the required pattern: $COMMIT_MSG"
             exit 1  # Exit with an error code to stop the workflow if the message doesn't match
           fi
 
