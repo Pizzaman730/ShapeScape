@@ -15,6 +15,7 @@ jobs:
 
       - name: Check if commit message matches pattern
         id: commit_message_check
+        shell: bash
         run: |
           # Get the latest commit message
           COMMIT_MSG=$(git log -1 --pretty=%B)
