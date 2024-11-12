@@ -43,16 +43,16 @@ jobs:
         id: extract_version
         run: |
           echo "Extracting version from PR title"
-          PR_TITLE=$(jq --raw-output .pull_request.title $GITHUB_EVENT_PATH)
+          $PR_TITLE = $(jq --raw-output .pull_request.title $GITHUB_EVENT_PATH)
           echo "PR Title: $PR_TITLE"
 
           # Extract the version number from PR title (expects format like "UI update - v1.5")
-          VERSION=$(echo $PR_TITLE | sed -n 's/.*v\([0-9]\+\.[0-9]\+\).*/v\1/p')
+          $VERSION = ($PR_TITLE -replace '.*v([0-9]+\.[0-9]+).*', 'v$1')
 
           # If no version found in the PR title, default to v1.0.0
-          if [ -z "$VERSION" ]; then
-            VERSION="v1.0.0"
-          fi
+          if (-not $VERSION) {
+              $VERSION = "v1.0.0"
+          }
 
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "Extracted version: $VERSION"
@@ -70,8 +70,8 @@ jobs:
       # Add release notes (use PR title as the release note)
       - name: Add release notes
         run: |
-          PR_TITLE=$(jq --raw-output .pull_request.title $GITHUB_EVENT_PATH)
-          changelog="### Changelog\n\n- $PR_TITLE"
+          $PR_TITLE = $(jq --raw-output .pull_request.title $GITHUB_EVENT_PATH)
+          $changelog = "### Changelog\n\n- $PR_TITLE"
           gh release edit ${{ env.VERSION }} --notes "$changelog"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
