@@ -1,0 +1,77 @@
+name: Deploy Windows 64-bit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [opened, synchronize, reopened] # Listen for PR updates, which includes new commits to the PR
+
+jobs:
+  build_and_deploy:
+    runs-on: windows-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Set up .NET SDK
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0.x"
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: dotnet restore
+
+      # Publish the app with the specified options
+      - name: Publish project
+        run: |
+          dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true
+
+      # Zip the publish output into a file
+      - name: Zip published files
+        run: |
+          $publishDir = "bin\Release\net8.0\win-x64\publish"
+          $zipFile = "SquarePlatformer-Windows64.zip"
+          Compress-Archive -Path "$publishDir\*" -DestinationPath "$zipFile"
+
+      # Create a version from PR title
+      - name: Extract version from PR title
+        id: extract_version
+        run: |
+          echo "Extracting version from PR title"
+          PR_TITLE=$(jq --raw-output .pull_request.title $GITHUB_EVENT_PATH)
+          echo "PR Title: $PR_TITLE"
+
+          # Extract the version number from PR title (expects format like "UI update - v1.5")
+          VERSION=$(echo $PR_TITLE | sed -n 's/.*v\([0-9]\+\.[0-9]\+\).*/v\1/p')
+
+          # If no version found in the PR title, default to v1.0.0
+          if [ -z "$VERSION" ]; then
+            VERSION="v1.0.0"
+          fi
+
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Extracted version: $VERSION"
+
+      # Create GitHub Release using the version from PR title
+      - name: Create GitHub Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: SquarePlatformer-Windows64.zip
+          tag_name: ${{ env.VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Add release notes (use PR title as the release note)
+      - name: Add release notes
+        run: |
+          PR_TITLE=$(jq --raw-output .pull_request.title $GITHUB_EVENT_PATH)
+          changelog="### Changelog\n\n- $PR_TITLE"
+          gh release edit ${{ env.VERSION }} --notes "$changelog"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
