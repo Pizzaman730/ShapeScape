@@ -71,9 +71,12 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    needs: build # Ensure this job waits for the 'build' job to complete
+    needs: build
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Fetch remote tags again (ensure latest tag is available)
         run: |
           git fetch --tags
