@@ -50,19 +50,35 @@ namespace SquarePlatformer
                 Console.WriteLine("Can't fetch content, not initialized yet");
                 return;
             }
-            textureDataFile = File.ReadAllText("Content/texturedata.json");
-            animationDataFile = File.ReadAllText("Content/animationdata.json");
-            CreateTexture("PlayerLeft", 50, 50);
-            CreateTexture("PlayerRight", 50, 50);
-            CreateTexture("PlayerStraight", 50, 50);
-            CreateTexture("Enemy", 50, 50);
-            CreateTexture("Grass", 100, 100);
-            CreateTexture("Dirt", 100, 100);
-            CreateTexture("StartButton", 200, 100);
-            
-            CreateAllObjectTextures();
-            CreateAllAnimations();
+
+            try
+            {
+                textureDataFile = File.ReadAllText("Content/texturedata.json");
+                animationDataFile = File.ReadAllText("Content/animationdata.json");
+
+                // Log the texture loading process
+                Console.WriteLine("Loading textures...");
+                CreateTexture("PlayerLeft", 50, 50);
+                CreateTexture("PlayerRight", 50, 50);
+                CreateTexture("PlayerStraight", 50, 50);
+                CreateTexture("Enemy", 50, 50);
+                CreateTexture("Grass", 100, 100);
+                CreateTexture("Dirt", 100, 100);
+                CreateTexture("StartButton", 200, 100);
+
+                // Log ObjectTextures and Animations creation
+                Console.WriteLine("Creating object textures...");
+                CreateAllObjectTextures();
+                
+                Console.WriteLine("Creating animations...");
+                CreateAllAnimations();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error during content fetch: {ex.Message}");
+            }
         }
+
         public static void CreateAllObjectTextures()
         {
             var options = new JsonSerializerOptions
@@ -77,7 +93,7 @@ namespace SquarePlatformer
                 
                 foreach (TextureInfo info in obj.textures)
                 {
-                    Console.WriteLine(info.name);
+                    Console.WriteLine("Creating texture: " + info.name);
                     info.UpdateTexture();
                 }
             }
@@ -97,19 +113,36 @@ namespace SquarePlatformer
         }
         public static Texture2D CreateTexture(string name, int width, int height)
         {
-            Texture2D texture = contentManager.Load<Texture2D>(name);
-            RenderTarget2D target = new RenderTarget2D(graphicsDevice, width, height);
-            graphicsDevice.SetRenderTarget(target);
-            graphicsDevice.Clear(Color.Transparent);
+            try
+            {
+                Texture2D texture = contentManager.Load<Texture2D>(name);
+                
+                // Check if the texture is null after loading
+                if (texture == null)
+                {
+                    Console.WriteLine($"Failed to load texture: {name}");
+                    return null; 
+                }
 
-            spriteBatch.Begin(SpriteSortMode.Deferred, null, samplerState);
-            spriteBatch.Draw(texture, new Rectangle(0, 0, width, height), Color.White);
-            spriteBatch.End();
+                RenderTarget2D target = new RenderTarget2D(graphicsDevice, width, height);
+                graphicsDevice.SetRenderTarget(target);
+                graphicsDevice.Clear(Color.Transparent);
 
-            graphicsDevice.SetRenderTarget(null);
-            textures.Add(name, target);
-            return target;
+                spriteBatch.Begin(SpriteSortMode.Deferred, null, samplerState);
+                spriteBatch.Draw(texture, new Rectangle(0, 0, width, height), Color.White);
+                spriteBatch.End();
+
+                graphicsDevice.SetRenderTarget(null);
+                textures.Add(name, target);
+                return target;
+            }
+            catch (ContentLoadException ex)
+            {
+                Console.WriteLine($"Error loading texture '{name}': {ex.Message}");
+                return null;
+            }
         }
+
         public static TextureInfo TileTexture(TextureInfo info, Vec2 size)
         {
             int originalWidth = info.texture.Width;
@@ -141,19 +174,27 @@ namespace SquarePlatformer
         }
         public static Texture2D GetTexture(string name)
         {
-            Console.WriteLine(name);
+            Console.WriteLine("Getting texture: " + name);
             return textures[name];
         }
         public static ObjectTexture GetObjectTexture(string name)
         {
-            ObjectTexture objTexture = objectTextures[name];
-            return new ObjectTexture
+            if (objectTextures.ContainsKey(name))
             {
-                name = objTexture.name,
-                textures = objTexture.textures?.Select(a => a.Copy()).ToArray()
-            };
-            
+                ObjectTexture objTexture = objectTextures[name];
+                return new ObjectTexture
+                {
+                    name = objTexture.name,
+                    textures = objTexture.textures?.Select(a => a.Copy()).ToArray()
+                };
+            }
+            else
+            {
+                Console.WriteLine($"Error: Object texture '{name}' not found.");
+                return null; 
+            }
         }
+
         public static Animation GetAnimation(string name)
         {
             Animation animation = animations[name];
