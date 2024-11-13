@@ -10,8 +10,13 @@ namespace SquarePlatformer
         public bool overlay;
         public UIObject(string name, Vec2 pos, Vec2 size, bool overlay) : base(name, pos, size)
         {
+            UIManager.AddObject(this);
             this.overlay = overlay;
             tags.Add("UI");
-        }        
+        }
+        public virtual void UpdateUI()
+        {
+            
+        }    
     }
 }

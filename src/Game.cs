@@ -41,9 +41,12 @@ public class Main : Game
 
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+        InputManager.Update();
+        UIManager.UpdateAll();
+        LevelManager.Update();
         ObjectManager.UpdateAll();
         PhysicsManager.UpdateAll();
-        LevelManager.Update();
+        
 
         base.Update(gameTime);
     }
@@ -54,6 +57,7 @@ public class Main : Game
 
         Camera.FollowTargets();
 
+        AnimationManager.Update();
         Renderer.DrawAll();
 
         base.Draw(gameTime);

@@ -23,6 +23,7 @@ namespace SquarePlatformer
                     startButton = new StartButton(new Vec2());
                     Camera.center = startButton.position;
                 }
+                /*
                 if (InputManager.GetButtonDown(MouseButton.LeftButton) && startButton.TouchesPoint(InputManager.MousePosWorld()))
                 {
                     startButton = null;
@@ -31,10 +32,11 @@ namespace SquarePlatformer
                     ObjectManager.DestroyAllObjects();
                     StartLevel(1);
                 }
+                */
             }
             if (gameState == GameState.InLevel && alivePlayers == 0)
             {
-                ObjectManager.DestroyAllObjects();
+                ObjectManager.AddAllObjectsToDestroy();
                 //StartLevel(1);
                 gameState = GameState.InMenu;
                 firstUpdateDone = false;

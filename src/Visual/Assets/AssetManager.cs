@@ -19,11 +19,13 @@ namespace SquarePlatformer
     {
         public static Dictionary<string, Texture2D> textures { get; private set; } = [];
         public static Dictionary<string, ObjectTexture> objectTextures { get; private set; } = [];
+        public static Dictionary<string, Animation> animations { get; private set; } = [];
         private static SpriteBatch spriteBatch;
         private static bool initialized = false;
         private static ContentManager contentManager;
         private static GraphicsDevice graphicsDevice => spriteBatch.GraphicsDevice;
         private static string textureDataFile;
+        private static string animationDataFile;
         private static readonly SamplerState samplerState = new()
         {
             Filter = TextureFilter.Point,
@@ -49,13 +51,17 @@ namespace SquarePlatformer
                 return;
             }
             textureDataFile = File.ReadAllText("Content/texturedata.json");
-            CreateTexture("Player", 50, 50);
+            animationDataFile = File.ReadAllText("Content/animationdata.json");
+            CreateTexture("PlayerLeft", 50, 50);
+            CreateTexture("PlayerRight", 50, 50);
+            CreateTexture("PlayerStraight", 50, 50);
             CreateTexture("Enemy", 50, 50);
             CreateTexture("Grass", 100, 100);
             CreateTexture("Dirt", 100, 100);
             CreateTexture("StartButton", 200, 100);
             
             CreateAllObjectTextures();
+            CreateAllAnimations();
         }
         public static void CreateAllObjectTextures()
         {
@@ -71,9 +77,22 @@ namespace SquarePlatformer
                 
                 foreach (TextureInfo info in obj.textures)
                 {
+                    Console.WriteLine(info.name);
                     info.UpdateTexture();
                 }
-                new Rectangle();
+            }
+        }
+        public static void CreateAllAnimations()
+        {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            var data = JsonSerializer.Deserialize<Animation[]>(animationDataFile, options);
+
+            foreach (var obj in data)
+            {
+                animations.Add(obj.name, obj);
             }
         }
         public static Texture2D CreateTexture(string name, int width, int height)
@@ -122,6 +141,7 @@ namespace SquarePlatformer
         }
         public static Texture2D GetTexture(string name)
         {
+            Console.WriteLine(name);
             return textures[name];
         }
         public static ObjectTexture GetObjectTexture(string name)
@@ -131,6 +151,16 @@ namespace SquarePlatformer
             {
                 name = objTexture.name,
                 textures = objTexture.textures?.Select(a => a.Copy()).ToArray()
+            };
+            
+        }
+        public static Animation GetAnimation(string name)
+        {
+            Animation animation = animations[name];
+            return new Animation
+            {
+                name = animation.name,
+                keyframes = animation.keyframes
             };
             
         }

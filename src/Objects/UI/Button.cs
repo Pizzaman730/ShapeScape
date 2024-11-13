@@ -15,5 +15,12 @@ namespace SquarePlatformer
         {
 
         }
+        public override void UpdateUI()
+        {
+            if (InputManager.ClickThisFrame() && TouchesPoint(InputManager.MousePosWorld()))
+            {
+                OnButtonClick();
+            }
+        }
     }
 }
