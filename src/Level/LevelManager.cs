@@ -1,9 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework.Input;
-
 namespace SquarePlatformer
 {
     public static class LevelManager
@@ -11,37 +5,28 @@ namespace SquarePlatformer
         public static int alivePlayers = 0;
         public static bool firstUpdateDone = false;
         public static GameState gameState = GameState.InMenu;
-        public static StartButton startButton;
+
         public static void Update()
         {
             if (gameState == GameState.InMenu)
             {
+                // Make sure the UI is showing the main menu
                 if (!firstUpdateDone)
                 {
                     firstUpdateDone = true;
-                    new Ground(new Vec2(0, 0), new Vec2(4000, 2000));
-                    startButton = new StartButton(new Vec2());
-                    Camera.center = startButton.position;
+                    UIManager.Init(); // Initialize the UI
+                    UIManager.SetMenu(new UIMainMenu()); // Set the main menu
                 }
-                /*
-                if (InputManager.GetButtonDown(MouseButton.LeftButton) && startButton.TouchesPoint(InputManager.MousePosWorld()))
-                {
-                    startButton = null;
-                    firstUpdateDone = false;
-                    gameState = GameState.InLevel;
-                    ObjectManager.DestroyAllObjects();
-                    StartLevel(1);
-                }
-                */
             }
-            if (gameState == GameState.InLevel && alivePlayers == 0)
+            else if (gameState == GameState.InLevel && alivePlayers == 0)
             {
-                ObjectManager.AddAllObjectsToDestroy();
-                //StartLevel(1);
+                // Transition back to the main menu after level completion or player death
+                UIManager.SetMenu(new UIMainMenu());
                 gameState = GameState.InMenu;
                 firstUpdateDone = false;
             }
         }
+
         public static void StartLevel(int levelNum)
         {
             if (levelNum == 1)
