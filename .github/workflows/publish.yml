@@ -1,0 +1,184 @@
+name: Build, Release, and Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Check if commit message matches pattern
+        id: commit_message_check
+        shell: bash
+        run: |
+          echo "Getting the latest commit message..."
+          COMMIT_MSG=$(git log -1 --pretty=%B)
+          echo "Latest commit message: $COMMIT_MSG"
+
+          # Regular expression for matching the commit message
+          if ! echo "$COMMIT_MSG" | grep -Pq '^update:.+ - v[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "Commit message does not match the required pattern: $COMMIT_MSG"
+            exit 1  # Exit with an error code to stop the workflow if the message doesn't match
+          fi
+
+          echo "Commit message matches the required pattern."
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "8.0"
+
+      - name: Install dependencies
+        run: |
+          echo "Restoring .NET dependencies..."
+          dotnet restore
+          echo ".NET dependencies restored."
+
+      - name: Publish for Windows
+        run: |
+          echo "Publishing for Windows..."
+          dotnet publish -c Release -r win-x64 --self-contained -p:PublishSingleFile=true -o ./publish/win
+          echo "Windows publish output directory: ./publish/win"
+
+      - name: Publish for Linux
+        run: |
+          echo "Publishing for Linux..."
+          dotnet publish -c Release -r linux-x64 --self-contained -p:PublishSingleFile=true -o ./publish/linux
+          echo "Linux publish output directory: ./publish/linux"
+
+      - name: Publish for macOS
+        run: |
+          echo "Publishing for macOS..."
+          dotnet publish -c Release -r osx-x64 --self-contained -p:PublishSingleFile=true -o ./publish/osx
+          echo "macOS publish output directory: ./publish/osx"
+
+      - name: Fetch remote tags
+        run: |
+          echo "Fetching remote tags..."
+          git fetch --tags
+          git tag --list  # Log fetched tags
+
+      - name: Create and Push Git Tag
+        id: create_tag
+        run: |
+          echo "Extracting version from commit message..."
+          VERSION=$(git log -1 --format=%s | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+')
+
+          if [ -z "$VERSION" ]; then
+            echo "Version not found in commit message."
+            exit 1
+          fi
+
+          echo "Version extracted: $VERSION"
+
+          # Create and push the tag
+          echo "Creating Git tag: v$VERSION"
+          git tag "v$VERSION"
+          git push origin "v$VERSION"
+          echo "Git tag v$VERSION pushed to remote."
+
+      - name: Set Version as Output
+        id: set_version
+        run: |
+          VERSION=$(git log -1 --format=%s | grep -oP 'v\K[0-9]+\.[0-9]+\.[0-9]+')
+          echo "Setting version as environment variable: $VERSION"
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Fetch remote tags again (make sure latest tag is available)
+        run: |
+          echo "Fetching remote tags again to ensure the latest tags are available..."
+          git fetch --tags
+          TAG_NAME="v${{ env.VERSION }}"
+          echo "Checking if tag $TAG_NAME exists..."
+          if ! git rev-parse "$TAG_NAME" >/dev/null 2>&1; then
+            echo "Tag $TAG_NAME does not exist."
+            exit 1
+          fi
+          echo "Tag $TAG_NAME is available."
+
+      - name: Create GitHub Release
+        id: release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ env.VERSION }} # Use the tag created in the 'build' job
+          release_name: "Release ${{ env.VERSION }}"
+          body: "Release notes for version ${{ env.VERSION }}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Publish Files as Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ./publish/win/*
+          asset_name: win_publish.zip
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Linux Publish Files as Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ./publish/linux/*
+          asset_name: linux_publish.zip
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload macOS Publish Files as Release Assets
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: ./publish/osx/*
+          asset_name: osx_publish.zip
+          asset_content_type: application/zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate Changelog
+        id: changelog
+        run: |
+          VERSION=${{ env.VERSION }}
+          echo "Generating changelog for version $VERSION..."
+          echo "Changelog for version $VERSION" > changelog.md
+          echo "## Changes:" >> changelog.md
+          git log --oneline --no-merges --since="1 week ago" >> changelog.md
+          echo "Changelog for version $VERSION" >> changelog.md
+          cat changelog.md  # Print the changelog content to the logs
+
+      - name: Upload Changelog as Release Asset
+        uses: actions/upload-release-asset@v1
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: changelog.md
+          asset_name: changelog.md
+          asset_content_type: text/markdown
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Optional: Notify on failure
+  notify:
+    if: failure()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Notify failure (optional)
+        run: |
+          echo "Build or release process failed, please check the logs!"
+          echo "Failure details: $GITHUB_RUN_ID"
