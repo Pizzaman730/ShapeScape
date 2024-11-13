@@ -38,7 +38,7 @@ namespace SquarePlatformer
                 return;
             }
             spriteBatch = sb;
-            contentManager = Game1.game.Content;
+            contentManager = Main.game.Content;
             initialized = true;
         }
         public static void FetchAllContent()

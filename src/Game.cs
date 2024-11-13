@@ -5,13 +5,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SquarePlatformer;
 
-public class Game1 : Game
+public class Main : Game
 {
 
-    public static Game1 game; 
+    public static Main game; 
     private GraphicsDeviceManager _graphics;
     private SpriteBatch _spriteBatch;
-    public Game1()
+    public Main()
     {
         game = this;
         _graphics = new GraphicsDeviceManager(this);
