@@ -21,7 +21,7 @@ namespace SquarePlatformer
                 objects.Add(obj);
                 return;
             }
-            Console.WriteLine("Object " + obj.name + " already added to object list!");
+            Logger.Log("Object " + obj.name + " already added to object list!");
         }
         public static void DestroyObject(Object obj)
         {
@@ -38,7 +38,7 @@ namespace SquarePlatformer
                 }
                 return;
             }
-            Console.WriteLine("Object " + obj.name + " not added to object list!");
+            Logger.Log("Object " + obj.name + " not added to object list!");
         }
         public static void UpdateAll()
         {

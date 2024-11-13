@@ -34,7 +34,7 @@ namespace SquarePlatformer
                 Vec2 pos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + obj.corner + info.offset) : Camera.TranslatePos((new Vec2(obj.corner.x, obj.corner.y + obj.size.y) + info.offset) * new Vec2(1, -1));
                 SpriteEffects effects = SpriteEffects.None;
                 if (obj.flipTexture) effects = SpriteEffects.FlipHorizontally;
-                //Console.WriteLine(info.offset);
+                //Logger.Log(info.offset);
                 if (info.name == "Dirt") info.offset = new Vec2(0, -100);
                 spriteBatch.Draw(
                     info.texture,

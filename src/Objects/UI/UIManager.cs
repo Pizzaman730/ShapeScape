@@ -21,7 +21,7 @@ namespace SquarePlatformer
                 uiObjects.Add(obj);
                 return;
             }
-            Console.WriteLine("UIObject " + obj.name + " already added to object list!");
+            Logger.Log("UIObject " + obj.name + " already added to object list!");
         }
         public static void RemoveObject(UIObject obj)
         {
@@ -30,7 +30,7 @@ namespace SquarePlatformer
                 uiObjects.Remove(obj);
                 return;
             }
-            Console.WriteLine("UIObject " + obj.name + " not added to object list!");
+            Logger.Log("UIObject " + obj.name + " not added to object list!");
         }
         public static void UpdateAll()
         {

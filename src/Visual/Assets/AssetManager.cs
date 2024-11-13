@@ -36,7 +36,7 @@ namespace SquarePlatformer
         {
             if (initialized)
             {
-                Console.WriteLine("AssetManager already initialized!");
+                Logger.Log("AssetManager already initialized!");
                 return;
             }
             spriteBatch = sb;
@@ -47,7 +47,7 @@ namespace SquarePlatformer
         {
             if (!initialized)
             {
-                Console.WriteLine("Can't fetch content, not initialized yet");
+                Logger.Log("Can't fetch content, not initialized yet");
                 return;
             }
 
@@ -57,7 +57,7 @@ namespace SquarePlatformer
                 animationDataFile = File.ReadAllText("Content/animationdata.json");
 
                 // Log the texture loading process
-                Console.WriteLine("Loading textures...");
+                Logger.Log("Loading textures...");
                 CreateTexture("PlayerLeft", 50, 50);
                 CreateTexture("PlayerRight", 50, 50);
                 CreateTexture("PlayerStraight", 50, 50);
@@ -67,15 +67,15 @@ namespace SquarePlatformer
                 CreateTexture("StartButton", 200, 100);
 
                 // Log ObjectTextures and Animations creation
-                Console.WriteLine("Creating object textures...");
+                Logger.Log("Creating object textures...");
                 CreateAllObjectTextures();
                 
-                Console.WriteLine("Creating animations...");
+                Logger.Log("Creating animations...");
                 CreateAllAnimations();
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error during content fetch: {ex.Message}");
+                Logger.Log($"Error during content fetch: {ex.Message}");
             }
         }
 
@@ -93,7 +93,7 @@ namespace SquarePlatformer
                 
                 foreach (TextureInfo info in obj.textures)
                 {
-                    Console.WriteLine("Creating texture: " + info.name);
+                    Logger.Log("Creating texture: " + info.name);
                     info.UpdateTexture();
                 }
             }
@@ -120,7 +120,7 @@ namespace SquarePlatformer
                 // Check if the texture is null after loading
                 if (texture == null)
                 {
-                    Console.WriteLine($"Failed to load texture: {name}");
+                    Logger.Log($"Failed to load texture: {name}");
                     return null; 
                 }
 
@@ -138,7 +138,7 @@ namespace SquarePlatformer
             }
             catch (ContentLoadException ex)
             {
-                Console.WriteLine($"Error loading texture '{name}': {ex.Message}");
+                Logger.Log($"Error loading texture '{name}': {ex.Message}");
                 return null;
             }
         }
@@ -174,7 +174,7 @@ namespace SquarePlatformer
         }
         public static Texture2D GetTexture(string name)
         {
-            Console.WriteLine("Getting texture: " + name);
+            Logger.Log("Getting texture: " + name);
             return textures[name];
         }
         public static ObjectTexture GetObjectTexture(string name)
@@ -190,7 +190,7 @@ namespace SquarePlatformer
             }
             else
             {
-                Console.WriteLine($"Error: Object texture '{name}' not found.");
+                Logger.Log($"Error: Object texture '{name}' not found.");
                 return null; 
             }
         }
