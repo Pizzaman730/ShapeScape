@@ -8,7 +8,8 @@
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
-                "name": "Player" 
+                "name": "Player" ,
+                "textureName": "PlayerRight"
             }
         ]
     },
@@ -21,7 +22,8 @@
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
-                "name": "Enemy"
+                "name": "Enemy",
+                "textureName": "Enemy"
             }
         ]
     },
@@ -34,14 +36,16 @@
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
-                "name": "Grass"
+                "name": "Grass",
+                "textureName": "Grass"
             },
             {
                 "offset": { "x": 0, "y": -100}, 
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
-                "name": "Dirt"
+                "name": "Dirt",
+                "textureName": "Dirt"
             }
         ]
     },
@@ -54,7 +58,8 @@
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
-                "name": "StartButton"
+                "name": "StartButton",
+                "textureName": "StartButton"
             }
         ]
     }

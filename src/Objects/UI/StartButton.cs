@@ -13,7 +13,11 @@ namespace SquarePlatformer
         }
         public override void OnButtonClick()
         {
-
+            LevelManager.startButton = null;
+            LevelManager.firstUpdateDone = false;
+            LevelManager.gameState = GameState.InLevel;
+            ObjectManager.AddAllObjectsToDestroy();
+            LevelManager.StartLevel(1);
         }
     }
 }

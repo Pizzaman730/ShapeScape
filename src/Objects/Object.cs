@@ -10,6 +10,7 @@ namespace SquarePlatformer
 {
     public class Object
     {
+        public Dictionary<string, Animation> animations = new();
         public string name { get; private set; }
         public ObjectTexture objectTexture;
         public Vec2 corner { get; private set; }

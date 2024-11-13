@@ -10,6 +10,7 @@ namespace SquarePlatformer
 {
     public static class InputManager
     {
+        public static bool leftClickThisFrame;
         public static bool GetKeyDown(Keys key)
         {
             return Keyboard.GetState().IsKeyDown(key);
@@ -34,6 +35,28 @@ namespace SquarePlatformer
         public static Vec2 MousePosWorld()
         {
             return Camera.TranslatePos(new Vec2()-MousePos());
+        }
+        public static void Update()
+        {
+            if (GetButtonDown(MouseButton.LeftButton))
+            {
+                if (leftClickThisFrame)
+                {
+                    leftClickThisFrame = false;
+                }
+                else
+                {
+                    leftClickThisFrame = true;
+                }
+            }
+            else
+            {
+                leftClickThisFrame = false;
+            }
+        }
+        public static bool ClickThisFrame()
+        {
+            return leftClickThisFrame;
         }
     }
 }

@@ -13,6 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Textures/animationdata.json
+/copy:Textures/animationdata.json;animationdata.json
+
 #begin Textures/Enemy/Enemy.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -49,7 +52,7 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Ground/Grass.png;Grass.png
 
-#begin Textures/Player/Player.png
+#begin Textures/Player/PlayerLeft.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -59,7 +62,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/Player/Player.png;Player.png
+/build:Textures/Player/PlayerLeft.png;PlayerLeft.png
+
+#begin Textures/Player/PlayerRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Player/PlayerRight.png;PlayerRight.png
+
+#begin Textures/Player/PlayerStraight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Player/PlayerStraight.png;PlayerStraight.png
 
 #begin Textures/StartButton/StartButton.png
 /importer:TextureImporter

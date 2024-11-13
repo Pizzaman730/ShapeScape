@@ -23,7 +23,7 @@ namespace SquarePlatformer
             }
             Console.WriteLine("UIObject " + obj.name + " already added to object list!");
         }
-        public static void DestroyObject(UIObject obj)
+        public static void RemoveObject(UIObject obj)
         {
             if (uiObjects.Contains(obj))
             {
@@ -39,10 +39,11 @@ namespace SquarePlatformer
             {
                 if (obj == null)
                 {
-                    AddToDestroy(obj);
+                    //AddToDestroy(obj);
                     continue;
                 }
-                obj.Update();
+                obj.UpdateUI();
+                
             }
             DestroyNeededObjects();
         }
@@ -50,7 +51,7 @@ namespace SquarePlatformer
         {
             foreach (UIObject obj in toDestroy)
             {
-                DestroyObject(obj);
+                RemoveObject(obj);
             }
             toDestroy = new();
         }

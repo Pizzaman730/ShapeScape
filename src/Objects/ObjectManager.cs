@@ -32,6 +32,10 @@ namespace SquarePlatformer
                 {
                     PhysicsManager.RemovePhysicsObject((PhysicsObject)obj);
                 }
+                if (obj.tags.Contains("UI"))
+                {
+                    UIManager.RemoveObject((UIObject)obj);
+                }
                 return;
             }
             Console.WriteLine("Object " + obj.name + " not added to object list!");
@@ -50,12 +54,12 @@ namespace SquarePlatformer
             }
             DestroyNeededObjects();
         }
-        public static void DestroyAllObjects()
+        public static void AddAllObjectsToDestroy()
         {
             List<Object> oldObjects = new(objects);
             foreach (Object obj in oldObjects)
             {
-                DestroyObject(obj);
+                AddToDestroy(obj);
             }
         }
         private static void DestroyNeededObjects()

@@ -35,6 +35,5 @@ namespace SquarePlatformer
         {
             return startPos + (center * new Vec2(-1, 1)) + (WindowManager.size / 2);
         }
-        
     }
 }

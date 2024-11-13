@@ -10,6 +10,7 @@ namespace SquarePlatformer
     public class TextureInfo
     {
         public string name { get; set; }
+        public string textureName { get; set; }
         public Texture2D texture { get; private set; }
         public Vec2 size { get; set; }
         public Vec2 offset { get; set; }
@@ -17,7 +18,7 @@ namespace SquarePlatformer
         public bool enabled { get; set; }
         public void UpdateTexture()
         {
-            texture = AssetManager.GetTexture(name);
+            texture = AssetManager.GetTexture(textureName);
         }
         public void SetTexture(Texture2D texture)
         {
@@ -27,6 +28,7 @@ namespace SquarePlatformer
         {
             return new TextureInfo() {
                 name = this.name,
+                textureName = this.textureName,
                 texture = this.texture,
                 size = this.size,
                 offset = this.offset,

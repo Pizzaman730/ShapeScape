@@ -1,0 +1,60 @@
+[
+    {
+        "name": "PlayerTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Player",
+                        "offsetChange": { "x": 0, "y": 0 },
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "sizeSet": { "x": 0, "y": 0 },
+                        "sizeChange": { "x": 0, "y": 0 },
+                        "textureChange": "PlayerStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Player",
+                        "offsetChange": { "x": 0, "y": 0 },
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "sizeSet": { "x": 0, "y": 0 },
+                        "sizeChange": { "x": 0, "y": 0 },
+                        "textureChange": "PlayerLeft"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "PlayerTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Player",
+                        "offsetChange": { "x": 0, "y": 0 },
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "sizeSet": { "x": 0, "y": 0 },
+                        "sizeChange": { "x": 0, "y": 0 },
+                        "textureChange": "PlayerStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Player",
+                        "offsetChange": { "x": 0, "y": 0 },
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "sizeSet": { "x": 0, "y": 0 },
+                        "sizeChange": { "x": 0, "y": 0 },
+                        "textureChange": "PlayerRight"
+                    }
+                ]
+            }
+        }
+    }
+]
