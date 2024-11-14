@@ -16,7 +16,7 @@
 #begin Textures/animationdata.json
 /copy:Textures/animationdata.json;animationdata.json
 
-#begin Textures/Enemy/Enemy.png
+#begin Textures/Enemy/CircleEnemyBody.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -26,7 +26,31 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/Enemy/Enemy.png;Enemy.png
+/build:Textures/Enemy/CircleEnemyBody.png;CircleEnemyBody.png
+
+#begin Textures/Enemy/CircleEnemyFaceRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Enemy/CircleEnemyFaceRight.png;CircleEnemyFaceRight.png
+
+#begin Textures/Enemy/CircleEnemyFaceStraight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Enemy/CircleEnemyFaceStraight.png;CircleEnemyFaceStraight.png
 
 #begin Textures/Ground/Dirt.png
 /importer:TextureImporter

@@ -5,15 +5,19 @@ using System.Threading.Tasks;
 
 namespace SquarePlatformer
 {
-    public class Enemy : PhysicsObject
+    public class CircleEnemy : PhysicsObject
     {
         public bool facingRight = true;
-        public Enemy(Vec2 pos) : base("Enemy", pos, new Vec2(50, 50))
+        public Animation turnLeftAnim;
+        public Animation turnRightAnim;
+        public CircleEnemy(Vec2 pos) : base("CircleEnemy", pos, new Vec2(50, 50))
         {
             affectedByGravity = true;
             pushable = true;
             maxVelocity.x = 5;
-            tags.Add("SteppableEnemy");
+            turnLeftAnim = CreateAnimation("CircleEnemyTurnLeft");
+            turnRightAnim = CreateAnimation("CircleEnemyTurnRight");
+            tags.Add("CircleEnemy");
             tags.Add("Enemy");
         }
         public override void Update()
@@ -34,8 +38,18 @@ namespace SquarePlatformer
             }
             if (!surfaceAtDestination && onGround)
             {
-                facingRight = !facingRight;
-                flipTexture = !facingRight;
+                if (facingRight)
+                {
+                    facingRight = false;
+                    turnLeftAnim.Start();
+                }
+                else
+                {
+                    facingRight = true;
+                    turnRightAnim.Start();
+                }
+
+                //flipTexture = !facingRight;
             }
             velocity.x += facingRight ? 1 : -1;
         }
@@ -43,8 +57,16 @@ namespace SquarePlatformer
         {
             if (info.side == Side.Left || info.side == Side.Right)
             {
-                facingRight = !facingRight;
-                flipTexture = !facingRight;
+                if (facingRight)
+                {
+                    facingRight = false;
+                    turnLeftAnim.Start();
+                }
+                else
+                {
+                    facingRight = true;
+                    turnRightAnim.Start();
+                }
             }
             if (info.obj.tags.Contains("Player") && info.side == Side.Up) 
             {

@@ -61,10 +61,14 @@ namespace SquarePlatformer
                 CreateTexture("PlayerLeft", 50, 50);
                 CreateTexture("PlayerRight", 50, 50);
                 CreateTexture("PlayerStraight", 50, 50);
-                CreateTexture("Enemy", 50, 50);
+
+                //CreateTexture("Enemy", 50, 50);
+
                 CreateTexture("Grass", 100, 100);
                 CreateTexture("Dirt", 100, 100);
+
                 CreateTexture("StartButton", 200, 100);
+
                 CreateTexture("PlayerFaceRight", 50, 50);
                 CreateTexture("PlayerFaceStraight", 50, 50);
                 CreateTexture("PlayerBody", 50, 50);
@@ -74,6 +78,10 @@ namespace SquarePlatformer
                 CreateTexture("PlayerFaceJumpF1", 50, 50);
                 CreateTexture("PlayerFaceJumpF2", 50, 50);
                 CreateTexture("PlayerFaceJumpF3", 50, 50);
+
+                CreateTexture("CircleEnemyFaceRight", 50, 50);
+                CreateTexture("CircleEnemyFaceStraight", 50, 50);
+                CreateTexture("CircleEnemyBody", 50, 50);
                 
 
                 // Log ObjectTextures and Animations creation
