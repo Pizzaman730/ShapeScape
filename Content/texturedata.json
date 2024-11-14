@@ -22,7 +22,7 @@
         ]
     },
     {
-        "name": "Enemy",
+        "name": "CircleEnemy",
         "textures": 
         [
             {
@@ -30,8 +30,16 @@
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
-                "name": "Enemy",
-                "textureName": "Enemy"
+                "name": "Body",
+                "textureName": "CircleEnemyBody"
+            },
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Face",
+                "textureName": "CircleEnemyFaceRight"
             }
         ]
     },

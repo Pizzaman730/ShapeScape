@@ -62,6 +62,68 @@
         }
     },
     {
+        "name": "CircleEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "CircleEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "CircleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "CircleEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "CircleEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "CircleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
         "name": "PlayerJump",
         "keyframes": {
             "1": {

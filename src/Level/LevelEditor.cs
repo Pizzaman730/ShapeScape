@@ -22,7 +22,7 @@ namespace SquarePlatformer
         private static void HandleInput()
         {
             var mouseState = Mouse.GetState();
-            var mousePos = new Vec2(mouseState.X, mouseState.Y);
+            var mousePos = new Vec2(mouseState.X, mouseState.Y); 
 
             // Start placing platform
             if (mouseState.LeftButton == ButtonState.Pressed && !isPlacingPlatform)
