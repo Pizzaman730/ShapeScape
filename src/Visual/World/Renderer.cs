@@ -5,6 +5,7 @@ using System.Reflection.Metadata;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 
 namespace SquarePlatformer
@@ -67,7 +68,24 @@ namespace SquarePlatformer
 
         private static void DrawEditorUI()
         {
+            if (LevelEditor.isPlacingPlatform)
+            {
+                var mouseState = Mouse.GetState();
+                var mousePos = new Vec2(mouseState.X, mouseState.Y);
+                
+                // Draw a preview of the platform while dragging
+                Vec2 start = LevelEditor.platformStartPosition;
+                Vec2 size = LevelEditor.platformSize;
+
+                // Draw a semi-transparent platform preview
+                spriteBatch.Draw(
+                    whiteTexture, 
+                    new Rectangle((int)start.x, (int)start.y, (int)size.x, (int)size.y), 
+                    new Color(0f, 0f, 1f, 0.5f)  // Semi-transparent blue
+                );
+            }
         }
+
 
         private static void DrawHitbox(Object obj)
         {

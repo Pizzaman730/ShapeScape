@@ -8,8 +8,11 @@ namespace SquarePlatformer
     public static class LevelEditor
     {
         public static List<Object> currentLevelObjects = new();
-        private static int selectedObjectIndex = 0;
-        private static Vec2 objectPlacementPosition = new(0, 0);
+        public static int selectedObjectIndex = 0;
+        public static Vec2 objectPlacementPosition = new(0, 0);
+        public static Vec2 platformStartPosition = new(0, 0);
+        public static Vec2 platformSize = new(0, 0);
+        public static bool isPlacingPlatform = false;
 
         public static void Update()
         {
@@ -18,7 +21,31 @@ namespace SquarePlatformer
 
         private static void HandleInput()
         {
-            // Example input handling for placing objects
+            var mouseState = Mouse.GetState();
+            var mousePos = new Vec2(mouseState.X, mouseState.Y);
+
+            // Start placing platform
+            if (mouseState.LeftButton == ButtonState.Pressed && !isPlacingPlatform)
+            {
+                platformStartPosition = mousePos;
+                platformSize = new Vec2(0, 0);
+                isPlacingPlatform = true;
+            }
+
+            // While dragging to resize the platform
+            if (mouseState.LeftButton == ButtonState.Pressed && isPlacingPlatform)
+            {
+                platformSize = new Vec2(mousePos.x - platformStartPosition.x, mousePos.y - platformStartPosition.y);
+            }
+
+            // Place the platform when the mouse is released
+            if (mouseState.LeftButton == ButtonState.Released && isPlacingPlatform)
+            {
+                isPlacingPlatform = false;
+                AddObjectToLevel(new Ground(platformStartPosition, platformSize));
+            }
+
+            // Move object placement position (for other objects if needed)
             if (Keyboard.GetState().IsKeyDown(Keys.Right))
                 objectPlacementPosition.x += 5;
             if (Keyboard.GetState().IsKeyDown(Keys.Left))
@@ -28,6 +55,7 @@ namespace SquarePlatformer
             if (Keyboard.GetState().IsKeyDown(Keys.Down))
                 objectPlacementPosition.y -= 5;
 
+            // Add object to level (e.g., pressing Enter)
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
                 AddObjectToLevel(new Ground(objectPlacementPosition, new Vec2(50, 10)));
@@ -72,6 +100,7 @@ namespace SquarePlatformer
             }
         }
     }
+
 
     public class SerializedObjectData
     {

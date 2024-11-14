@@ -20,8 +20,9 @@ namespace SquarePlatformer
             startButton = new StartButton(new Vec2()); 
             UIManager.AddObject(startButton);
 
-            // editorButton = new EditorButton(new Vec2(100, 0));
-            // UIManager.AddObject(editorButton);
+            // Uncomment for editor
+            editorButton = new EditorButton(new Vec2(0, 100));
+            UIManager.AddObject(editorButton);
 
             Camera.center = startButton.position;
         }
@@ -29,7 +30,7 @@ namespace SquarePlatformer
         public void Hide()
         {
             UIManager.RemoveObject(startButton);
-            // UIManager.RemoveObject(editorButton); 
+            UIManager.RemoveObject(editorButton); 
         }
 
         public void Update()

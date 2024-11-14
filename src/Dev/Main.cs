@@ -2,6 +2,6 @@ namespace SquarePlatformer
 {
     class Developer
     {
-        public static bool devMode = true;
+        public static bool devMode = false;
     }
 }
