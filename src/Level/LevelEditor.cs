@@ -10,7 +10,6 @@ namespace SquarePlatformer
         public static List<Object> currentLevelObjects = new();
         public static int selectedObjectIndex = 0;
         public static Vec2 objectPlacementPosition = new(0, 0);
-        public static Vec2 platformStartPosition = new(0, 0);
         public static Vec2 platformSize = new(0, 0);
         public static bool isPlacingPlatform = false;
 
@@ -21,38 +20,37 @@ namespace SquarePlatformer
 
         private static void HandleInput()
         {
-            var mouseState = Mouse.GetState();
-            var mousePos = new Vec2(mouseState.X, mouseState.Y); 
+            var mousePos = InputManager.MousePosWorld() * new Vec2(1, -1);
 
             // Start placing platform
-            if (mouseState.LeftButton == ButtonState.Pressed && !isPlacingPlatform)
+            if (InputManager.GetButtonDown(MouseButton.LeftButton) && !isPlacingPlatform)
             {
-                platformStartPosition = mousePos;
+                objectPlacementPosition = mousePos;
                 platformSize = new Vec2(0, 0);
                 isPlacingPlatform = true;
             }
 
             // While dragging to resize the platform
-            if (mouseState.LeftButton == ButtonState.Pressed && isPlacingPlatform)
+            else if (InputManager.GetButtonDown(MouseButton.LeftButton) && isPlacingPlatform)
             {
-                platformSize = new Vec2(mousePos.x - platformStartPosition.x, mousePos.y - platformStartPosition.y);
+                platformSize = new Vec2(mousePos.x - objectPlacementPosition.x, mousePos.y - objectPlacementPosition.y);
             }
 
             // Place the platform when the mouse is released
-            if (mouseState.LeftButton == ButtonState.Released && isPlacingPlatform)
+            if (!InputManager.GetButtonDown(MouseButton.LeftButton) && isPlacingPlatform)
             {
                 isPlacingPlatform = false;
-                AddObjectToLevel(new Ground(platformStartPosition, platformSize));
+                AddObjectToLevel(new Ground(objectPlacementPosition + (platformSize/2), platformSize));
             }
 
             // Move object placement position (for other objects if needed)
-            if (Keyboard.GetState().IsKeyDown(Keys.Right))
+            if (InputManager.GetKeyDown(Keys.Right))
                 objectPlacementPosition.x += 5;
-            if (Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (InputManager.GetKeyDown(Keys.Left))
                 objectPlacementPosition.x -= 5;
-            if (Keyboard.GetState().IsKeyDown(Keys.Up))
+            if (InputManager.GetKeyDown(Keys.Up))
                 objectPlacementPosition.y += 5;
-            if (Keyboard.GetState().IsKeyDown(Keys.Down))
+            if (InputManager.GetKeyDown(Keys.Down))
                 objectPlacementPosition.y -= 5;
 
             // Add object to level (e.g., pressing Enter)

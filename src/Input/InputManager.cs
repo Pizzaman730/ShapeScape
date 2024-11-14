@@ -35,7 +35,7 @@ namespace SquarePlatformer
         }
         public static Vec2 MousePosWorld()
         {
-            return Camera.TranslatePos(new Vec2()-MousePos());
+            return Camera.TranslatePos(new Vec2()-MousePos()) * new Vec2(1, -1);
         }
         public static void Update()
         {

@@ -71,10 +71,10 @@ namespace SquarePlatformer
             if (LevelEditor.isPlacingPlatform)
             {
                 var mouseState = Mouse.GetState();
-                var mousePos = new Vec2(mouseState.X, mouseState.Y);
+                var mousePos = InputManager.MousePosWorld();
                 
                 // Draw a preview of the platform while dragging
-                Vec2 start = LevelEditor.platformStartPosition;
+                Vec2 start = LevelEditor.objectPlacementPosition;
                 Vec2 size = LevelEditor.platformSize;
 
                 // Draw a semi-transparent platform preview
