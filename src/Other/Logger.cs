@@ -26,6 +26,14 @@ namespace SquarePlatformer
         {
             LogMessage("INFO", message);
         }
+        public static void Log(double message)
+        {
+            LogMessage("INFO", ""+message);
+        }
+        public static void Log(bool message)
+        {
+            LogMessage("INFO", ""+message);
+        }
 
         public static void LogError(string message)
         {
