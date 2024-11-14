@@ -20,26 +20,30 @@ namespace SquarePlatformer
             foreach (AnimationFramePart framePart in frame.parts)
             {
                 TextureInfo textureInfo = obj.GetTexturesAsDictionary()[framePart.name];
-                if (framePart.textureChange != null && framePart.textureChange != "")
+                if (framePart.changeTexture)
                 {
                     textureInfo.textureName = framePart.textureChange;
                     textureInfo.UpdateTexture();
                 }
-                if (framePart.offsetSet.x != 0 && framePart.offsetSet.y != 0)
+                if (framePart.setOffset)
                 {
                     textureInfo.offset = framePart.offsetSet;
                 }
-                if (framePart.offsetChange.x != 0 && framePart.offsetChange.y != 0)
+                if (framePart.changeOffset)
                 {
                     textureInfo.offset += framePart.offsetChange;
                 }
-                if (framePart.sizeSet.x != 0 && framePart.sizeSet.y != 0)
+                if (framePart.setSize)
                 {
                     textureInfo.size = framePart.sizeSet;
                 }
-                if (framePart.sizeChange.x != 0 && framePart.sizeChange.y != 0)
+                if (framePart.changeSize)
                 {
                     textureInfo.size += framePart.sizeChange;
+                }
+                if (framePart.changeFlipped)
+                {
+                    textureInfo.flip = framePart.flip;
                 }
             }
 

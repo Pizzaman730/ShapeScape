@@ -77,5 +77,12 @@ namespace SquarePlatformer
             bool collide = collideX && collideY;
             return collide;
         }
+        public Animation CreateAnimation(string animationName)
+        {
+            Animation animation = AssetManager.GetAnimation(animationName);
+            AnimationManager.animations.Add(animation);
+            animation.obj = objectTexture;
+            return animation;
+        }
     }
 }

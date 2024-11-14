@@ -14,6 +14,7 @@ namespace SquarePlatformer
         private int timeSinceOnFloor = 0;
         private Animation turnLeftAnim;
         private Animation turnRightAnim;
+        private Animation jumpAnimation;
         private bool facingRight = true;
         private InputProfile inputs = new InputProfile([Keys.Up, Keys.W, Keys.Space], [Keys.Right, Keys.D], [Keys.Down, Keys.S], [Keys.Left, Keys.A]);
         public Player(Vec2 pos) : base("Player", pos, new Vec2(50, 50))
@@ -23,12 +24,9 @@ namespace SquarePlatformer
             pushable = true;
             tags.Add("Player");
             Camera.targets.Add(this);
-            turnLeftAnim = AssetManager.GetAnimation("PlayerTurnLeft");
-            AnimationManager.animations.Add(turnLeftAnim);
-            turnLeftAnim.obj = objectTexture;
-            turnRightAnim = AssetManager.GetAnimation("PlayerTurnRight");
-            AnimationManager.animations.Add(turnRightAnim);
-            turnRightAnim.obj = objectTexture;
+            turnLeftAnim = CreateAnimation("PlayerTurnLeft");
+            turnRightAnim = CreateAnimation("PlayerTurnRight");
+            jumpAnimation = CreateAnimation("PlayerJump");
         }
         public override void Update()
         {
@@ -65,6 +63,7 @@ namespace SquarePlatformer
             {
                 if (jumpable && timeSinceOnFloor <= 10) 
                 {
+                    jumpAnimation.Start();
                     Jump(jumpHeight);
                 }
             }

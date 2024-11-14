@@ -30,12 +30,12 @@ namespace SquarePlatformer
         {
             foreach (var info in obj.objectTexture.textures)
             {
-                //if (!info.enabled) return;
+                if (!info.enabled) return;
                 Vec2 pos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + obj.corner + info.offset) : Camera.TranslatePos((new Vec2(obj.corner.x, obj.corner.y + obj.size.y) + info.offset) * new Vec2(1, -1));
                 SpriteEffects effects = SpriteEffects.None;
-                if (obj.flipTexture) effects = SpriteEffects.FlipHorizontally;
+                if (obj.flipTexture || info.flip) effects = SpriteEffects.FlipHorizontally;
                 //Logger.Log(info.offset);
-                if (info.name == "Dirt") info.offset = new Vec2(0, -100);
+                //if (info.name == "Dirt") info.offset = new Vec2(0, -100);
                 spriteBatch.Draw(
                     info.texture,
                     pos,

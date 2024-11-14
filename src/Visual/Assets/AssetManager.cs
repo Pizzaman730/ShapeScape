@@ -65,6 +65,16 @@ namespace SquarePlatformer
                 CreateTexture("Grass", 100, 100);
                 CreateTexture("Dirt", 100, 100);
                 CreateTexture("StartButton", 200, 100);
+                CreateTexture("PlayerFaceRight", 50, 50);
+                CreateTexture("PlayerFaceStraight", 50, 50);
+                CreateTexture("PlayerBody", 50, 50);
+                
+                CreateTexture("PlayerBodyJumpF1", 50, 50);
+                CreateTexture("PlayerBodyJumpF2", 50, 50);
+                CreateTexture("PlayerFaceJumpF1", 50, 50);
+                CreateTexture("PlayerFaceJumpF2", 50, 50);
+                CreateTexture("PlayerFaceJumpF3", 50, 50);
+                
 
                 // Log ObjectTextures and Animations creation
                 Logger.Log("Creating object textures...");
@@ -150,8 +160,6 @@ namespace SquarePlatformer
             if (size.x <= 0 || size.y <= 0 || (originalWidth == size.x && originalHeight == size.y) || info == null) return info;
 
             Vec2 newTextureSize = new();
-            TextureInfo newInfo = new();
-            newInfo.name = info.name;
 
             RenderTarget2D target = new RenderTarget2D(graphicsDevice, (int)size.x, (int)size.y);
             graphicsDevice.SetRenderTarget(target);
@@ -166,15 +174,15 @@ namespace SquarePlatformer
                 }
             }
 
-            newInfo.SetTexture(target);
+            info.SetTexture(target);
             spriteBatch.End();
             graphicsDevice.SetRenderTarget(null);
             
-            return newInfo;
+            return info;
         }
         public static Texture2D GetTexture(string name)
         {
-            Logger.Log("Getting texture: " + name);
+            //Logger.Log("Getting texture: " + name);
             return textures[name];
         }
         public static ObjectTexture GetObjectTexture(string name)

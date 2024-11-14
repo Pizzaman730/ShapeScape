@@ -8,8 +8,16 @@
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
-                "name": "Player" ,
-                "textureName": "PlayerRight"
+                "name": "Body" ,
+                "textureName": "PlayerBody"
+            },
+            {
+                "offset": { "x": 3.125, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Face" ,
+                "textureName": "PlayerFaceRight"
             }
         ]
     },

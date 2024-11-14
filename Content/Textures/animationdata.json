@@ -5,24 +5,26 @@
             "1": {
                 "parts": [
                     {
-                        "name": "Player",
-                        "offsetChange": { "x": 0, "y": 0 },
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
                         "offsetSet": { "x": 0, "y": 0 },
-                        "sizeSet": { "x": 0, "y": 0 },
-                        "sizeChange": { "x": 0, "y": 0 },
-                        "textureChange": "PlayerStraight"
+                        "textureChange": "PlayerFaceStraight",
+                        "flip": true
                     }
                 ]
             },
             "5": {
                 "parts": [
                     {
-                        "name": "Player",
-                        "offsetChange": { "x": 0, "y": 0 },
-                        "offsetSet": { "x": 0, "y": 0 },
-                        "sizeSet": { "x": 0, "y": 0 },
-                        "sizeChange": { "x": 0, "y": 0 },
-                        "textureChange": "PlayerLeft"
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "PlayerFaceRight"
                     }
                 ]
             }
@@ -34,24 +36,121 @@
             "1": {
                 "parts": [
                     {
-                        "name": "Player",
-                        "offsetChange": { "x": 0, "y": 0 },
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
                         "offsetSet": { "x": 0, "y": 0 },
-                        "sizeSet": { "x": 0, "y": 0 },
-                        "sizeChange": { "x": 0, "y": 0 },
-                        "textureChange": "PlayerStraight"
+                        "textureChange": "PlayerFaceStraight",
+                        "flip": false
                     }
                 ]
             },
             "5": {
                 "parts": [
                     {
-                        "name": "Player",
-                        "offsetChange": { "x": 0, "y": 0 },
-                        "offsetSet": { "x": 0, "y": 0 },
-                        "sizeSet": { "x": 0, "y": 0 },
-                        "sizeChange": { "x": 0, "y": 0 },
-                        "textureChange": "PlayerRight"
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "PlayerFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "PlayerJump",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "PlayerFaceJumpF1"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerBodyJumpF1"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerFaceJumpF2"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerBodyJumpF2"
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerFaceJumpF3"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerBody"
+                    }
+                ]
+            },
+            "15": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": 9.375},
+                        "textureChange": "PlayerFaceRight"
+                    }
+                ]
+            },
+            "20": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": -3.125}
+                    }
+                ]
+            },
+            "25": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": -3.125}
+                    }
+                ]
+            },
+            "30": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": -3.125}
                     }
                 ]
             }

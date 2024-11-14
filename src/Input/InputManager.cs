@@ -10,7 +10,8 @@ namespace SquarePlatformer
 {
     public static class InputManager
     {
-        public static bool leftClickThisFrame;
+        public static bool previousLeftClick;
+        public static bool leftClickThisFrame = false;
         public static bool GetKeyDown(Keys key)
         {
             return Keyboard.GetState().IsKeyDown(key);
@@ -38,21 +39,17 @@ namespace SquarePlatformer
         }
         public static void Update()
         {
-            if (GetButtonDown(MouseButton.LeftButton))
+            bool currentLeftClick = GetButtonDown(MouseButton.LeftButton);
+
+            if (currentLeftClick && !previousLeftClick)
             {
-                if (leftClickThisFrame)
-                {
-                    leftClickThisFrame = false;
-                }
-                else
-                {
-                    leftClickThisFrame = true;
-                }
+                leftClickThisFrame = true;
             }
             else
             {
                 leftClickThisFrame = false;
             }
+            previousLeftClick = currentLeftClick;
         }
         public static bool ClickThisFrame()
         {

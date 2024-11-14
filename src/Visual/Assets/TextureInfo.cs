@@ -16,6 +16,7 @@ namespace SquarePlatformer
         public Vec2 offset { get; set; }
         public double rotationOffset { get; set; }
         public bool enabled { get; set; }
+        public bool flip { get; set; }
         public void UpdateTexture()
         {
             texture = AssetManager.GetTexture(textureName);
@@ -26,6 +27,7 @@ namespace SquarePlatformer
         }
         public TextureInfo Copy()
         {
+            //Logger.Log(name + " in copy: " + offset);
             return new TextureInfo() {
                 name = this.name,
                 textureName = this.textureName,
