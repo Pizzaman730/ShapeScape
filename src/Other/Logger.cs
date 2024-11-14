@@ -19,7 +19,7 @@ namespace SquarePlatformer
 
             // Create a log file with a timestamp
             string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-            logFilePath = Path.Combine(logDirectory, $"log_{timestamp}.txt");
+            logFilePath = Path.Combine(logDirectory, $"log_{timestamp}.log");
         }
 
         public static void Log(string message)
