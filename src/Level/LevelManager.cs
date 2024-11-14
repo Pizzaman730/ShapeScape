@@ -8,6 +8,10 @@ namespace SquarePlatformer
 
         public static void Update()
         {
+            if (gameState == GameState.InEditor)
+            {
+                LevelEditor.Update();
+            }
             if (gameState == GameState.InMenu)
             {
                 // Make sure the UI is showing the main menu
@@ -18,7 +22,7 @@ namespace SquarePlatformer
                     UIManager.SetMenu(new UIMainMenu()); // Set the main menu
                 }
             }
-            else if (gameState == GameState.InLevel && alivePlayers == 0)
+            if (gameState == GameState.InLevel && alivePlayers == 0)
             {
                 // Transition back to the main menu after level completion or player death
                 UIManager.SetMenu(new UIMainMenu());
@@ -44,6 +48,12 @@ namespace SquarePlatformer
                 new Ground(new Vec2(1650, -100), new Vec2(500, 600));
                 Camera.FollowTargets(false);
             }
+        }
+
+        public static void StartEditor()
+        {
+            gameState = GameState.InEditor;
+            ObjectManager.AddAllObjectsToDestroy(); 
         }
     }
 }

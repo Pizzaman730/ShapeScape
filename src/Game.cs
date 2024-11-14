@@ -9,12 +9,12 @@ public class Main : Game
 {
 
     public static Main game; 
-    private GraphicsDeviceManager _graphics;
+    public GraphicsDeviceManager graphics;
     private SpriteBatch _spriteBatch;
     public Main()
     {
         game = this;
-        _graphics = new GraphicsDeviceManager(this);
+        graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
@@ -23,7 +23,7 @@ public class Main : Game
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
         WindowManager.SetupWindow(Window);
-        Renderer.Init(_spriteBatch);
+        Renderer.Init(_spriteBatch, graphics.GraphicsDevice);
         AssetManager.Init(_spriteBatch);
         ObjectManager.Init();
         PhysicsManager.Init();
