@@ -4,6 +4,7 @@ namespace SquarePlatformer
     {
         InLevel,
         InMenu,
+        InEditor,
         DeathScreen
     }
 }

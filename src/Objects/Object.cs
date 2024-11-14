@@ -29,6 +29,19 @@ namespace SquarePlatformer
         }
         
         public Vec2 size; //{ get; private set; }
+
+        public Rectangle Hitbox
+        {
+            get
+            {
+                return new Rectangle(
+                    (int)(position.x - size.x / 2), 
+                    (int)(position.y - size.y / 2), 
+                    (int)size.x, 
+                    (int)size.y);
+            }
+        }
+
         public Object()
         {
             ConstructObject("Unnamed Object", new Vec2());
