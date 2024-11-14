@@ -16,7 +16,7 @@
 #begin Textures/animationdata.json
 /copy:Textures/animationdata.json;animationdata.json
 
-#begin Textures/Enemy/CircleEnemyBody.png
+#begin Textures/CircleEnemy/CircleEnemyBody.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -26,9 +26,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/Enemy/CircleEnemyBody.png;CircleEnemyBody.png
+/build:Textures/CircleEnemy/CircleEnemyBody.png;CircleEnemyBody.png
 
-#begin Textures/Enemy/CircleEnemyFaceRight.png
+#begin Textures/CircleEnemy/CircleEnemyFaceRight.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -38,9 +38,9 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/Enemy/CircleEnemyFaceRight.png;CircleEnemyFaceRight.png
+/build:Textures/CircleEnemy/CircleEnemyFaceRight.png;CircleEnemyFaceRight.png
 
-#begin Textures/Enemy/CircleEnemyFaceStraight.png
+#begin Textures/CircleEnemy/CircleEnemyFaceStraight.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -50,7 +50,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/Enemy/CircleEnemyFaceStraight.png;CircleEnemyFaceStraight.png
+/build:Textures/CircleEnemy/CircleEnemyFaceStraight.png;CircleEnemyFaceStraight.png
 
 #begin Textures/Ground/Dirt.png
 /importer:TextureImporter
@@ -222,4 +222,40 @@
 
 #begin Textures/texturedata.json
 /copy:Textures/texturedata.json;texturedata.json
+
+#begin Textures/TriangleEnemy/TriangleEnemyBody.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/TriangleEnemy/TriangleEnemyBody.png;TriangleEnemyBody.png
+
+#begin Textures/TriangleEnemy/TriangleEnemyFaceRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/TriangleEnemy/TriangleEnemyFaceRight.png;TriangleEnemyFaceRight.png
+
+#begin Textures/TriangleEnemy/TriangleEnemyFaceStraight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/TriangleEnemy/TriangleEnemyFaceStraight.png;TriangleEnemyFaceStraight.png
 

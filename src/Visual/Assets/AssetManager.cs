@@ -82,6 +82,10 @@ namespace SquarePlatformer
                 CreateTexture("CircleEnemyFaceRight", 50, 50);
                 CreateTexture("CircleEnemyFaceStraight", 50, 50);
                 CreateTexture("CircleEnemyBody", 50, 50);
+
+                CreateTexture("TriangleEnemyFaceRight", 50, 50);
+                CreateTexture("TriangleEnemyFaceStraight", 50, 50);
+                CreateTexture("TriangleEnemyBody", 50, 50);
                 
 
                 // Log ObjectTextures and Animations creation
