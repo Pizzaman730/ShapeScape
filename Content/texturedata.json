@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Player",
+        "textures":
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Body" ,
+                "textureName": "PlayerBody"
+            },
+            {
+                "offset": { "x": 3.125, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Face" ,
+                "textureName": "PlayerFaceRight"
+            }
+        ]
+    },
+    {
+        "name": "Enemy",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Enemy",
+                "textureName": "Enemy"
+            }
+        ]
+    },
+    {
+        "name": "Ground",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Grass",
+                "textureName": "Grass"
+            },
+            {
+                "offset": { "x": 0, "y": -100}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Dirt",
+                "textureName": "Dirt"
+            }
+        ]
+    },
+    {
+        "name": "StartButton",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "StartButton",
+                "textureName": "StartButton"
+            }
+        ]
+    }
+]
