@@ -4,36 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Level Maker</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap"
+    />
     <style>
       /* Basic resets and dark theme */
-      body {
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #e74c3c;
+        --background-color: #121212;
+        --text-color: #f5f5f5;
+        --border-color: #34495e;
+      }
+
+      * {
         margin: 0;
-        font-family: Arial, sans-serif;
-        background: #121212;
-        color: #f5f5f5;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        background: var(--background-color);
+        color: var(--text-color);
         height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         overflow: hidden;
+        align-items: center;
       }
 
-      /* Full width toolbar at the top */
       #toolbar {
         position: fixed;
-        top: 10px;
-        left: 10px;
+        top: 0;
+        left: 0;
+        width: 100vw;
         background: rgba(0, 0, 0, 0.7);
         color: #fff;
         padding: 10px;
-        border-radius: 5px;
         display: flex;
-        gap: 10px;
+        align-items: center;
+        border-bottom: 1px solid var(--border-color);
         z-index: 1;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      #toolbar button {
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: background 0.2s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      #toolbar button:hover {
+        background: #45a049;
       }
 
       button {
-        background: #4caf50;
+        background: var(--primary-color);
         color: white;
         border: none;
         padding: 10px 20px;
@@ -41,13 +77,13 @@
         border-radius: 5px;
         font-size: 14px;
         transition: background 0.2s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
       button:hover {
         background: #45a049;
       }
 
-      /* Level canvas */
       #levelCanvas {
         background: #333;
         display: block;
@@ -56,14 +92,15 @@
         margin-top: 50px;
         cursor: crosshair;
         user-select: none;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
-      /* Export button */
       #exportButton {
         position: fixed;
         bottom: 10px;
         right: 10px;
-        background-color: #e74c3c;
+        background-color: var(--secondary-color);
         color: #fff;
         padding: 10px 20px;
         border-radius: 5px;
@@ -71,27 +108,28 @@
         font-size: 14px;
         border: none;
         transition: background 0.2s;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
 
       #exportButton:hover {
         background-color: #c0392b;
       }
 
-      /* Level code textarea */
       textarea {
         position: fixed;
-        top: 60px;
+        top: 80px;
         right: 20px;
         width: 300px;
         height: 200px;
         background-color: #2c3e50;
         color: #ecf0f1;
-        border: 1px solid #34495e;
+        border: 1px solid var(--border-color);
         padding: 10px;
         font-family: monospace;
         border-radius: 5px;
         resize: none;
         z-index: 2;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       }
     </style>
   </head>
