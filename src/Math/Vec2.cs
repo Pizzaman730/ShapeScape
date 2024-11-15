@@ -29,6 +29,14 @@ namespace SquarePlatformer
         {
             return "{" + x + ", " + y + "}";
         }
+        public static Vec2 Abs(Vec2 vec)
+        {
+            return new Vec2(Math.Abs(vec.x), Math.Abs(vec.y));
+        }
+        public Vec2 Abs()
+        {
+            return new Vec2(Math.Abs(x), Math.Abs(y));
+        }
         public static Vec2 Clamp(Vec2 value, Vec2 min, Vec2 max)
         {
             return new Vec2(Math.Clamp(value.x, min.x, max.x), Math.Clamp(value.y, min.y, max.y));

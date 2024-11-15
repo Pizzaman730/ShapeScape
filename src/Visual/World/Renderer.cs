@@ -18,7 +18,7 @@ namespace SquarePlatformer
         {
             spriteBatch = sb;
             whiteTexture = new Texture2D(graphicsDevice, 1, 1);
-            whiteTexture.SetData(new Color[] { Color.White });
+            whiteTexture.SetData([Color.White]);
         }
         public static void DrawAll()
         {
@@ -70,12 +70,9 @@ namespace SquarePlatformer
         {
             if (LevelEditor.isPlacingPlatform)
             {
-                var mouseState = Mouse.GetState();
-                var mousePos = InputManager.MousePosWorld();
-                
                 // Draw a preview of the platform while dragging
-                Vec2 start = LevelEditor.objectPlacementPosition;
-                Vec2 size = LevelEditor.platformSize;
+                Vec2 start = Camera.TranslatePos(LevelEditor.objectPlacementPosition * new Vec2(-1, 1));
+                Vec2 size = LevelEditor.platformSize * new Vec2(-1, 1);
 
                 // Draw a semi-transparent platform preview
                 spriteBatch.Draw(
