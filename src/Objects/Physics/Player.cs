@@ -9,8 +9,8 @@ namespace SquarePlatformer
     public class Player : PhysicsObject
     {
         private bool jumpable = false;
-        private bool jumping = false;
-        private int jumpHeight = 15;
+        public bool jumping = false;
+        public int jumpHeight = 15;
         private int timeSinceOnFloor = 0;
         private Animation turnLeftAnim;
         private Animation turnRightAnim;

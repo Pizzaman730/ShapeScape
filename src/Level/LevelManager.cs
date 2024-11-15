@@ -44,6 +44,8 @@ namespace SquarePlatformer
                 new RectangleEnemy(new Vec2(2400, 325));
                 new CircleEnemy(new Vec2(1600, 225));
                 new CircleEnemy(new Vec2(1200, 25));
+                new BouncyOval(new Vec2(3300, -75));
+                new Ground(new Vec2(3000, -300), new Vec2(800, 400));
                 new Ground(new Vec2(2400, -100), new Vec2(500, 800));
                 new Ground(new Vec2(0, -200), new Vec2(1000, 400));
                 new Ground(new Vec2(1400, -200), new Vec2(1000, 400));
