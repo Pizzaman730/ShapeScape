@@ -88,6 +88,28 @@
         ]
     },
     {
+        "name": "BouncyOval",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Body",
+                "textureName": "BouncyOvalBody"
+            },
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Face",
+                "textureName": "BouncyOvalFaceRight"
+            }
+        ]
+    },
+    {
         "name": "Ground",
         "textures": 
         [

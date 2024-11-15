@@ -16,6 +16,42 @@
 #begin Textures/animationdata.json
 /copy:Textures/animationdata.json;animationdata.json
 
+#begin Textures/BouncyOval/BouncyOvalBody.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/BouncyOval/BouncyOvalBody.png;BouncyOvalBody.png
+
+#begin Textures/BouncyOval/BouncyOvalFaceRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/BouncyOval/BouncyOvalFaceRight.png;BouncyOvalFaceRight.png
+
+#begin Textures/BouncyOval/BouncyOvalFaceStraight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/BouncyOval/BouncyOvalFaceStraight.png;BouncyOvalFaceStraight.png
+
 #begin Textures/CircleEnemy/CircleEnemyBody.png
 /importer:TextureImporter
 /processor:TextureProcessor
