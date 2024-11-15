@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class Button : UIObject
     {
@@ -14,6 +14,13 @@ namespace SquarePlatformer
         public virtual void OnButtonClick()
         {
 
+        }
+        public override void UpdateUI()
+        {
+            if (InputManager.ClickThisFrame() && TouchesPoint(InputManager.MousePosWorld()))
+            {
+                OnButtonClick();
+            }
         }
     }
 }

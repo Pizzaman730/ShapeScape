@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public struct Vec2
     {
@@ -28,6 +28,14 @@ namespace SquarePlatformer
         public override string ToString()
         {
             return "{" + x + ", " + y + "}";
+        }
+        public static Vec2 Abs(Vec2 vec)
+        {
+            return new Vec2(Math.Abs(vec.x), Math.Abs(vec.y));
+        }
+        public Vec2 Abs()
+        {
+            return new Vec2(Math.Abs(x), Math.Abs(y));
         }
         public static Vec2 Clamp(Vec2 value, Vec2 min, Vec2 max)
         {

@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class ObjectManager
     {
@@ -21,7 +21,7 @@ namespace SquarePlatformer
                 objects.Add(obj);
                 return;
             }
-            Console.WriteLine("Object " + obj.name + " already added to object list!");
+            Logger.Log("Object " + obj.name + " already added to object list!");
         }
         public static void DestroyObject(Object obj)
         {
@@ -32,9 +32,13 @@ namespace SquarePlatformer
                 {
                     PhysicsManager.RemovePhysicsObject((PhysicsObject)obj);
                 }
+                if (obj.tags.Contains("UI"))
+                {
+                    UIManager.RemoveObject((UIObject)obj);
+                }
                 return;
             }
-            Console.WriteLine("Object " + obj.name + " not added to object list!");
+            Logger.Log("Object " + obj.name + " not added to object list!");
         }
         public static void UpdateAll()
         {
@@ -50,12 +54,12 @@ namespace SquarePlatformer
             }
             DestroyNeededObjects();
         }
-        public static void DestroyAllObjects()
+        public static void AddAllObjectsToDestroy()
         {
             List<Object> oldObjects = new(objects);
             foreach (Object obj in oldObjects)
             {
-                DestroyObject(obj);
+                AddToDestroy(obj);
             }
         }
         private static void DestroyNeededObjects()

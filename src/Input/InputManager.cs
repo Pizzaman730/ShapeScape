@@ -6,10 +6,12 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Autofac;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class InputManager
     {
+        public static bool previousLeftClick;
+        public static bool leftClickThisFrame = false;
         public static bool GetKeyDown(Keys key)
         {
             return Keyboard.GetState().IsKeyDown(key);
@@ -33,7 +35,25 @@ namespace SquarePlatformer
         }
         public static Vec2 MousePosWorld()
         {
-            return Camera.TranslatePos(new Vec2()-MousePos());
+            return Camera.TranslatePos(new Vec2()-MousePos()) * new Vec2(1, -1);
+        }
+        public static void Update()
+        {
+            bool currentLeftClick = GetButtonDown(MouseButton.LeftButton);
+
+            if (currentLeftClick && !previousLeftClick)
+            {
+                leftClickThisFrame = true;
+            }
+            else
+            {
+                leftClickThisFrame = false;
+            }
+            previousLeftClick = currentLeftClick;
+        }
+        public static bool ClickThisFrame()
+        {
+            return leftClickThisFrame;
         }
     }
 }

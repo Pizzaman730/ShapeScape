@@ -1,0 +1,431 @@
+[
+    {
+        "name": "PlayerTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "PlayerFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "PlayerFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "PlayerTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "PlayerFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "PlayerFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "CircleEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "CircleEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "CircleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "CircleEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "CircleEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "CircleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "TriangleEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "TriangleEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "RectangleEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "RectangleEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "BouncyOvalTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "BouncyOvalTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "PlayerJump",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "PlayerFaceJumpF1"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerBodyJumpF1"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerFaceJumpF2"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerBodyJumpF2"
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerFaceJumpF3"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+
+                        "textureChange": "PlayerBody"
+                    }
+                ]
+            },
+            "15": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": 9.375},
+                        "textureChange": "PlayerFaceRight"
+                    }
+                ]
+            },
+            "20": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": -3.125}
+                    }
+                ]
+            },
+            "25": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": -3.125}
+                    }
+                ]
+            },
+            "30": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeOffset": true,
+                        
+                        "offsetChange": { "x": 0, "y": -3.125}
+                    }
+                ]
+            }
+        }
+    }
+]

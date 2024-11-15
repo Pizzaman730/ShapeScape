@@ -1,59 +1,80 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class UIManager
     {
         public static List<UIObject> uiObjects { get; private set; } = new();
         public static List<UIObject> toDestroy { get; private set; } = new();
+        private static IMenu currentMenu;
+
         public static void Init()
         {
-            
+            // Initialize the default menu (e.g., main menu)
+            SetMenu(new UIMainMenu());
         }
+
+        public static void SetMenu(IMenu menu)
+        {
+            // Hide the current menu if there's one
+            currentMenu?.Hide();
+
+            // Set the new menu and show it
+            currentMenu = menu;
+            currentMenu.Show();
+        }
+
+        public static void UpdateAll()
+        {
+            // Update the current active menu
+            currentMenu?.Update();
+            
+            // Update other UI objects
+            foreach (UIObject obj in uiObjects)
+            {
+                if (obj != null)
+                {
+                    obj.UpdateUI();
+                }
+            }
+
+            DestroyNeededObjects();
+        }
+
+        private static void DestroyNeededObjects()
+        {
+            foreach (UIObject obj in toDestroy)
+            {
+                RemoveObject(obj);
+            }
+            toDestroy.Clear();
+        }
+
         public static void AddObject(UIObject obj)
         {
             if (!uiObjects.Contains(obj))
             {
                 uiObjects.Add(obj);
-                return;
             }
-            Console.WriteLine("UIObject " + obj.name + " already added to object list!");
+            else
+            {
+                Logger.Log("UIObject " + obj.name + " already added to object list!");
+            }
         }
-        public static void DestroyObject(UIObject obj)
+
+        public static void RemoveObject(UIObject obj)
         {
             if (uiObjects.Contains(obj))
             {
                 uiObjects.Remove(obj);
-                return;
             }
-            Console.WriteLine("UIObject " + obj.name + " not added to object list!");
-        }
-        public static void UpdateAll()
-        {
-            List<UIObject> oldObjects = uiObjects;
-            foreach (UIObject obj in oldObjects)
+            else
             {
-                if (obj == null)
-                {
-                    AddToDestroy(obj);
-                    continue;
-                }
-                obj.Update();
+                Logger.Log("UIObject " + obj.name + " not found in object list!");
             }
-            DestroyNeededObjects();
         }
-        private static void DestroyNeededObjects()
-        {
-            foreach (UIObject obj in toDestroy)
-            {
-                DestroyObject(obj);
-            }
-            toDestroy = new();
-        }
+
         public static void AddToDestroy(UIObject obj)
         {
             toDestroy.Add(obj);

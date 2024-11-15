@@ -4,14 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class Player : PhysicsObject
     {
         private bool jumpable = false;
-        private bool jumping = false;
-        private int jumpHeight = 15;
+        public bool jumping = false;
+        public int jumpHeight = 15;
         private int timeSinceOnFloor = 0;
+        private Animation turnLeftAnim;
+        private Animation turnRightAnim;
+        private Animation jumpAnimation;
+        private bool facingRight = true;
+        private MorphManager morphManager;
         private InputProfile inputs = new InputProfile([Keys.Up, Keys.W, Keys.Space], [Keys.Right, Keys.D], [Keys.Down, Keys.S], [Keys.Left, Keys.A]);
         public Player(Vec2 pos) : base("Player", pos, new Vec2(50, 50))
         {
@@ -20,6 +25,10 @@ namespace SquarePlatformer
             pushable = true;
             tags.Add("Player");
             Camera.targets.Add(this);
+            morphManager = new MorphManager();
+            turnLeftAnim = CreateAnimation("PlayerTurnLeft");
+            turnRightAnim = CreateAnimation("PlayerTurnRight");
+            jumpAnimation = CreateAnimation("PlayerJump");
         }
         public override void Update()
         {
@@ -27,8 +36,12 @@ namespace SquarePlatformer
             {
                 Kill();
             }
-            if (velocity.x > 0) velocity.x --;
-            else if (velocity.x < 0) velocity.x ++;
+
+            if (velocity.x > 0) velocity.x--;
+            else if (velocity.x < 0) velocity.x++;
+
+            morphManager.Update(this);
+
             UpdateControls();
             timeSinceOnFloor++;
         }
@@ -37,23 +50,26 @@ namespace SquarePlatformer
             if (InputManager.GetKeyDown(inputs.right)) 
             {
                 velocity.x += 2;
-                if (flipTexture)
+                if (!facingRight)
                 {
-                    flipTexture = false;
+                    turnRightAnim.Start();
+                    facingRight = true;
                 }
             }
             if (InputManager.GetKeyDown(inputs.left)) 
             {
                 velocity.x -= 2;
-                if (!flipTexture)
+                if (facingRight)
                 {
-                    flipTexture = true;
+                    turnLeftAnim.Start();
+                    facingRight = false;
                 }
             }
             if (InputManager.GetKeyDown(inputs.up))
             {
                 if (jumpable && timeSinceOnFloor <= 10) 
                 {
+                    jumpAnimation.Start();
                     Jump(jumpHeight);
                 }
             }

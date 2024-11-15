@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Particles.Modifiers;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class PhysicsManager
     {
@@ -24,7 +24,7 @@ namespace SquarePlatformer
                 physicsObjects.Add(obj);
                 return;
             }
-            Console.WriteLine("PhysicsObject " + obj.name + " already added to object list!");
+            Logger.Log("PhysicsObject " + obj.name + " already added to object list!");
         }
         public static void RemovePhysicsObject(PhysicsObject obj)
         {
@@ -33,7 +33,7 @@ namespace SquarePlatformer
                 physicsObjects.Remove(obj);
                 return;
             }
-            Console.WriteLine("PhysicsObject " + obj.name + " not added to object list!");
+            Logger.Log("PhysicsObject " + obj.name + " not added to object list!");
         }
         public static void UpdateAll()
         {

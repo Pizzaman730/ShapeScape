@@ -1,5 +1,12 @@
-[![Deploy](https://github.com/AbstractMelon/SquarePlatformer/actions/workflows/publish.yml/badge.svg)](https://github.com/AbstractMelon/SquarePlatformer/actions/workflows/publish.yml)
-# Square Platformer
-This is just a project I'm doing in my free time, I plan on uing it to kicksatrt my future career as a game dev. If you want to reach out to me, my discord is PizzaMan730 :D
+[![Deploy](https://github.com/AbstractMelon/ShapeScape/actions/workflows/publish.yml/badge.svg)](https://github.com/AbstractMelon/ShapeScape/actions/workflows/publish.yml)
 
-Random word idk.........
+# ShapeScape
+
+This is a game made by PizzaMan730 and AbtsractMelon. You play as a square traversing the world, and you can occasionaly shapeshift into other shapes and get speical properties! 
+Join the discord: https://discord.gg/TAwbgvkF59
+
+Launch MGCB:
+
+```
+dotnet mgcb-editor
+```

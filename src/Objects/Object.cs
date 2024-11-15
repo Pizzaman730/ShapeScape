@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class Object
     {
+        public Dictionary<string, Animation> animations = new();
         public string name { get; private set; }
         public ObjectTexture objectTexture;
         public Vec2 corner { get; private set; }
@@ -28,6 +29,19 @@ namespace SquarePlatformer
         }
         
         public Vec2 size; //{ get; private set; }
+
+        public Rectangle Hitbox
+        {
+            get
+            {
+                return new Rectangle(
+                    (int)(position.x - size.x / 2), 
+                    (int)(position.y - size.y / 2), 
+                    (int)size.x, 
+                    (int)size.y);
+            }
+        }
+
         public Object()
         {
             ConstructObject("Unnamed Object", new Vec2());
@@ -75,6 +89,13 @@ namespace SquarePlatformer
             bool collideY = position.y + (size.y/2) > point.y && position.y - size.y/2 < point.y;
             bool collide = collideX && collideY;
             return collide;
+        }
+        public Animation CreateAnimation(string animationName)
+        {
+            Animation animation = AssetManager.GetAnimation(animationName);
+            AnimationManager.animations.Add(animation);
+            animation.obj = objectTexture;
+            return animation;
         }
     }
 }

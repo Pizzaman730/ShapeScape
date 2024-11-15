@@ -1,9 +1,10 @@
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public enum GameState
     {
         InLevel,
         InMenu,
+        InEditor,
         DeathScreen
     }
 }
