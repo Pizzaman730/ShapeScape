@@ -21,8 +21,8 @@ namespace ShapeScape
             UIManager.AddObject(startButton);
 
             // Uncomment for editor
-            editorButton = new EditorButton(new Vec2(0, 100));
-            UIManager.AddObject(editorButton);
+            // editorButton = new EditorButton(new Vec2(0, 100));
+            // UIManager.AddObject(editorButton);
 
             Camera.center = startButton.position;
         }
@@ -30,7 +30,7 @@ namespace ShapeScape
         public void Hide()
         {
             UIManager.RemoveObject(startButton);
-            UIManager.RemoveObject(editorButton); 
+            // UIManager.RemoveObject(editorButton); 
         }
 
         public void Update()
