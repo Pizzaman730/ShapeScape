@@ -1,4 +1,4 @@
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public enum AnimationType
     {

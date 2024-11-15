@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class Player : PhysicsObject
     {
@@ -16,6 +16,7 @@ namespace SquarePlatformer
         private Animation turnRightAnim;
         private Animation jumpAnimation;
         private bool facingRight = true;
+        private MorphManager morphManager;
         private InputProfile inputs = new InputProfile([Keys.Up, Keys.W, Keys.Space], [Keys.Right, Keys.D], [Keys.Down, Keys.S], [Keys.Left, Keys.A]);
         public Player(Vec2 pos) : base("Player", pos, new Vec2(50, 50))
         {
@@ -24,6 +25,7 @@ namespace SquarePlatformer
             pushable = true;
             tags.Add("Player");
             Camera.targets.Add(this);
+            morphManager = new MorphManager();
             turnLeftAnim = CreateAnimation("PlayerTurnLeft");
             turnRightAnim = CreateAnimation("PlayerTurnRight");
             jumpAnimation = CreateAnimation("PlayerJump");
@@ -34,8 +36,12 @@ namespace SquarePlatformer
             {
                 Kill();
             }
-            if (velocity.x > 0) velocity.x --;
-            else if (velocity.x < 0) velocity.x ++;
+
+            if (velocity.x > 0) velocity.x--;
+            else if (velocity.x < 0) velocity.x++;
+
+            morphManager.Update(this);
+
             UpdateControls();
             timeSinceOnFloor++;
         }

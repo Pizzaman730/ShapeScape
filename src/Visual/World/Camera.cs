@@ -7,7 +7,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class Camera
     {

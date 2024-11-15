@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public struct Vec2
     {

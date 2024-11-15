@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class TextureInfo
     {

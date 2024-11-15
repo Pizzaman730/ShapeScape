@@ -1,7 +1,7 @@
 using System;
 using Microsoft.Xna.Framework;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class UIMainMenu : IMenu
     {

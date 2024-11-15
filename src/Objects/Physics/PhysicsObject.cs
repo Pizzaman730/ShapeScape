@@ -5,7 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class PhysicsObject : Object
     {

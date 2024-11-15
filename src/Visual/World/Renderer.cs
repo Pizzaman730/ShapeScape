@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGame.Extended.Screens;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class Renderer
     {

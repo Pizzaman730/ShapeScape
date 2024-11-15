@@ -260,6 +260,80 @@
         }
     },
     {
+        "name": "BouncyOvalTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "BouncyOvalTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "BouncyOvalFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
         "name": "PlayerJump",
         "keyframes": {
             "1": {

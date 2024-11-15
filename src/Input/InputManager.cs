@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 using Autofac;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class InputManager
     {

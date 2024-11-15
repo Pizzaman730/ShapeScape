@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using MonoGame.Extended.Particles.Modifiers;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class PhysicsManager
     {

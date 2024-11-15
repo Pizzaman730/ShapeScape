@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class ObjectTexture
     {

@@ -4,7 +4,7 @@ using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class AnimationFrame
     {

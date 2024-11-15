@@ -6,7 +6,7 @@ using System.Security;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public class Animation
     {

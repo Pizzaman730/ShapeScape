@@ -398,6 +398,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-SquarePlatformer.sln
+ShapeScape.sln
 
 log.txt

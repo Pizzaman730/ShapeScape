@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class Program
     {
         public static void Main()
         {
             // Log basic application start
-            Logger.Log("Square Platformer Application started.");
+            Logger.Log("Game Loading....");
 
             // Log system and environment details
             LogSystemInfo();
@@ -18,9 +18,9 @@ namespace SquarePlatformer
                 // Create and run the game instance
                 using (var game = new Main())
                 {
-                    Logger.Log("Square Platformer is now starting...");
+                    Logger.Log("Loaded!");
                     game.Run();
-                    Logger.Log("Square Platformer has been closed.");
+                    Logger.Log("Game closing.");
                 }
             }
             catch (Exception ex)
@@ -31,8 +31,7 @@ namespace SquarePlatformer
             }
             finally
             {
-                // Optionally log when the application finishes, regardless of success or failure
-                Logger.Log("Game session has ended.");
+                Logger.Log("Game has closed.");
             }
         }
 

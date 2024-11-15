@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace SquarePlatformer
+namespace ShapeScape
 {
     public static class Logger
     {
@@ -45,6 +45,11 @@ namespace SquarePlatformer
             LogMessage("WARNING", message);
         }
 
+        public static void Debug(string message)
+        {
+            if (!Developer.debugMode == false) return;
+            LogMessage("DEBUG", message);
+        }
         private static void LogMessage(string logLevel, string message)
         {
             Console.WriteLine($"{logLevel}: {message}");

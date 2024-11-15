@@ -1,4 +1,4 @@
-[![Deploy](https://github.com/AbstractMelon/SquarePlatformer/actions/workflows/publish.yml/badge.svg)](https://github.com/AbstractMelon/SquarePlatformer/actions/workflows/publish.yml)
+[![Deploy](https://github.com/AbstractMelon/ShapeScape/actions/workflows/publish.yml/badge.svg)](https://github.com/AbstractMelon/ShapeScape/actions/workflows/publish.yml)
 
 # Square Platformer
 

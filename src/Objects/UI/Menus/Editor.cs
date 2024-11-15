@@ -1,4 +1,4 @@
-// namespace SquarePlatformer {
+// namespace ShapeScape {
 //     public class UIMenuEditor : IMenu
 //     {
 //         private Button saveButton;
