@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level Maker</title>
+    <style>
+      /* Basic resets and dark theme */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #121212;
+        color: #f5f5f5;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: hidden;
+      }
+
+      /* Full width toolbar at the top */
+      #toolbar {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        display: flex;
+        gap: 10px;
+        z-index: 1;
+      }
+
+      button {
+        background: #4caf50;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: background 0.2s;
+      }
+
+      button:hover {
+        background: #45a049;
+      }
+
+      /* Level canvas */
+      #levelCanvas {
+        background: #333;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        margin-top: 50px;
+        cursor: crosshair;
+        user-select: none;
+      }
+
+      /* Export button */
+      #exportButton {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: #e74c3c;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        border: none;
+        transition: background 0.2s;
+      }
+
+      #exportButton:hover {
+        background-color: #c0392b;
+      }
+
+      /* Level code textarea */
+      textarea {
+        position: fixed;
+        top: 60px;
+        right: 20px;
+        width: 300px;
+        height: 200px;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        border: 1px solid #34495e;
+        padding: 10px;
+        font-family: monospace;
+        border-radius: 5px;
+        resize: none;
+        z-index: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Toolbar for controls -->
+    <div id="toolbar">
+      <button onclick="setTool('platform')">Create Platform</button>
+      <button onclick="setTool('player')">Place Player</button>
+      <button onclick="setTool('enemy')">Place Enemy</button>
+    </div>
+
+    <!-- Canvas for drawing levels -->
+    <canvas id="levelCanvas"></canvas>
+
+    <!-- Export button -->
+    <button id="exportButton" onclick="generateLevelCode()">
+      Export Level Code
+    </button>
+
+    <!-- Output for generated code -->
+    <textarea id="levelCodeOutput" readonly></textarea>
+
+    <script>
+      // Setup canvas and context
+      const canvas = document.getElementById("levelCanvas");
+      const ctx = canvas.getContext("2d");
+      const exportButton = document.getElementById("exportButton");
+
+      let canvasWidth = window.innerWidth;
+      let canvasHeight = window.innerHeight;
+      let currentTool = "platform";
+      let platforms = [];
+      let player = null;
+      let enemies = [];
+      let isDrawingPlatform = false;
+
+      // Set canvas dimensions dynamically
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+
+      // Handle panning functionality
+      let offsetX = 0,
+        offsetY = 0;
+      let isPanning = false;
+      let lastMouseX = 0,
+        lastMouseY = 0;
+
+      canvas.addEventListener("mousedown", (e) => {
+        if (e.button === 1) {
+          // Middle-click to start panning
+          isPanning = true;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+        } else {
+          const x = e.offsetX - offsetX;
+          const y = e.offsetY - offsetY;
+
+          if (currentTool === "platform") {
+            isDrawingPlatform = true;
+            platforms.push({ x, y, width: 100, height: 20 });
+          } else if (currentTool === "player") {
+            player = { x, y };
+          } else if (currentTool === "enemy") {
+            enemies.push({ x, y });
+          }
+        }
+      });
+
+      canvas.addEventListener("mousemove", (e) => {
+        if (isPanning) {
+          const dx = e.clientX - lastMouseX;
+          const dy = e.clientY - lastMouseY;
+          offsetX += dx;
+          offsetY += dy;
+          lastMouseX = e.clientX;
+          lastMouseY = e.clientY;
+          draw();
+        } else if (isDrawingPlatform) {
+          const x = e.offsetX - offsetX;
+          const y = e.offsetY - offsetY;
+          platforms[platforms.length - 1].width =
+            x - platforms[platforms.length - 1].x;
+          platforms[platforms.length - 1].height =
+            y - platforms[platforms.length - 1].y;
+          draw();
+        }
+      });
+
+      canvas.addEventListener("mouseup", () => {
+        isDrawingPlatform = false;
+        isPanning = false;
+        draw();
+      });
+
+      // Draw function
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw platforms
+        platforms.forEach((platform) => {
+          ctx.fillStyle = "#3498db";
+          ctx.fillRect(
+            platform.x + offsetX,
+            platform.y + offsetY,
+            platform.width,
+            platform.height
+          );
+        });
+
+        // Draw player
+        if (player) {
+          ctx.fillStyle = "#e74c3c";
+          ctx.fillRect(player.x + offsetX, player.y + offsetY, 30, 30);
+        }
+
+        // Draw enemies
+        enemies.forEach((enemy) => {
+          ctx.fillStyle = "#f39c12";
+          ctx.beginPath();
+          ctx.arc(enemy.x + offsetX, enemy.y + offsetY, 20, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      // Set the current tool
+      function setTool(tool) {
+        currentTool = tool;
+      }
+
+      // Generate the level code in the requested format
+      function generateLevelCode() {
+        let levelCode = `if (levelNum == 1) {\n`;
+        levelCode += `    gameState = GameState.InLevel;\n`;
+        levelCode += `    firstUpdateDone = true;\n`;
+
+        // Add player
+        if (player) {
+          levelCode += `    new Player(new Vec2(${player.x}, ${player.y}));\n`;
+        }
+
+        // Add enemies
+        enemies.forEach((enemy, index) => {
+          const enemyType = `new CircleEnemy(new Vec2(${enemy.x}, ${enemy.y}));`;
+          levelCode += `    ${enemyType}\n`;
+        });
+
+        // Add platforms
+        platforms.forEach((platform) => {
+          levelCode += `    new Ground(new Vec2(${platform.x}, ${platform.y}), new Vec2(${platform.width}, ${platform.height}));\n`;
+        });
+
+        // Finalize level
+        levelCode += `    Camera.FollowTargets(false);\n`;
+        levelCode += `}\n`;
+
+        // Output the generated code to the textarea
+        document.getElementById("levelCodeOutput").value = levelCode;
+      }
+
+      // Initial draw
+      draw();
+
+      // Adjust canvas size on window resize
+      window.addEventListener("resize", () => {
+        canvasWidth = window.innerWidth;
+        canvasHeight = window.innerHeight;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
+        draw();
+      });
+    </script>
+  </body>
+</html>

@@ -53,6 +53,26 @@ namespace ShapeScape
             }
             velocity.x += facingRight ? 1 : -1;
         }
+        public override void CollisionStart(CollisionInformation info)
+        {
+            if (info.obj.tags.Contains("Player") && (info.side == Side.Left || info.side == Side.Right))
+            {
+                velocity.x = -velocity.x;
+
+                // Flip the facing direction
+                if (facingRight)
+                {
+                    facingRight = false;
+                    turnLeftAnim.Start();
+                }
+                else
+                {
+                    facingRight = true;
+                    turnRightAnim.Start();
+                }
+            }
+        }
+
         public override void CollisionEnd(CollisionInformation info)
         {
             if (info.side == Side.Left || info.side == Side.Right)
