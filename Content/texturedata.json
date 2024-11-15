@@ -34,12 +34,56 @@
                 "textureName": "CircleEnemyBody"
             },
             {
-                "offset": { "x": 0, "y": 0}, 
+                "offset": { "x": 3.125, "y": 0}, 
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 
                 "name": "Face",
                 "textureName": "CircleEnemyFaceRight"
+            }
+        ]
+    },
+    {
+        "name": "TriangleEnemy",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Body",
+                "textureName": "TriangleEnemyBody"
+            },
+            {
+                "offset": { "x": 3.125, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Face",
+                "textureName": "TriangleEnemyFaceRight"
+            }
+        ]
+    },
+    {
+        "name": "RectangleEnemy",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Body",
+                "textureName": "RectangleEnemyBody"
+            },
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Face",
+                "textureName": "RectangleEnemyFaceRight"
             }
         ]
     },

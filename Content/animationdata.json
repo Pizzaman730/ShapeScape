@@ -124,6 +124,142 @@
         }
     },
     {
+        "name": "TriangleEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "TriangleEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "TriangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "RectangleEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "RectangleEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "textureChange": "RectangleEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "10": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "RectangleEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
         "name": "PlayerJump",
         "keyframes": {
             "1": {
