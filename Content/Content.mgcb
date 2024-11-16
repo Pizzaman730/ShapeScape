@@ -76,7 +76,7 @@
 /processorParam:TextureFormat=Color
 /build:Textures/BouncyOval/BouncyOvalFaceSquishF1.png;BouncyOvalFaceSquishF1.png
 
-#begin Textures/BouncyOval/BouncyovalFaceSquishF2.png
+#begin Textures/BouncyOval/BouncyOvalFaceSquishF2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -86,7 +86,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/BouncyOval/BouncyovalFaceSquishF2.png;BouncyovalFaceSquishF2.png
+/build:Textures/BouncyOval/BouncyOvalFaceSquishF2.png;BouncyOvalFaceSquishF2.png
 
 #begin Textures/BouncyOval/BouncyOvalFaceSquishF3.png
 /importer:TextureImporter
