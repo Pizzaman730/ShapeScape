@@ -17,7 +17,7 @@ namespace ShapeScape
         }
         public override void UpdateUI()
         {
-            if (InputManager.ClickThisFrame() && TouchesPoint(InputManager.MousePosWorld()))
+            if (InputManager.ClickThisFrame() && TouchesPoint(InputManager.MousePos()))
             {
                 OnButtonClick();
             }

@@ -30,8 +30,10 @@ namespace ShapeScape
         }
         public static Vec2 MousePos()
         {
-            Point mousePos = Mouse.GetState().Position;
-            return new Vec2(mousePos.X, mousePos.Y);
+            Vec2 mousePos = new Vec2(Mouse.GetState().Position.X, Mouse.GetState().Position.Y);
+            
+            
+            return WindowManager.size / 2 + mousePos * new Vec2(-1, 1) - new Vec2(0, WindowManager.size.y);
         }
         public static Vec2 MousePosWorld()
         {

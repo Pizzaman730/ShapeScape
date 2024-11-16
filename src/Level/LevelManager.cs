@@ -35,8 +35,8 @@ namespace ShapeScape
             if (gameState == GameState.InLevel && alivePlayers == 0)
             {
                 // Transition back to the main menu after level completion or player death
-                UIManager.SetMenu(new UIMainMenu());
-                gameState = GameState.InMenu;
+                UIManager.SetMenu(new UIDeathScreenMenu());
+                gameState = GameState.DeathScreen;
                 firstUpdateDone = false;
             }
         }
