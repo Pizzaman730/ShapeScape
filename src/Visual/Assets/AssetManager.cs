@@ -56,85 +56,61 @@ namespace ShapeScape
                 textureDataFile = File.ReadAllText("Content/texturedata.json");
                 animationDataFile = File.ReadAllText("Content/animationdata.json");
 
-                // Log the texture loading process
                 Logger.Log("Loading textures...");
-                CreateTexture("PlayerLeft", 50, 50);
-                CreateTexture("PlayerRight", 50, 50);
-                CreateTexture("PlayerStraight", 50, 50);
+                var texturesToLoad = new Dictionary<string, (int width, int height)>
+                {
+                    { "PlayerLeft", (50, 50) },
+                    { "PlayerRight", (50, 50) },
+                    { "PlayerStraight", (50, 50) },
+                    { "Grass", (100, 100) },
+                    { "Dirt", (100, 100) },
+                    { "StartButton", (200, 100) },
+                    { "PlayerFaceRight", (50, 50) },
+                    { "PlayerFaceStraight", (50, 50) },
+                    { "PlayerBody", (50, 50) },
+                    { "PlayerBodyJumpF1", (50, 50) },
+                    { "PlayerBodyJumpF2", (50, 50) },
+                    { "PlayerFaceJumpF1", (50, 50) },
+                    { "PlayerFaceJumpF2", (50, 50) },
+                    { "PlayerFaceJumpF3", (50, 50) },
+                    { "CircleMorph", (50, 50) },
+                    { "CircleEnemyFaceRight", (50, 50) },
+                    { "CircleEnemyFaceStraight", (50, 50) },
+                    { "CircleEnemyBody", (50, 50) },
+                    { "TriangleEnemyFaceRight", (50, 50) },
+                    { "TriangleEnemyFaceStraight", (50, 50) },
+                    { "TriangleEnemyBody", (50, 50) },
+                    { "RectangleEnemyFaceRight", (100, 50) },
+                    { "RectangleEnemyFaceStraight", (100, 50) },
+                    { "RectangleEnemyBody", (100, 50) },
+                    { "BouncyOvalFaceRight", (100, 50) },
+                    { "BouncyOvalFaceStraight", (100, 50) },
+                    { "BouncyOvalBody", (100, 50) },
+                    { "BouncyOvalFaceSquishF1", (100, 50) },
+                    { "BouncyOvalFaceSquishF2", (100, 50) },
+                    { "BouncyOvalFaceSquishF3", (100, 50) },
+                    { "BouncyOvalFaceSquishF4", (100, 50) },
+                    { "BouncyOvalBodySquish1", (100, 50) },
+                    { "BouncyOvalBodySquish2", (100, 50) },
+                    { "SmileFace", (50, 50) },
+                    { "SmirkFace", (50, 50) },
+                    { "FrownFace", (50, 50) },
+                    { "SadFace", (50, 50) },
+                    { "MadFace", (50, 50) },
+                    { "FrownFaceBrow", (50, 50) },
+                    { "HappyFaceStraight", (50, 50) },
+                    { "SadFaceStraight", (50, 50) },
+                    { "MadFaceStraight", (50, 50) },
+                };
 
-                //CreateTexture("Enemy", 50, 50);
+                foreach (var texture in texturesToLoad)
+                {
+                    CreateTexture(texture.Key, texture.Value.width, texture.Value.height);
+                }
 
-                CreateTexture("Grass", 100, 100);
-                CreateTexture("Dirt", 100, 100);
-
-                CreateTexture("StartButton", 200, 100);
-
-                CreateTexture("PlayerFaceRight", 50, 50);
-                CreateTexture("PlayerFaceStraight", 50, 50);
-                CreateTexture("PlayerBody", 50, 50);
-                
-                CreateTexture("PlayerBodyJumpF1", 50, 50);
-                CreateTexture("PlayerBodyJumpF2", 50, 50);
-                CreateTexture("PlayerFaceJumpF1", 50, 50);
-                CreateTexture("PlayerFaceJumpF2", 50, 50);
-                CreateTexture("PlayerFaceJumpF3", 50, 50);
-
-                CreateTexture("CircleMorph", 50, 50);
-
-                CreateTexture("CircleEnemyFaceRight", 50, 50);
-                CreateTexture("CircleEnemyFaceStraight", 50, 50);
-                CreateTexture("CircleEnemyBody", 50, 50);
-
-                CreateTexture("TriangleEnemyFaceRight", 50, 50);
-                CreateTexture("TriangleEnemyFaceStraight", 50, 50);
-                CreateTexture("TriangleEnemyBody", 50, 50);
-
-                CreateTexture("RectangleEnemyFaceRight", 100, 50);
-                CreateTexture("RectangleEnemyFaceStraight", 100, 50);
-                CreateTexture("RectangleEnemyBody", 100, 50);
-
-                CreateTexture("BouncyOvalFaceRight", 100, 50);
-                CreateTexture("BouncyOvalFaceStraight", 100, 50);
-                CreateTexture("BouncyOvalBody", 100, 50);
-
-                CreateTexture("BouncyOvalFaceSquishF1", 100, 50);
-                CreateTexture("BouncyOvalFaceSquishF2", 100, 50);
-                CreateTexture("BouncyOvalFaceSquishF3", 100, 50);
-                CreateTexture("BouncyOvalFaceSquishF4", 100, 50);
-                CreateTexture("BouncyOvalBodySquish1", 100, 50);
-                CreateTexture("BouncyOvalBodySquish2", 100, 50);
-                
-                CreateTexture("SmileFace", 50, 50);
-                CreateTexture("SmirkFace", 50, 50);
-                CreateTexture("FrownFace", 50, 50);
-                CreateTexture("SadFace", 50, 50);
-                CreateTexture("MadFace", 50, 50);
-                CreateTexture("FrownFaceBrow", 50, 50);
-
-                CreateTexture("HappyFaceStraight", 50, 50);
-                CreateTexture("SadFaceStraight", 50, 50);
-                CreateTexture("MadFaceStraight", 50, 50);
-
-                //CreateTexture("SmileFaceSmall", 50, 50);
-                /*
-                CreateTexture("SmirkFaceSmall", 50, 50);
-                CreateTexture("FrownFaceSmall", 50, 50);
-                CreateTexture("SadFaceSmall", 50, 50);
-                CreateTexture("MadFaceSmall", 50, 50);
-                CreateTexture("FrownFaceSmallBrow", 50, 50);
-
-                CreateTexture("HappyFaceStraightSmall", 50, 50);
-                CreateTexture("SadFaceStraightSmall", 50, 50);
-                CreateTexture("MadFaceStraightSmall", 50, 50);
-                */
-
-
-                
-
-                // Log ObjectTextures and Animations creation
                 Logger.Log("Creating object textures...");
                 CreateAllObjectTextures();
-                
+
                 Logger.Log("Creating animations...");
                 CreateAllAnimations();
             }
@@ -181,12 +157,12 @@ namespace ShapeScape
             try
             {
                 Texture2D texture = contentManager.Load<Texture2D>(name);
-                
-                // Check if the texture is null after loading
+
+                // If texture is not found, use the missing texture instead
                 if (texture == null)
                 {
-                    Logger.Log($"Failed to load texture: {name}");
-                    return null; 
+                    Logger.Log($"Failed to load texture: {name}. Using missing texture.");
+                    texture = CreateMissingTexture();
                 }
 
                 RenderTarget2D target = new RenderTarget2D(graphicsDevice, width, height);
@@ -204,9 +180,11 @@ namespace ShapeScape
             catch (ContentLoadException ex)
             {
                 Logger.Log($"Error loading texture '{name}': {ex.Message}");
-                return null;
+                Texture2D missingTexture = CreateMissingTexture(); // Fallback in case of exception
+                return missingTexture;
             }
         }
+
 
         public static TextureInfo TileTexture(TextureInfo info, Vec2 size)
         {
@@ -268,5 +246,29 @@ namespace ShapeScape
             };
             
         }
+
+        private static Texture2D CreateMissingTexture()
+        {
+            int width = 64;  // Standard size for missing textures
+            int height = 64;
+            Color[] data = new Color[width * height];
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    // Create a checkerboard pattern (alternating black and purple)
+                    if ((x / 8 + y / 8) % 2 == 0)
+                        data[y * width + x] = Color.Black;
+                    else
+                        data[y * width + x] = new Color(128, 0, 128);  // Purple
+                }
+            }
+
+            Texture2D texture = new Texture2D(graphicsDevice, width, height);
+            texture.SetData(data);
+            return texture;
+        }
+
     }
 }
