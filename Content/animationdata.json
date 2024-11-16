@@ -334,6 +334,85 @@
         }
     },
     {
+        "name": "BouncyOvalSquish",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceSquishF1"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalBodySquish1"
+                    }
+                ]
+            },
+            "3": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceSquishF2"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalBodySquish2"
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceSquishF3"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalBodySquish1"
+                    }
+                ]
+            },
+            "7": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceSquishF4"
+                    },
+                    {
+                        "name": "Body",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalBody"
+                    }
+                ]
+            },
+            "60": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "changeTexture": true,
+                        
+                        "textureChange": "BouncyOvalFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
         "name": "PlayerJump",
         "keyframes": {
             "1": {
