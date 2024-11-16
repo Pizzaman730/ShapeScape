@@ -144,5 +144,47 @@
                 "textureName": "StartButton"
             }
         ]
+    },
+    {
+        "name": "SettingsButton",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "SettingsButton",
+                "textureName": "SettingsButton"
+            }
+        ]
+    },
+    {
+        "name": "BackButton",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "BackButton",
+                "textureName": "BackButton"
+            }
+        ]
+    },
+    {
+        "name": "RestartButton",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "RestartButton",
+                "textureName": "RestartButton"
+            }
+        ]
     }
 ]

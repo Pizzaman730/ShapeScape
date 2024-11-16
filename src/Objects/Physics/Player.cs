@@ -67,7 +67,7 @@ namespace ShapeScape
             }
             if (InputManager.GetKeyDown(inputs.up))
             {
-                if (jumpable && timeSinceOnFloor <= 10) 
+                if (jumpable && timeSinceOnFloor <= 5) 
                 {
                     //jumpAnimation.Start();
                     Jump(jumpHeight);
