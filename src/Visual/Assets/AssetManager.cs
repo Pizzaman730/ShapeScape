@@ -71,6 +71,7 @@ namespace ShapeScape
                     { "PlayerFaceJumpF2", (50, 50) },
                     { "PlayerFaceJumpF3", (50, 50) },
                     { "CircleMorph", (50, 50) },
+                    { "BouncyOvalMorph", (100, 50)},
                     { "CircleEnemyFaceRight", (50, 50) },
                     { "CircleEnemyFaceStraight", (50, 50) },
                     { "CircleEnemyBody", (50, 50) },

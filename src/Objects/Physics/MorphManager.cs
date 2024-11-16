@@ -55,21 +55,22 @@ namespace ShapeScape
                     Logger.LogError("Player object is null.");
                     throw new ArgumentNullException(nameof(player), "Player cannot be null.");
                 }
-
+                if (InputManager.GetKeyDown(Keys.D1))
+                {
+                    morphName = "None";
+                    SwitchMorph(new PlayerMorph(), player);
+                }
                 if (InputManager.GetKeyDown(Keys.D2)) 
                 {
                     //Logger.Log("Key 'E' pressed. Switching to FastMorph.");
                     morphName = "Circle";
                     SwitchMorph(new CircleMorph(), player);
                 }
-                else
+                if (InputManager.GetKeyDown(Keys.D3)) 
                 {
-                    //Logger.Debug("No morph switch.");
-                }
-                if (InputManager.GetKeyDown(Keys.D1))
-                {
-                    morphName = "None";
-                    SwitchMorph(new PlayerMorph(), player);
+                    //Logger.Log("Key 'E' pressed. Switching to FastMorph.");
+                    morphName = "BouncyOval";
+                    SwitchMorph(new BouncyOvalMorph(), player);
                 }
             }
             catch (Exception ex)

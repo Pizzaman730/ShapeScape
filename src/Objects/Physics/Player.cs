@@ -12,8 +12,8 @@ namespace ShapeScape
         public bool jumping = false;
         public int jumpHeight = 15;
         private int timeSinceOnFloor = 0;
-        private Animation turnLeftAnim;
-        private Animation turnRightAnim;
+        public Animation turnLeftAnim;
+        public Animation turnRightAnim;
         private Animation jumpAnimation;
         private bool facingRight = true;
         private MorphManager morphManager;
