@@ -56,7 +56,7 @@ namespace ShapeScape
                     throw new ArgumentNullException(nameof(player), "Player cannot be null.");
                 }
 
-                if (InputManager.GetKeyDown(Keys.E)) 
+                if (InputManager.GetKeyDown(Keys.D2)) 
                 {
                     //Logger.Log("Key 'E' pressed. Switching to FastMorph.");
                     morphName = "Circle";
@@ -65,6 +65,11 @@ namespace ShapeScape
                 else
                 {
                     //Logger.Debug("No morph switch.");
+                }
+                if (InputManager.GetKeyDown(Keys.D1))
+                {
+                    morphName = "None";
+                    SwitchMorph(new PlayerMorph(), player);
                 }
             }
             catch (Exception ex)
