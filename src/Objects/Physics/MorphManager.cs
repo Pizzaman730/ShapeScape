@@ -6,6 +6,7 @@ namespace ShapeScape
     public class MorphManager
     {
         private IMorph currentMorph;
+        public string morphName = "None";
 
         // Constructor
         public MorphManager()
@@ -57,12 +58,13 @@ namespace ShapeScape
 
                 if (InputManager.GetKeyDown(Keys.E)) 
                 {
-                    Logger.Log("Key 'E' pressed. Switching to FastMorph.");
-                    SwitchMorph(new FastMorph(), player);
+                    //Logger.Log("Key 'E' pressed. Switching to FastMorph.");
+                    morphName = "Circle";
+                    SwitchMorph(new CircleMorph(), player);
                 }
                 else
                 {
-                    Logger.Debug("No morph switch.");
+                    //Logger.Debug("No morph switch.");
                 }
             }
             catch (Exception ex)

@@ -76,7 +76,7 @@ namespace ShapeScape
             }
             if (info.obj.tags.Contains("Player"))
             {
-                ((Player)info.obj).Kill();
+                ((Player)info.obj).Kill("CircleEnemy");
             }
         }
     }

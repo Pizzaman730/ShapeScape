@@ -79,6 +79,8 @@ namespace ShapeScape
                 CreateTexture("PlayerFaceJumpF2", 50, 50);
                 CreateTexture("PlayerFaceJumpF3", 50, 50);
 
+                CreateTexture("CircleMorph", 50, 50);
+
                 CreateTexture("CircleEnemyFaceRight", 50, 50);
                 CreateTexture("CircleEnemyFaceStraight", 50, 50);
                 CreateTexture("CircleEnemyBody", 50, 50);
@@ -94,6 +96,39 @@ namespace ShapeScape
                 CreateTexture("BouncyOvalFaceRight", 100, 50);
                 CreateTexture("BouncyOvalFaceStraight", 100, 50);
                 CreateTexture("BouncyOvalBody", 100, 50);
+
+                CreateTexture("BouncyOvalFaceSquishF1", 100, 50);
+                CreateTexture("BouncyOvalFaceSquishF2", 100, 50);
+                CreateTexture("BouncyOvalFaceSquishF3", 100, 50);
+                CreateTexture("BouncyOvalFaceSquishF4", 100, 50);
+                CreateTexture("BouncyOvalBodySquish1", 100, 50);
+                CreateTexture("BouncyOvalBodySquish2", 100, 50);
+                
+                CreateTexture("SmileFace", 50, 50);
+                CreateTexture("SmirkFace", 50, 50);
+                CreateTexture("FrownFace", 50, 50);
+                CreateTexture("SadFace", 50, 50);
+                CreateTexture("MadFace", 50, 50);
+                CreateTexture("FrownFaceBrow", 50, 50);
+
+                CreateTexture("HappyFaceStraight", 50, 50);
+                CreateTexture("SadFaceStraight", 50, 50);
+                CreateTexture("MadFaceStraight", 50, 50);
+
+                //CreateTexture("SmileFaceSmall", 50, 50);
+                /*
+                CreateTexture("SmirkFaceSmall", 50, 50);
+                CreateTexture("FrownFaceSmall", 50, 50);
+                CreateTexture("SadFaceSmall", 50, 50);
+                CreateTexture("MadFaceSmall", 50, 50);
+                CreateTexture("FrownFaceSmallBrow", 50, 50);
+
+                CreateTexture("HappyFaceStraightSmall", 50, 50);
+                CreateTexture("SadFaceStraightSmall", 50, 50);
+                CreateTexture("MadFaceStraightSmall", 50, 50);
+                */
+
+
                 
 
                 // Log ObjectTextures and Animations creation

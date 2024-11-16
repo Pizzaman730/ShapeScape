@@ -10,6 +10,9 @@ namespace ShapeScape
         public bool facingRight = true;
         public Animation turnLeftAnim;
         public Animation turnRightAnim;
+        public Animation squishAnim;
+        private Vec2 prevVel;
+        private int timeSinceBounce = 0;
         public BouncyOval(Vec2 pos) : base("BouncyOval", pos, new Vec2(100, 50))
         {
             affectedByGravity = true;
@@ -17,6 +20,7 @@ namespace ShapeScape
             maxVelocity.x = 5;
             turnLeftAnim = CreateAnimation("BouncyOvalTurnLeft");
             turnRightAnim = CreateAnimation("BouncyOvalTurnRight");
+            squishAnim = CreateAnimation("BouncyOvalSquish");
             tags.Add("BouncyOval");
             tags.Add("Enemy");
         }
@@ -24,6 +28,15 @@ namespace ShapeScape
         {
             bool surfaceAtDestination = false;
             bool onGround = false;
+            if (timeSinceBounce > 0)
+            {
+                timeSinceBounce++;
+                velocity = new Vec2();
+                if (timeSinceBounce >= 60)
+                {
+                    timeSinceBounce = 0;
+                }
+            }
             foreach (PhysicsObject obj in PhysicsManager.physicsObjects.OfType<PhysicsObject>().Where(o => o.tags.Contains("Surface")))
             {
                 if (obj.CollisionAtPoint(new Vec2(position.x + 26 * (facingRight ? 1 : -1), position.y - 26)))
@@ -55,6 +68,8 @@ namespace ShapeScape
         }
         public override void CollisionStart(CollisionInformation info)
         {
+            prevVel = velocity;
+            /*
             if (info.obj.tags.Contains("Player") && (info.side == Side.Left || info.side == Side.Right))
             {
                 velocity.x = -velocity.x;
@@ -71,18 +86,23 @@ namespace ShapeScape
                     turnRightAnim.Start();
                 }
             }
+            */
         }
 
         public override void CollisionEnd(CollisionInformation info)
         {
+            if (!info.obj.tags.Contains("Surface"))
+            {
+                velocity.x = prevVel.x;
+            }
             if (info.side == Side.Left || info.side == Side.Right)
             {
-                if (facingRight)
+                if (facingRight && info.side == Side.Right)
                 {
                     facingRight = false;
                     turnLeftAnim.Start();
                 }
-                else
+                else if (!facingRight && info.side == Side.Left)
                 {
                     facingRight = true;
                     turnRightAnim.Start();
@@ -91,8 +111,10 @@ namespace ShapeScape
             if (info.obj.tags.Contains("Player") && info.side == Side.Up) 
             {
                 //ObjectManager.AddToDestroy(this);
-                ((Player)info.obj).Jump(20);
+                ((Player)info.obj).Jump(((Player)info.obj).jumpHeight + 5);
                 ((Player)info.obj).jumping = false;
+                timeSinceBounce++;
+                squishAnim.Start();
                 return;
             }
         }

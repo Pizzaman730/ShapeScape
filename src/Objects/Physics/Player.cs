@@ -34,7 +34,7 @@ namespace ShapeScape
         {
             if (position.y <= -800)
             {
-                Kill();
+                Kill("Void");
             }
 
             if (velocity.x > 0) velocity.x--;
@@ -69,7 +69,7 @@ namespace ShapeScape
             {
                 if (jumpable && timeSinceOnFloor <= 10) 
                 {
-                    jumpAnimation.Start();
+                    //jumpAnimation.Start();
                     Jump(jumpHeight);
                 }
             }
@@ -89,8 +89,9 @@ namespace ShapeScape
             timeSinceOnFloor = 0;
             jumping = false;
         }
-        public void Kill()
+        public void Kill(string killSource)
         {
+            if (killSource == "CircleEnemy" && morphManager.morphName == "Circle") return;
             ObjectManager.AddToDestroy(this);
             LevelManager.alivePlayers--;
             Camera.targets.Remove(this);
