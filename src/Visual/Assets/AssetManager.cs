@@ -99,7 +99,8 @@ namespace ShapeScape
                     { "HappyFaceStraight", (50, 50) },
                     { "SadFaceStraight", (50, 50) },
                     { "MadFaceStraight", (50, 50) },
-                    { "SettingsButton", (100, 100) }
+                    { "SettingsButton", (100, 100) },
+                    { "BackButton", (100, 100) }
                 };
 
                 foreach (var texture in texturesToLoad)

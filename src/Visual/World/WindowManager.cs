@@ -21,10 +21,18 @@ namespace ShapeScape
         private static void UpdateSize(object sender, EventArgs e)
         {
             size = new Vec2(window.ClientBounds.Width, window.ClientBounds.Height);
+            foreach (UIObject obj in UIManager.uiObjects)
+            {
+                obj.UpdatePosForOverlay();
+            }
         }
         private static void UpdateSize()
         {
             size = new Vec2(window.ClientBounds.Width, window.ClientBounds.Height);
+            foreach (UIObject obj in UIManager.uiObjects)
+            {
+                obj.UpdatePosForOverlay();
+            }
         }
 
         public static void UpdateInfo()

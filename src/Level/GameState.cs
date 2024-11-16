@@ -5,6 +5,7 @@ namespace ShapeScape
         InLevel,
         InMenu,
         InEditor,
-        DeathScreen
+        DeathScreen,
+        InSettings
     }
 }

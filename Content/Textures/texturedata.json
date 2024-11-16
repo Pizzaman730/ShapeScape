@@ -158,5 +158,19 @@
                 "textureName": "SettingsButton"
             }
         ]
+    },
+    {
+        "name": "BackButton",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "BackButton",
+                "textureName": "BackButton"
+            }
+        ]
     }
 ]

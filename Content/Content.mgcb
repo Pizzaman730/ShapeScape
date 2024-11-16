@@ -388,6 +388,18 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Ground/Grass.png;Grass.png
 
+#begin Textures/Menus/BackButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Menus/BackButton.png;BackButton.png
+
 #begin Textures/Menus/SettingsButton.png
 /importer:TextureImporter
 /processor:TextureProcessor

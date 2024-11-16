@@ -23,7 +23,7 @@ namespace ShapeScape
             // Uncomment for editor
             editorButton = new EditorButton(new Vec2(0, 100));
             // UIManager.AddObject(editorButton);
-            settingsButton = new SettingsButton(new Vec2(200, 200));
+            settingsButton = new SettingsButton(new Vec2(-50, 50));
 
             Camera.center = startButton.position;
         }

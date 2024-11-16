@@ -22,6 +22,16 @@ namespace ShapeScape
                     UIManager.SetMenu(new UIMainMenu()); // Set the main menu
                 }
             }
+            if (gameState == GameState.InSettings)
+            {
+                // Make sure the UI is showing the main menu
+                if (!firstUpdateDone)
+                {
+                    firstUpdateDone = true;
+                    UIManager.Init(); // Initialize the UI
+                    UIManager.SetMenu(new UISettingsMenu()); // Set the main menu
+                }
+            }
             if (gameState == GameState.InLevel && alivePlayers == 0)
             {
                 // Transition back to the main menu after level completion or player death

@@ -5,19 +5,19 @@ using System.Threading.Tasks;
 
 namespace ShapeScape
 {
-    public class SettingsButton : Button
+    public class BackButton : Button
     {
-        public SettingsButton(Vec2 pos) : base("SettingsButton", pos, new Vec2(100, 100))
+        public BackButton(Vec2 pos) : base("BackButton", pos, new Vec2(100, 100))
         {
-            tags.Add("SettingsButton");
-            zone = OverlayZone.BottomRight;
+            tags.Add("BackButton");
+            zone = OverlayZone.TopLeft;
             UpdatePosForOverlay();
         }
         public override void OnButtonClick()
         {
             // LevelManager.startButton = null;
             LevelManager.firstUpdateDone = false;
-            LevelManager.gameState = GameState.InSettings;
+            LevelManager.gameState = GameState.InMenu;
             ObjectManager.AddAllObjectsToDestroy();
         }
     }
