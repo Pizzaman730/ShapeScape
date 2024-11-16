@@ -9,6 +9,28 @@ namespace ShapeScape
     {
         public void ApplyMorph(Player player)
         {
+            Vec2 oldPos = player.position;
+            Vec2 oldVelocity = player.velocity;
+            player.velocity.x = 1;
+            player.size = new Vec2(100, 50);
+            
+            foreach (PhysicsObject obj in PhysicsManager.physicsObjects)
+            {
+                if (player != obj && PhysicsManager.CollisionCheck(player, obj, true))
+                {
+                    foreach (PhysicsObject obj2 in PhysicsManager.physicsObjects)
+                    {
+                        if (player != obj2 && PhysicsManager.CollisionCheck(player, obj2, true, false))
+                        {
+                            RevertMorph(player);
+                            player.velocity = oldVelocity;
+                            return;
+                        }
+                    }
+                }
+            }
+            player.velocity = oldVelocity;
+            
             player.jumpHeight = 20;
             player.size = new Vec2(100, 50);
             player.turnLeftAnim = player.CreateAnimation("BouncyOvalTurnLeft");

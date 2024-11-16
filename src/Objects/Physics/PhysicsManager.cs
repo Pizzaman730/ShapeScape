@@ -69,22 +69,25 @@ namespace ShapeScape
                 }
             }
         }
-        public static bool CollisionCheck(PhysicsObject obj1, PhysicsObject obj2, bool onSide = false)
+        public static bool CollisionCheck(PhysicsObject obj1, PhysicsObject obj2, bool onSide = false, bool doCollide = true)
         {
             bool collideX = obj1.position.x + (obj1.size.x/2) > obj2.position.x - (obj2.size.x/2) && obj1.position.x - (obj1.size.x/2) < obj2.position.x + (obj2.size.x/2);
             bool collideY = obj1.position.y + (obj1.size.y/2) > obj2.position.y - (obj2.size.y/2) && obj1.position.y - (obj1.size.y/2) < obj2.position.y + (obj2.size.y/2);
             bool collide = collideX && collideY;
             if (collide)
             {
-                if (onSide)
+                if (doCollide)
                 {
-                    obj1.Collision(new CollisionInformation(obj2, obj1.velocity.x > 0 ? Side.Right : Side.Left, true));
-                    obj2.Collision(new CollisionInformation(obj1, obj1.velocity.x > 0 ? Side.Left : Side.Right, false));
-                }
-                else
-                {
-                    obj1.Collision(new CollisionInformation(obj2, obj1.velocity.y > 0 ? Side.Up : Side.Down, true));
-                    obj2.Collision(new CollisionInformation(obj1, obj1.velocity.y > 0 ? Side.Down : Side.Up, false));
+                    if (onSide)
+                    {
+                        obj1.Collision(new CollisionInformation(obj2, obj1.velocity.x > 0 ? Side.Right : Side.Left, true));
+                        obj2.Collision(new CollisionInformation(obj1, obj1.velocity.x > 0 ? Side.Left : Side.Right, false));
+                    }
+                    else
+                    {
+                        obj1.Collision(new CollisionInformation(obj2, obj1.velocity.y > 0 ? Side.Up : Side.Down, true));
+                        obj2.Collision(new CollisionInformation(obj1, obj1.velocity.y > 0 ? Side.Down : Side.Up, false));
+                    }
                 }
                 return true;
             }
