@@ -59,9 +59,9 @@ namespace ShapeScape
                 Logger.Log("Loading textures...");
                 var texturesToLoad = new Dictionary<string, (int width, int height)>
                 {
-                    { "PlayerLeft", (50, 50) },
-                    { "PlayerRight", (50, 50) },
-                    { "PlayerStraight", (50, 50) },
+                    { "PlayerBody", (50, 50) },
+                    { "PlayerFaceRight", (50, 50) },
+                    { "PlayerFaceStraight", (50, 50) },
                     { "Grass", (100, 100) },
                     { "Dirt", (100, 100) },
                     { "StartButton", (200, 100) },
