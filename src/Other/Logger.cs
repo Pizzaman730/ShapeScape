@@ -47,7 +47,7 @@ namespace ShapeScape
 
         public static void Debug(string message)
         {
-            if (!Developer.debugMode == false) return;
+            if (Developer.debugMode == false) return;
             LogMessage("DEBUG", message);
         }
         private static void LogMessage(string logLevel, string message)
