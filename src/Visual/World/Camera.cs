@@ -29,7 +29,7 @@ namespace ShapeScape
                 center = sum / targets.Count;
                 return;
             }
-            center = center + ((sum/targets.Count) - center) * (1 - Math.Pow(1 - 0.025f, 2));
+            center += ((sum/targets.Count) - center) * (1 - Math.Pow(1 - 0.025f, 2));
         }
         public static Vec2 TranslatePos(Vec2 startPos)
         {

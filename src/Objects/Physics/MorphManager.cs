@@ -8,6 +8,9 @@ namespace ShapeScape
         private IMorph currentMorph;
         public string morphName = "None";
 
+        private int morphSwitchCooldown = 10;
+        private int morphSwitchTimer = 0;
+
         // Constructor
         public MorphManager()
         {
@@ -20,6 +23,12 @@ namespace ShapeScape
             try
             {
                 Logger.Log("SwitchMorph method called.");
+
+                if (currentMorph != null && currentMorph.GetType() == newMorph.GetType())
+                {
+                    Logger.Log("Same morph selected, skipping switch.");
+                    return;
+                }
 
                 if (newMorph == null)
                 {
@@ -55,22 +64,32 @@ namespace ShapeScape
                     Logger.LogError("Player object is null.");
                     throw new ArgumentNullException(nameof(player), "Player cannot be null.");
                 }
+
+                // Only allow morph switching if the cooldown has elapsed
+                if (morphSwitchTimer > 0)
+                {
+                    morphSwitchTimer--; // Decrease cooldown timer
+                    return; // Do nothing if cooldown is not complete
+                }
+
+                // Check for key presses
                 if (InputManager.GetKeyDown(Keys.D1))
                 {
                     morphName = "None";
                     SwitchMorph(new PlayerMorph(), player);
+                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
                 }
                 if (InputManager.GetKeyDown(Keys.D2)) 
                 {
-                    //Logger.Log("Key 'E' pressed. Switching to FastMorph.");
                     morphName = "Circle";
                     SwitchMorph(new CircleMorph(), player);
+                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
                 }
                 if (InputManager.GetKeyDown(Keys.D3)) 
                 {
-                    //Logger.Log("Key 'E' pressed. Switching to FastMorph.");
                     morphName = "BouncyOval";
                     SwitchMorph(new BouncyOvalMorph(), player);
+                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
                 }
             }
             catch (Exception ex)

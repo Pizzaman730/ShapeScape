@@ -24,42 +24,26 @@ namespace ShapeScape
         }
         public void UpdatePosForOverlay()
         {
-            if (zone == OverlayZone.Middle)
+            Vec2 offset = new Vec2(0, 0);
+
+            if (zone == OverlayZone.TopLeft || zone == OverlayZone.MiddleLeft || zone == OverlayZone.BottomLeft)
             {
-                SetPos(actualPos);
+                offset.x = WindowManager.size.x / 2;
             }
-            if (zone == OverlayZone.TopLeft)
+            if (zone == OverlayZone.TopRight || zone == OverlayZone.MiddleRight || zone == OverlayZone.BottomRight)
             {
-                SetPos(new Vec2(actualPos.x + WindowManager.size.x / 2, actualPos.y - WindowManager.size.y / 2));
+                offset.x = -WindowManager.size.x / 2;
             }
-            if (zone == OverlayZone.TopRight)
+            if (zone == OverlayZone.TopLeft || zone == OverlayZone.TopMiddle || zone == OverlayZone.TopRight)
             {
-                SetPos(new Vec2(actualPos.x - WindowManager.size.x / 2, actualPos.y - WindowManager.size.y / 2));
+                offset.y = -WindowManager.size.y / 2;
             }
-            if (zone == OverlayZone.TopMiddle)
+            if (zone == OverlayZone.BottomLeft || zone == OverlayZone.BottomMiddle || zone == OverlayZone.BottomRight)
             {
-                SetPos(new Vec2(actualPos.x, actualPos.y - WindowManager.size.y / 2));
+                offset.y = WindowManager.size.y / 2;
             }
-            if (zone == OverlayZone.MiddleLeft)
-            {
-                SetPos(new Vec2(actualPos.x + WindowManager.size.x / 2, actualPos.y));
-            }
-            if (zone == OverlayZone.MiddleRight)
-            {
-                SetPos(new Vec2(actualPos.x - WindowManager.size.x / 2, actualPos.y));
-            }
-            if (zone == OverlayZone.BottomLeft)
-            {
-                SetPos(new Vec2(actualPos.x + WindowManager.size.x / 2, actualPos.y + WindowManager.size.y / 2));
-            }
-            if (zone == OverlayZone.BottomMiddle)
-            {
-                SetPos(new Vec2(actualPos.x, actualPos.y + WindowManager.size.y / 2));
-            }
-            if (zone == OverlayZone.BottomRight)
-            {
-                SetPos(new Vec2(actualPos.x - WindowManager.size.x / 2, actualPos.y + WindowManager.size.y / 2));
-            }
+
+            SetPos(actualPos + offset);
         }
     }
 }

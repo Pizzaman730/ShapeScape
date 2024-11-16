@@ -47,14 +47,24 @@ namespace ShapeScape
             {
                 gameState = GameState.InLevel;
                 firstUpdateDone = true;
+                
+                // Player
                 new Player(new Vec2(0, 25));
-                //new Enemy(new Vec2(-200, 25));
-                //new Enemy(new Vec2(200, 25));
+
+                // Enemies
                 new TriangleEnemy(new Vec2(-1600, 225));
+
+                // Rectangles
                 new RectangleEnemy(new Vec2(2400, 325));
+
+                // Circles
                 new CircleEnemy(new Vec2(1600, 225));
                 new CircleEnemy(new Vec2(1200, 25));
+
+                // BouncyOvals
                 new BouncyOval(new Vec2(3300, -75));
+
+                // Platforms
                 new Ground(new Vec2(3000, -300), new Vec2(800, 400));
                 new Ground(new Vec2(2400, -100), new Vec2(500, 800));
                 new Ground(new Vec2(0, -200), new Vec2(1000, 400));

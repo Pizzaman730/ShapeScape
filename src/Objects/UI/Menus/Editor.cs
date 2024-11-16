@@ -12,14 +12,12 @@
 
 //         private void SaveLevelClicked()
 //         {
-//             // Prompt for level name (could use a text input or preset name)
 //             string levelName = "new_level";
 //             LevelEditor.SaveLevel(levelName);
 //         }
 
 //         private void LoadLevelClicked()
 //         {
-//             // Prompt for level name
 //             string levelName = "new_level";
 //             LevelEditor.LoadLevel(levelName);
 //         }

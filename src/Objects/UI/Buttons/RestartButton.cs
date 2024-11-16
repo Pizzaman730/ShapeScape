@@ -7,7 +7,7 @@ namespace ShapeScape
 {
     public class RestartButton : Button
     {
-        public RestartButton(Vec2 pos) : base("RestartButton", pos, new Vec2(200, 100))
+        public RestartButton(Vec2 pos) : base("RestartButton", pos, new Vec2(100, 100))
         {
             tags.Add("RestartButton");
             zone = OverlayZone.TopRight;
