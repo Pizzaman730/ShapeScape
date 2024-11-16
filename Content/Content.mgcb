@@ -388,6 +388,30 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Ground/Grass.png;Grass.png
 
+#begin Textures/Menus/SettingsButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Menus/SettingsButton.png;SettingsButton.png
+
+#begin Textures/Menus/StartButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Menus/StartButton.png;StartButton.png
+
 #begin Textures/Player/BouncyOvalMorph.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -543,18 +567,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/RectangleEnemy/RectangleEnemyFaceStraight.png;RectangleEnemyFaceStraight.png
-
-#begin Textures/StartButton/StartButton.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/StartButton/StartButton.png;StartButton.png
 
 #begin Textures/texturedata.json
 /copy:Textures/texturedata.json;texturedata.json

@@ -45,7 +45,7 @@ namespace ShapeScape
             foreach (var info in obj.objectTexture.textures)
             {
                 if (!info.enabled) return;
-                Vec2 pos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + obj.corner + info.offset) : Camera.TranslatePos((new Vec2(obj.corner.x, obj.corner.y + obj.size.y) + info.offset) * new Vec2(1, -1));
+                Vec2 pos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + (obj.corner + info.offset + new Vec2(obj.size.x, 0)) * new Vec2(-1, 1)) : Camera.TranslatePos((new Vec2(obj.corner.x, obj.corner.y + obj.size.y) + info.offset) * new Vec2(1, -1));
                 SpriteEffects effects = SpriteEffects.None;
                 if (obj.flipTexture || info.flip) effects = SpriteEffects.FlipHorizontally;
                 //Logger.Log(info.offset);
@@ -92,7 +92,7 @@ namespace ShapeScape
 
                 Vec2 objectPos = obj.position;
 
-                Vec2 hitboxPos = Camera.TranslatePos(new Vec2(objectPos.x - obj.size.x / 2, -(objectPos.y - obj.size.y / 2)));
+                Vec2 hitboxPos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + (obj.corner + new Vec2(obj.size.x, 0)) * new Vec2(-1, 1)) : Camera.TranslatePos(new Vec2(obj.corner.x, obj.corner.y + obj.size.y) * new Vec2(1, -1));
 
                 Logger.Log($"Transformed Hitbox Position: X={hitboxPos.x}, Y={hitboxPos.y}");
 

@@ -7,6 +7,7 @@ namespace ShapeScape
     {
         private StartButton startButton;
         private EditorButton editorButton; 
+        private SettingsButton settingsButton;
 
         public UIMainMenu()
         {
@@ -18,11 +19,11 @@ namespace ShapeScape
             new Ground(new Vec2(0, 0), new Vec2(4000, 2000));
 
             startButton = new StartButton(new Vec2()); 
-            UIManager.AddObject(startButton);
 
             // Uncomment for editor
-            // editorButton = new EditorButton(new Vec2(0, 100));
+            editorButton = new EditorButton(new Vec2(0, 100));
             // UIManager.AddObject(editorButton);
+            settingsButton = new SettingsButton(new Vec2(200, 200));
 
             Camera.center = startButton.position;
         }
@@ -30,7 +31,8 @@ namespace ShapeScape
         public void Hide()
         {
             UIManager.RemoveObject(startButton);
-            // UIManager.RemoveObject(editorButton); 
+            UIManager.RemoveObject(editorButton); 
+            UIManager.RemoveObject(settingsButton);
         }
 
         public void Update()
