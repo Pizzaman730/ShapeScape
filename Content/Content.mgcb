@@ -13,6 +13,16 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin GrapeSoda.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:GrapeSoda.spritefont
+
+#begin GrapeSoda.ttf
+/copy:GrapeSoda.ttf
+
 #begin Textures/animationdata.json
 /copy:Textures/animationdata.json;animationdata.json
 

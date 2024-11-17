@@ -122,7 +122,7 @@
                 "textureName": "Grass"
             },
             {
-                "offset": { "x": 0, "y": -100}, 
+                "offset": { "x": 0, "y": -99}, 
                 "rotation": 0, 
                 "scale": { "x": 0, "y": 0}, 
                 "enabled": true, 

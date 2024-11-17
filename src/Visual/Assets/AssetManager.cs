@@ -26,7 +26,8 @@ namespace ShapeScape
         private static GraphicsDevice graphicsDevice => spriteBatch.GraphicsDevice;
         private static string textureDataFile;
         private static string animationDataFile;
-        private static readonly SamplerState samplerState = new()
+        public static SpriteFont font;
+        public static readonly SamplerState samplerState = new()
         {
             Filter = TextureFilter.Point,
             AddressU = TextureAddressMode.Clamp,
@@ -51,6 +52,7 @@ namespace ShapeScape
                 return;
             }
 
+            font = contentManager.Load<SpriteFont>("GrapeSoda");
             try
             {
                 textureDataFile = File.ReadAllText("Content/texturedata.json");
@@ -217,6 +219,7 @@ namespace ShapeScape
         public static Texture2D GetTexture(string name)
         {
             //Logger.Log("Getting texture: " + name);
+            if (name == "Text") return null;
             return textures[name];
         }
         public static ObjectTexture GetObjectTexture(string name)

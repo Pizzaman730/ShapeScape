@@ -73,19 +73,19 @@ namespace ShapeScape
                 }
 
                 // Check for key presses
-                if (InputManager.GetKeyDown(Keys.D1))
+                if (InputManager.GetKeyDown(player.inputs.playerMorphButton))
                 {
                     morphName = "None";
                     SwitchMorph(new PlayerMorph(), player);
                     morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
                 }
-                if (InputManager.GetKeyDown(Keys.D2)) 
+                if (InputManager.GetKeyDown(player.inputs.circleMorphButton)) 
                 {
                     morphName = "Circle";
                     SwitchMorph(new CircleMorph(), player);
                     morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
                 }
-                if (InputManager.GetKeyDown(Keys.D3)) 
+                if (InputManager.GetKeyDown(player.inputs.ovalMorphButton)) 
                 {
                     morphName = "BouncyOval";
                     SwitchMorph(new BouncyOvalMorph(), player);

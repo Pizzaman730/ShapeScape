@@ -17,7 +17,7 @@ namespace ShapeScape
         private Animation jumpAnimation;
         private bool facingRight = true;
         private MorphManager morphManager;
-        private InputProfile inputs = new InputProfile([Keys.Up, Keys.W, Keys.Space], [Keys.Right, Keys.D], [Keys.Down, Keys.S], [Keys.Left, Keys.A]);
+        public InputProfile inputs = new InputProfile([Keys.Up, Keys.W, Keys.Space], [Keys.Right, Keys.D], [Keys.Down, Keys.S], [Keys.Left, Keys.A]);
         public Player(Vec2 pos) : base("Player", pos, new Vec2(50, 50))
         {
             LevelManager.alivePlayers++;

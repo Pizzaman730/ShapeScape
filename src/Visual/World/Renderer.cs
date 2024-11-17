@@ -23,7 +23,7 @@ namespace ShapeScape
         public static void DrawAll()
         {
             List<Object> objects = ObjectManager.objects;
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.Deferred, null, AssetManager.samplerState);
             if (LevelManager.gameState == GameState.InEditor)
             {
                 DrawEditorUI();
@@ -38,10 +38,17 @@ namespace ShapeScape
                     DrawHitbox(obj);
                 }
             }
-            spriteBatch.End(); 
+            spriteBatch.End();
         }
         public static void Draw(Object obj)
         {
+            if (obj.name == "Text")
+            {
+                GameText text = (GameText)obj;
+                Vec2 pos = WindowManager.size / 2 + (obj.corner + new Vec2(obj.size.x, 0)) * new Vec2(-1, 1);
+                spriteBatch.DrawString(AssetManager.font, text.text, pos, text.color, 0, new Vec2(), (float)text.textScale, SpriteEffects.None, 0.5f);
+                return;
+            }
             foreach (var info in obj.objectTexture.textures)
             {
                 if (!info.enabled) return;
