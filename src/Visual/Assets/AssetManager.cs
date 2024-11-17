@@ -26,12 +26,16 @@ namespace ShapeScape
         private static GraphicsDevice graphicsDevice => spriteBatch.GraphicsDevice;
         private static string textureDataFile;
         private static string animationDataFile;
+        
         public static SpriteFont font;
+        public static SpriteFont shoppingCartFont;
+        public static SpriteFont grapeSodaFont;
         public static readonly SamplerState samplerState = new()
         {
             Filter = TextureFilter.Point,
             AddressU = TextureAddressMode.Clamp,
-            AddressV = TextureAddressMode.Clamp
+            AddressV = TextureAddressMode.Clamp,
+            AddressW = TextureAddressMode.Clamp
         };
         public static void Init(SpriteBatch sb)
         {
@@ -52,9 +56,11 @@ namespace ShapeScape
                 return;
             }
 
-            font = contentManager.Load<SpriteFont>("GrapeSoda");
             try
             {
+                shoppingCartFont = contentManager.Load<SpriteFont>("CartFont");
+                grapeSodaFont = contentManager.Load<SpriteFont>("GrapeSoda");
+                font = grapeSodaFont;
                 textureDataFile = File.ReadAllText("Content/texturedata.json");
                 animationDataFile = File.ReadAllText("Content/animationdata.json");
 
@@ -103,7 +109,10 @@ namespace ShapeScape
                     { "MadFaceStraight", (50, 50) },
                     { "SettingsButton", (100, 100) },
                     { "BackButton", (100, 100) },
-                    { "RestartButton", (100, 100) }
+                    { "RestartButton", (100, 100) },
+                    { "SwitchRed", (50, 25) },
+                    { "SwitchHalf", (50, 25) },
+                    { "SwitchGreen", (50, 25) }
                 };
 
                 foreach (var texture in texturesToLoad)
@@ -273,6 +282,5 @@ namespace ShapeScape
             texture.SetData(data);
             return texture;
         }
-
     }
 }

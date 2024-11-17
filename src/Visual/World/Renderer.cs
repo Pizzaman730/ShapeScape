@@ -46,7 +46,7 @@ namespace ShapeScape
             {
                 GameText text = (GameText)obj;
                 Vec2 pos = WindowManager.size / 2 + (obj.corner + new Vec2(obj.size.x, 0)) * new Vec2(-1, 1);
-                spriteBatch.DrawString(AssetManager.font, text.text, pos, text.color, 0, new Vec2(), (float)text.textScale, SpriteEffects.None, 0.5f);
+                spriteBatch.DrawString(AssetManager.font, text.text, pos, text.color, 0, new Vec2(), (float)text.textScale, SpriteEffects.None, 1f);
                 return;
             }
             foreach (var info in obj.objectTexture.textures)
@@ -89,47 +89,44 @@ namespace ShapeScape
 
         private static void DrawHitbox(Object obj)
         {
-            if (obj.Hitbox != null)  
-            {
-                Logger.Log($"Original Hitbox Position: X={obj.Hitbox.X}, Y={obj.Hitbox.Y}");
+            Logger.Log($"Original Hitbox Position: X={obj.Hitbox.X}, Y={obj.Hitbox.Y}");
 
-                Vec2 objectPos = obj.position;
+            Vec2 objectPos = obj.position;
 
-                Vec2 hitboxPos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + (obj.corner + new Vec2(obj.size.x, 0)) * new Vec2(-1, 1)) : Camera.TranslatePos(new Vec2(obj.corner.x, obj.corner.y + obj.size.y) * new Vec2(1, -1));
+            Vec2 hitboxPos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + (obj.corner + new Vec2(obj.size.x, 0)) * new Vec2(-1, 1)) : Camera.TranslatePos(new Vec2(obj.corner.x, obj.corner.y + obj.size.y) * new Vec2(1, -1));
 
-                Logger.Log($"Transformed Hitbox Position: X={hitboxPos.x}, Y={hitboxPos.y}");
+            Logger.Log($"Transformed Hitbox Position: X={hitboxPos.x}, Y={hitboxPos.y}");
 
-                // Set the color for the hitbox outline
-                Color hitboxColor = Color.Red;
+            // Set the color for the hitbox outline
+            Color hitboxColor = Color.Red;
 
-                // Draw the top border of the hitbox
-                spriteBatch.Draw(
-                    whiteTexture,  
-                    new Rectangle((int)hitboxPos.x, (int)hitboxPos.y, (int)obj.size.x, 3),  // Top border (3px height)
-                    hitboxColor
-                );
+            // Draw the top border of the hitbox
+            spriteBatch.Draw(
+                whiteTexture,  
+                new Rectangle((int)hitboxPos.x, (int)hitboxPos.y, (int)obj.size.x, 3),  // Top border (3px height)
+                hitboxColor
+            );
 
-                // Draw the bottom border of the hitbox
-                spriteBatch.Draw(
-                    whiteTexture,  
-                    new Rectangle((int)hitboxPos.x, (int)(hitboxPos.y + obj.size.y - 3), (int)obj.size.x, 3),  // Bottom border (3px height)
-                    hitboxColor
-                );
+            // Draw the bottom border of the hitbox
+            spriteBatch.Draw(
+                whiteTexture,  
+                new Rectangle((int)hitboxPos.x, (int)(hitboxPos.y + obj.size.y - 3), (int)obj.size.x, 3),  // Bottom border (3px height)
+                hitboxColor
+            );
 
-                // Draw the left border of the hitbox
-                spriteBatch.Draw(
-                    whiteTexture,  
-                    new Rectangle((int)hitboxPos.x, (int)hitboxPos.y, 3, (int)obj.size.y),  // Left border (3px width)
-                    hitboxColor
-                );
+            // Draw the left border of the hitbox
+            spriteBatch.Draw(
+                whiteTexture,  
+                new Rectangle((int)hitboxPos.x, (int)hitboxPos.y, 3, (int)obj.size.y),  // Left border (3px width)
+                hitboxColor
+            );
 
-                // Draw the right border of the hitbox
-                spriteBatch.Draw(
-                    whiteTexture,  
-                    new Rectangle((int)(hitboxPos.x + obj.size.x - 3), (int)hitboxPos.y, 3, (int)obj.size.y),  // Right border (3px width)
-                    hitboxColor
-                );
-            }
+            // Draw the right border of the hitbox
+            spriteBatch.Draw(
+                whiteTexture,  
+                new Rectangle((int)(hitboxPos.x + obj.size.x - 3), (int)hitboxPos.y, 3, (int)obj.size.y),  // Right border (3px width)
+                hitboxColor
+            );
         }
 
     }

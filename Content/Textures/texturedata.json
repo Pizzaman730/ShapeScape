@@ -186,5 +186,19 @@
                 "textureName": "RestartButton"
             }
         ]
+    },
+    {
+        "name": "FontSwitch",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Switch",
+                "textureName": "SwitchRed"
+            }
+        ]
     }
 ]

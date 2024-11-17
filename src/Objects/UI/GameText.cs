@@ -15,10 +15,15 @@ namespace ShapeScape
         {
             this.textScale = textScale;
             this.color = color;
+            this.text = text;
+            UpdateTextLocation();
+        }
+        public void UpdateTextLocation()
+        {
+            Vec2 oldSize = size;
             Vector2 sizeBad = AssetManager.font.MeasureString(text);
             size = new Vec2(sizeBad.X, sizeBad.Y) * textScale;
-            SetPos(position - size/2);
-            this.text = text;
+            Move(oldSize/2 - size/2);
         }
     }
 }
