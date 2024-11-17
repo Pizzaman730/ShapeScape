@@ -506,5 +506,55 @@
                 ]
             }
         }
+    },
+    {
+        "name": "SwitchOnAnimation",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Switch",
+                        "changeTexture": true,
+                        
+                        "textureChange": "SwitchHalf"
+                    }
+                ]
+            },
+            "4": {
+                "parts": [
+                    {
+                        "name": "Switch",
+                        "changeTexture": true,
+                        
+                        "textureChange": "SwitchGreen"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "SwitchOffAnimation",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Switch",
+                        "changeTexture": true,
+                        
+                        "textureChange": "SwitchHalf"
+                    }
+                ]
+            },
+            "4": {
+                "parts": [
+                    {
+                        "name": "Switch",
+                        "changeTexture": true,
+                        
+                        "textureChange": "SwitchRed"
+                    }
+                ]
+            }
+        }
     }
 ]
