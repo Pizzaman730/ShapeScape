@@ -214,5 +214,16 @@
                 "textureName": "SwitchRed"
             }
         ]
+    },
+    {
+        "name": "Empty",
+        "textures":
+        [
+            {
+                "enabled": true,
+                "name": "Empty",
+                "textureName": "Empty"
+            }
+        ]
     }
 ]

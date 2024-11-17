@@ -147,6 +147,11 @@ namespace ShapeScape
                 
                 foreach (TextureInfo info in obj.textures)
                 {
+                    if (info.name == "Empty")
+                    {
+                        info.SetTexture(CreateMissingTexture());
+                        continue;
+                    }
                     Logger.Log("Creating texture: " + info.name);
                     info.UpdateTexture();
                 }
@@ -245,6 +250,7 @@ namespace ShapeScape
             }
             else
             {
+                return objectTextures["Empty"];
                 Logger.Log($"Error: Object texture '{name}' not found.");
                 return null; 
             }

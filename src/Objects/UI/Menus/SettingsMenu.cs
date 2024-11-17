@@ -20,8 +20,8 @@ namespace ShapeScape
 
             // UIManager.AddObject(editorButton);
             backButton = new BackButton(new Vec2(50, -50));
-            fontSwitch = new FontSwitch(new Vec2(0, 300));
-            fontSwitchText = new GameText("Toggle special font", 1, new Vec2(0, 320), Color.White);
+            fontSwitch = new FontSwitch(new Vec2(0, 0));
+            fontSwitchText = new GameText("Toggle special font", 1, new Vec2(0, 20), Color.White);
 
             Camera.center = new Vec2();
         }
