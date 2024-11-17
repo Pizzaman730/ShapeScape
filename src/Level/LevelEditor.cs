@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
@@ -9,54 +10,38 @@ namespace ShapeScape
     {
         public static List<Object> currentLevelObjects = new();
         public static int selectedObjectIndex = 0;
-        public static Vec2 objectPlacementPosition = new(0, 0);
-        public static Vec2 platformSize = new(0, 0);
+        public static Vec2 platformStartPos = new();
         public static bool isPlacingPlatform = false;
+        public static bool openedThisFrame = true;
+        public static string placementType = "Platform";
 
         public static void Update()
         {
+            if (openedThisFrame)
+            {
+                openedThisFrame = false;
+                return;
+            }
             HandleInput();
         }
 
         private static void HandleInput()
         {
-            var mousePos = InputManager.MousePosWorld() * new Vec2(1, -1);
-
-            // Start placing platform
-            if (InputManager.GetButtonDown(MouseButton.LeftButton) && !isPlacingPlatform)
+            if (InputManager.ClickThisFrame())
             {
-                objectPlacementPosition = mousePos;
-                platformSize = new Vec2(0, 0);
-                isPlacingPlatform = true;
+                if (placementType == "Platform")
+                {
+                    isPlacingPlatform = true;
+                    platformStartPos = InputManager.MousePosWorld();
+                }
             }
-
-            // While dragging to resize the platform
-            else if (InputManager.GetButtonDown(MouseButton.LeftButton) && isPlacingPlatform)
+            if (isPlacingPlatform)
             {
-                platformSize = new Vec2(mousePos.x - objectPlacementPosition.x, mousePos.y - objectPlacementPosition.y);
-            }
-
-            // Place the platform when the mouse is released
-            if (!InputManager.GetButtonDown(MouseButton.LeftButton) && isPlacingPlatform)
-            {
-                isPlacingPlatform = false;
-                AddObjectToLevel(new Ground(objectPlacementPosition + (platformSize/2), platformSize));
-            }
-
-            // Move object placement position (for other objects if needed)
-            if (InputManager.GetKeyDown(Keys.Right))
-                objectPlacementPosition.x += 5;
-            if (InputManager.GetKeyDown(Keys.Left))
-                objectPlacementPosition.x -= 5;
-            if (InputManager.GetKeyDown(Keys.Up))
-                objectPlacementPosition.y += 5;
-            if (InputManager.GetKeyDown(Keys.Down))
-                objectPlacementPosition.y -= 5;
-
-            // Add object to level (e.g., pressing Enter)
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
-            {
-                AddObjectToLevel(new Ground(objectPlacementPosition, new Vec2(50, 10)));
+                if (!InputManager.GetButtonDown(MouseButton.LeftButton))
+                {
+                    isPlacingPlatform = false;
+                    CreatePlatform(platformStartPos, InputManager.MousePosWorld());
+                }
             }
         }
 
@@ -64,6 +49,27 @@ namespace ShapeScape
         {
             currentLevelObjects.Add(obj);
             ObjectManager.AddObject(obj);
+        }
+        public static void CreatePlatform(Vec2 pos1, Vec2 pos2)
+        {
+            pos1.x -= WindowManager.size.x / 2;
+            pos2.x -= WindowManager.size.x / 2;
+            pos1.y += WindowManager.size.y / 2;
+            pos2.y += WindowManager.size.y / 2;
+            pos1 *= new Vec2(1, -1);
+            pos2 *= new Vec2(1, -1);
+            // Calculate size (absolute difference between coordinates)
+            Vec2 size = new Vec2(Math.Abs(pos2.x - pos1.x), Math.Abs(pos2.y - pos1.y));
+            if (size.x == 0 || size.y == 0)
+            {
+                return;
+            }
+
+            // Calculate center
+            Vec2 center = new Vec2((pos1.x + pos2.x) / 2, (pos1.y + pos2.y) / 2);
+
+            // Create the platform with the calculated center and size
+            currentLevelObjects.Add(new Ground(center, size));
         }
 
         public static void SaveLevel(string levelName)

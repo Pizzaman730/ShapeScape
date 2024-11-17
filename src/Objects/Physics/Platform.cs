@@ -17,8 +17,14 @@ namespace ShapeScape
 
             // Create textures
             objectTexture.textures[0] = AssetManager.TileTexture(objectTexture.textures[0], new Vec2(size.x, size.y)); 
-            objectTexture.textures[1] = AssetManager.TileTexture(objectTexture.textures[1], new Vec2(size.x, size.y)); 
-
+            if (size.y >= 100)
+            {
+                objectTexture.textures[1] = AssetManager.TileTexture(objectTexture.textures[1], new Vec2(size.x, size.y - 100)); 
+            }
+            else
+            {
+                objectTexture.textures[1].enabled = false;
+            }
             tags.Add("Surface");
         }
     }

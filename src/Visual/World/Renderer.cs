@@ -24,11 +24,6 @@ namespace ShapeScape
         {
             List<Object> objects = ObjectManager.objects;
             spriteBatch.Begin(SpriteSortMode.Deferred, null, AssetManager.samplerState);
-            if (LevelManager.gameState == GameState.InEditor)
-            {
-                DrawEditorUI();
-            }
-
             foreach (Object obj in objects)
             {
                 Draw(obj);
@@ -38,6 +33,11 @@ namespace ShapeScape
                     DrawHitbox(obj);
                 }
             }
+            if (LevelManager.gameState == GameState.InEditor)
+            {
+                DrawEditorUI();
+            }
+
             spriteBatch.End();
         }
         public static void Draw(Object obj)
@@ -71,11 +71,26 @@ namespace ShapeScape
 
         private static void DrawEditorUI()
         {
+            Vec2 mousePos = InputManager.MousePosWorld();
             if (LevelEditor.isPlacingPlatform)
             {
-                // Draw a preview of the platform while dragging
-                Vec2 start = Camera.TranslatePos(LevelEditor.objectPlacementPosition * new Vec2(-1, 1));
-                Vec2 size = LevelEditor.platformSize * new Vec2(-1, 1);
+                Vec2 pos1 = LevelEditor.platformStartPos;
+                Vec2 pos2 = mousePos;
+                pos1 = Camera.TranslatePos(pos1);
+                pos2 = Camera.TranslatePos(pos2);
+                //pos1.x -= WindowManager.size.x / 2;
+                //pos2 -= WindowManager.size / 2;
+
+                pos1.x -= WindowManager.size.x / 2;
+                pos2.x -= WindowManager.size.x / 2;
+                pos1.y += WindowManager.size.y / 2;
+                pos2.y += WindowManager.size.y / 2;
+                //pos1 *= new Vec2(1, -1);
+                //pos2 *= new Vec2(1, -1);
+
+                Vec2 size = new Vec2(Math.Abs(pos2.x - pos1.x), Math.Abs(pos2.y - pos1.y));
+    
+                Vec2 start = new Vec2(Math.Min(pos1.x, pos2.x), Math.Min(pos1.y, pos2.y));
 
                 // Draw a semi-transparent platform preview
                 spriteBatch.Draw(
