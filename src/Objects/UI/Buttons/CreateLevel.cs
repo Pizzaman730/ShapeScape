@@ -7,7 +7,7 @@ namespace ShapeScape
 {
     public class EditorButton : Button
     {
-        public EditorButton(Vec2 pos) : base("StartButton", pos, new Vec2(200, 100))
+        public EditorButton(Vec2 pos) : base("EditorButton", pos, new Vec2(200, 100))
         {
             tags.Add("EditorButton");
         }

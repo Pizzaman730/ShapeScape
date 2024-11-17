@@ -112,7 +112,8 @@ namespace ShapeScape
                     { "RestartButton", (100, 100) },
                     { "SwitchRed", (50, 25) },
                     { "SwitchHalf", (50, 25) },
-                    { "SwitchGreen", (50, 25) }
+                    { "SwitchGreen", (50, 25) },
+                    { "EditorButton", (200, 100) }
                 };
 
                 foreach (var texture in texturesToLoad)
