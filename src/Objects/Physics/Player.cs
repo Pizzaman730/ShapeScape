@@ -84,6 +84,7 @@ namespace ShapeScape
         }
         public override void CollisionEnd(CollisionInformation info)
         {
+            if (morphManager.morphName == "Triangle" && (info.obj.name == "CircleEnemy" || info.obj.name == "TrapezoidEnemy" || info.obj.name == "RectangleEnemy" || info.obj.name == "BouncyOval")) ObjectManager.AddToDestroy(info.obj);
             if (info.side == Side.Left || info.side == Side.Right || info.obj.position.y > position.y) return;
             jumpable = true;
             timeSinceOnFloor = 0;
@@ -91,7 +92,7 @@ namespace ShapeScape
         }
         public void Kill(string killSource)
         {
-            if ((killSource == "CircleEnemy" || killSource == "RectangleEnemy" || killSource == "TrapezoidEnemy") && morphManager.morphName == "Circle") return;
+            if ((killSource == "CircleEnemy" || killSource == "RectangleEnemy" || killSource == "TrapezoidEnemy") && (morphManager.morphName == "Circle" || morphManager.morphName == "Triangle")) return;
             ObjectManager.AddToDestroy(this);
             LevelManager.alivePlayers--;
             Camera.targets.Remove(this);

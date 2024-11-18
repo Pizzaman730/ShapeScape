@@ -16,7 +16,7 @@ namespace ShapeScape
         public Keys circleMorphButton = Keys.D2;
         public Keys ovalMorphButton = Keys.D3;
         public Keys trapezoidMorphButton = Keys.D4;
-
+        public Keys triangleMorphButton = Keys.D5;
         public InputProfile(Keys[] up, Keys[] right, Keys[] down, Keys[] left)
         {
             this.up = up;

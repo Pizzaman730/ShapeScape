@@ -636,6 +636,42 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Player/TrapezoidMorph.png;TrapezoidMorph.png
 
+#begin Textures/Player/TriangleMorph.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Player/TriangleMorph.png;TriangleMorph.png
+
+#begin Textures/Player/TriangleMorphFaceRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Player/TriangleMorphFaceRight.png;TriangleMorphFaceRight.png
+
+#begin Textures/Player/TriangleMorphFaceStraight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Player/TriangleMorphFaceStraight.png;TriangleMorphFaceStraight.png
+
 #begin Textures/RectangleEnemy/RectangleEnemyBody.png
 /importer:TextureImporter
 /processor:TextureProcessor

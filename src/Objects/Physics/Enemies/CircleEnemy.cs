@@ -71,7 +71,7 @@ namespace ShapeScape
             if (info.obj.tags.Contains("Player") && info.side == Side.Up) 
             {
                 ObjectManager.AddToDestroy(this);
-                ((Player)info.obj).Jump(16);
+                ((Player)info.obj).Jump(((Player)info.obj).jumpHeight + 1);
                 return;
             }
             if (info.obj.tags.Contains("Player"))
