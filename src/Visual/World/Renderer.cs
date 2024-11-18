@@ -71,22 +71,37 @@ namespace ShapeScape
 
         private static void DrawEditorUI()
         {
-            Vec2 mousePos = InputManager.MousePosWorld();
+            foreach (EditorObject obj in LevelEditor.currentLevelObjects)
+                {
+                    foreach (var info in obj.objectTexture.textures)
+                    {
+                        if (!info.enabled) continue;
+                        Vec2 pos = Camera.TranslatePos((new Vec2(obj.position.x - obj.size.x / 2, obj.position.y + obj.size.y / 2) + info.offset) * new Vec2(1, -1));
+                        SpriteEffects effects = SpriteEffects.None;
+                        spriteBatch.Draw(
+                            info.texture,
+                            pos,
+                            null,
+                            Color.White,
+                            0,
+                            Vector2.Zero,
+                            1,
+                            effects,
+                            0
+                            );
+                    }
+                }
             if (LevelEditor.isPlacingPlatform)
             {
+                Vec2 mousePos = InputManager.MousePosWorld();
                 Vec2 pos1 = LevelEditor.platformStartPos;
                 Vec2 pos2 = mousePos;
+                pos1 *= new Vec2(1, -1);
+                pos2 *= new Vec2(1, -1);
                 pos1 = Camera.TranslatePos(pos1);
                 pos2 = Camera.TranslatePos(pos2);
                 //pos1.x -= WindowManager.size.x / 2;
                 //pos2 -= WindowManager.size / 2;
-
-                pos1.x -= WindowManager.size.x / 2;
-                pos2.x -= WindowManager.size.x / 2;
-                pos1.y += WindowManager.size.y / 2;
-                pos2.y += WindowManager.size.y / 2;
-                //pos1 *= new Vec2(1, -1);
-                //pos2 *= new Vec2(1, -1);
 
                 Vec2 size = new Vec2(Math.Abs(pos2.x - pos1.x), Math.Abs(pos2.y - pos1.y));
     

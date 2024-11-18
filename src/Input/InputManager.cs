@@ -37,7 +37,11 @@ namespace ShapeScape
         }
         public static Vec2 MousePosWorld()
         {
-            return Camera.TranslatePos(new Vec2()-MousePos()) * new Vec2(1, -1);
+            Vec2 mousePos = Camera.TranslatePos(new Vec2()-MousePos()) * new Vec2(1, -1);
+            mousePos.x -= WindowManager.size.x / 2;
+            mousePos.y += WindowManager.size.y / 2;
+            mousePos *= new Vec2(1, -1);
+            return mousePos; 
         }
         public static void Update()
         {

@@ -100,7 +100,7 @@ namespace ShapeScape
         public void Jump(int height)
         {
             jumpable = false;
-            velocity.y = height;
+            velocity.y = height; 
             jumping = true;
         }
     }
