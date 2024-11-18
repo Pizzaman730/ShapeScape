@@ -70,7 +70,7 @@ namespace ShapeScape
             }
             if (info.obj.tags.Contains("Player"))
             {
-                ((Player)info.obj).Kill("Enemy");
+                ((Player)info.obj).Kill("TrapezoidEnemy");
             }
         }
     }

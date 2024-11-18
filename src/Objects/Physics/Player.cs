@@ -16,7 +16,7 @@ namespace ShapeScape
         public Animation turnRightAnim;
         private Animation jumpAnimation;
         private bool facingRight = true;
-        private MorphManager morphManager;
+        public MorphManager morphManager;
         public InputProfile inputs = new InputProfile([Keys.Up, Keys.W, Keys.Space], [Keys.Right, Keys.D], [Keys.Down, Keys.S], [Keys.Left, Keys.A]);
         public Player(Vec2 pos) : base("Player", pos, new Vec2(50, 50))
         {
@@ -91,7 +91,7 @@ namespace ShapeScape
         }
         public void Kill(string killSource)
         {
-            if ((killSource == "CircleEnemy" || killSource == "Enemy") && morphManager.morphName == "Circle") return;
+            if ((killSource == "CircleEnemy" || killSource == "RectangleEnemy" || killSource == "TrapezoidEnemy") && morphManager.morphName == "Circle") return;
             ObjectManager.AddToDestroy(this);
             LevelManager.alivePlayers--;
             Camera.targets.Remove(this);

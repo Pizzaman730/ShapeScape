@@ -70,7 +70,8 @@ namespace ShapeScape
             }
             if (info.obj.tags.Contains("Player"))
             {
-                ((Player)info.obj).Kill("Enemy");
+                if (((Player)info.obj).morphManager.morphName == "Circle" && info.side != Side.Up) return;
+                ((Player)info.obj).Kill("TriangleEnemy");
             }
         }
     }
