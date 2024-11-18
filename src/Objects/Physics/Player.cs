@@ -91,7 +91,7 @@ namespace ShapeScape
         }
         public void Kill(string killSource)
         {
-            if (killSource == "CircleEnemy" && morphManager.morphName == "Circle") return;
+            if ((killSource == "CircleEnemy" || killSource == "Enemy") && morphManager.morphName == "Circle") return;
             ObjectManager.AddToDestroy(this);
             LevelManager.alivePlayers--;
             Camera.targets.Remove(this);

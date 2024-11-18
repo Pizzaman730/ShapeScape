@@ -89,6 +89,7 @@ namespace ShapeScape
                     { "TrapezoidEnemyFaceRight", (50, 25) },
                     { "TrapezoidEnemyFaceStraight", (50, 25) },
                     { "TrapezoidEnemyBody", (50, 25) },
+                    { "TrapezoidMorph", (50, 25) },
                     { "RectangleEnemyFaceRight", (100, 50) },
                     { "RectangleEnemyFaceStraight", (100, 50) },
                     { "RectangleEnemyBody", (100, 50) },

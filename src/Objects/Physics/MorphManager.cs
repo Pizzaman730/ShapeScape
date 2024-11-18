@@ -91,6 +91,12 @@ namespace ShapeScape
                     SwitchMorph(new BouncyOvalMorph(), player);
                     morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
                 }
+                if (InputManager.GetKeyDown(player.inputs.trapezoidMorphButton)) 
+                {
+                    morphName = "Trapezoid";
+                    SwitchMorph(new TrapezoidMorph(), player);
+                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
+                }
             }
             catch (Exception ex)
             {
