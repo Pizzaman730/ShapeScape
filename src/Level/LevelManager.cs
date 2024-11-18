@@ -64,13 +64,17 @@ namespace ShapeScape
                 // BouncyOvals
                 new BouncyOval(new Vec2(3300, -75));
 
+                //Trapezoids
+                new TrapezoidEnemy(new Vec2(4000, 313));
+
                 // Platforms
-                new Ground(new Vec2(3000, -300), new Vec2(800, 400));
+                new Ground(new Vec2(3000, -300), new Vec2(1000, 400));
                 new Ground(new Vec2(2400, -100), new Vec2(500, 800));
                 new Ground(new Vec2(0, -200), new Vec2(1000, 400));
                 new Ground(new Vec2(1400, -200), new Vec2(1000, 400));
                 new Ground(new Vec2(-1400, -100), new Vec2(1000, 600));
                 new Ground(new Vec2(1650, -100), new Vec2(500, 600));
+                new Ground(new Vec2(4000, -100), new Vec2(1000, 800));
                 Camera.FollowTargets(false);
             }
         }

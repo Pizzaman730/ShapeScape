@@ -663,6 +663,42 @@
 #begin Textures/texturedata.json
 /copy:Textures/texturedata.json;texturedata.json
 
+#begin Textures/TrapezoidEnemy/TrapezoidEnemyBody.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/TrapezoidEnemy/TrapezoidEnemyBody.png;TrapezoidEnemyBody.png
+
+#begin Textures/TrapezoidEnemy/TrapezoidEnemyFaceRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/TrapezoidEnemy/TrapezoidEnemyFaceRight.png;TrapezoidEnemyFaceRight.png
+
+#begin Textures/TrapezoidEnemy/TrapezoidEnemyFaceStraight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/TrapezoidEnemy/TrapezoidEnemyFaceStraight.png;TrapezoidEnemyFaceStraight.png
+
 #begin Textures/TriangleEnemy/TriangleEnemyBody.png
 /importer:TextureImporter
 /processor:TextureProcessor

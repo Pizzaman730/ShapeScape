@@ -186,6 +186,68 @@
         }
     },
     {
+        "name": "TrapezoidEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "TrapezoidEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
         "name": "RectangleEnemyTurnLeft",
         "keyframes": {
             "1": {

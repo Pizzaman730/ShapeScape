@@ -86,6 +86,9 @@ namespace ShapeScape
                     { "TriangleEnemyFaceRight", (50, 50) },
                     { "TriangleEnemyFaceStraight", (50, 50) },
                     { "TriangleEnemyBody", (50, 50) },
+                    { "TrapezoidEnemyFaceRight", (50, 25) },
+                    { "TrapezoidEnemyFaceStraight", (50, 25) },
+                    { "TrapezoidEnemyBody", (50, 25) },
                     { "RectangleEnemyFaceRight", (100, 50) },
                     { "RectangleEnemyFaceStraight", (100, 50) },
                     { "RectangleEnemyBody", (100, 50) },
@@ -250,9 +253,8 @@ namespace ShapeScape
             }
             else
             {
-                return objectTextures["Empty"];
                 Logger.Log($"Error: Object texture '{name}' not found.");
-                return null; 
+                return objectTextures["Empty"];
             }
         }
 

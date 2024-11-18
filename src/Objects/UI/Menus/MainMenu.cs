@@ -26,7 +26,9 @@ namespace ShapeScape
 
             // Uncomment for editor
             editorButton = new EditorButton(new Vec2(0, -150));
-            editorText = new GameText("Editor", 2, new Vec2(0, -150), Color.Black);
+            string text = "Editor";
+            if (AssetManager.font == AssetManager.shoppingCartFont) text = "Edi\ntor";
+            editorText = new GameText(text, 2, new Vec2(0, -150), Color.Black);
             // UIManager.AddObject(editorButton);
 
             settingsButton = new SettingsButton(new Vec2(-50, 50));
