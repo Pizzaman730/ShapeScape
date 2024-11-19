@@ -30,6 +30,7 @@ namespace ShapeScape
         {
             UIManager.RemoveObject(backButton);
             UIManager.RemoveObject(fontSwitch);
+            UIManager.RemoveObject(fontSwitchText);
         }
 
         public void Update()

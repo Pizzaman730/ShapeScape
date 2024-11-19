@@ -10,6 +10,11 @@ namespace ShapeScape
         {
             if (gameState == GameState.InEditor)
             {
+                if (!firstUpdateDone)
+                {
+                    firstUpdateDone = true;
+                    UIManager.SetMenu(new UIMenuEditor());
+                }
                 LevelEditor.Update();
             }
             if (gameState == GameState.InMenu)

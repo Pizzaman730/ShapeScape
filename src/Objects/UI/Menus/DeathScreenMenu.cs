@@ -27,6 +27,8 @@ namespace ShapeScape
         public void Hide()
         {
             UIManager.RemoveObject(backButton);
+            UIManager.RemoveObject(restartButton);
+            UIManager.RemoveObject(text);
         }
 
         public void Update()

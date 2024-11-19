@@ -432,6 +432,18 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Menus/EditorButton.png;EditorButton.png
 
+#begin Textures/Menus/LoadButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Menus/LoadButton.png;LoadButton.png
+
 #begin Textures/Menus/RestartButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -443,6 +455,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/Menus/RestartButton.png;RestartButton.png
+
+#begin Textures/Menus/SaveButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/Menus/SaveButton.png;SaveButton.png
 
 #begin Textures/Menus/SettingsButton.png
 /importer:TextureImporter
