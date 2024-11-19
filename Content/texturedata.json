@@ -110,6 +110,28 @@
         ]
     },
     {
+        "name": "TrapezoidEnemy",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Body",
+                "textureName": "TrapezoidEnemyBody"
+            },
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "Face",
+                "textureName": "TrapezoidEnemyFaceRight"
+            }
+        ]
+    },
+    {
         "name": "Ground",
         "textures": 
         [
@@ -174,6 +196,34 @@
         ]
     },
     {
+        "name": "SaveButton",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "SaveButton",
+                "textureName": "SaveButton"
+            }
+        ]
+    },
+    {
+        "name": "LoadButton",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": true, 
+                "name": "LoadButton",
+                "textureName": "LoadButton"
+            }
+        ]
+    },
+    {
         "name": "BackButton",
         "textures": 
         [
@@ -212,6 +262,17 @@
                 "enabled": true, 
                 "name": "Switch",
                 "textureName": "SwitchRed"
+            }
+        ]
+    },
+    {
+        "name": "Empty",
+        "textures":
+        [
+            {
+                "enabled": true,
+                "name": "Empty",
+                "textureName": "Empty"
             }
         ]
     }
