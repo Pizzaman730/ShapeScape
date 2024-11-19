@@ -38,7 +38,27 @@ namespace ShapeScape
                 }
                 else if (InputManager.GetKeyDown(Keys.D2))
                 {
+                    placementType = "Player";
+                }
+                else if (InputManager.GetKeyDown(Keys.D3))
+                {
                     placementType = "CircleEnemy";
+                }
+                else if (InputManager.GetKeyDown(Keys.D4))
+                {
+                    placementType = "TriangleEnemy";
+                }
+                else if (InputManager.GetKeyDown(Keys.D5))
+                {
+                    placementType = "RectangleEnemy";
+                }
+                else if (InputManager.GetKeyDown(Keys.D6))
+                {
+                    placementType = "BouncyOval";
+                }
+                else if (InputManager.GetKeyDown(Keys.D7))
+                {
+                    placementType = "TrapezoidEnemy";
                 }
             }
             if (InputManager.ClickThisFrame())
@@ -51,6 +71,26 @@ namespace ShapeScape
                 if (placementType == "CircleEnemy")
                 {
                     currentLevelObjects.Add(new EditorObject("CircleEnemy", mousePos, new Vec2(50, 50)));
+                }
+                if (placementType == "Player")
+                {
+                    currentLevelObjects.Add(new EditorObject("Player", mousePos, new Vec2(50, 50)));
+                }
+                if (placementType == "TriangleEnemy")
+                {
+                    currentLevelObjects.Add(new EditorObject("TriangleEnemy", mousePos, new Vec2(50, 50)));
+                }
+                if (placementType == "RectangleEnemy")
+                {
+                    currentLevelObjects.Add(new EditorObject("RectangleEnemy", mousePos, new Vec2(100, 50)));
+                }
+                if (placementType == "BouncyOval")
+                {
+                    currentLevelObjects.Add(new EditorObject("BouncyOval", mousePos, new Vec2(50, 50)));
+                }
+                if (placementType == "TrapezoidEnemy")
+                {
+                    currentLevelObjects.Add(new EditorObject("TrapezoidEnemy", mousePos, new Vec2(50, 25)));
                 }
             }
             if (isPlacingPlatform)
