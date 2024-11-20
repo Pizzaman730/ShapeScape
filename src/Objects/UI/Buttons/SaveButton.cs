@@ -13,9 +13,13 @@ namespace ShapeScape
             zone = OverlayZone.TopLeft;
             UpdatePosForOverlay();
         }
+
         public override void OnButtonClick()
         {
-
+            string levelName = "NewLevel"; 
+            LevelEditor.SaveLevel(levelName);
+            Logger.Log($"Level saved as {levelName}.json");
         }
     }
+
 }

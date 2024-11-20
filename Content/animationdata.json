@@ -186,6 +186,130 @@
         }
     },
     {
+        "name": "TrapezoidEnemyTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "TrapezoidEnemyTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "TrapezoidEnemyFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "TriangleMorphTurnRight",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TriangleMorphFaceStraight",
+                        "flip": false
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": 3.125, "y": 0 },
+                        "textureChange": "TriangleMorphFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
+        "name": "TriangleMorphTurnLeft",
+        "keyframes": {
+            "1": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        "changeFlipped": true,
+                        
+                        "offsetSet": { "x": 0, "y": 0 },
+                        "textureChange": "TriangleMorphFaceStraight",
+                        "flip": true
+                    }
+                ]
+            },
+            "5": {
+                "parts": [
+                    {
+                        "name": "Face",
+                        "setOffset": true,
+                        "changeTexture": true,
+                        
+                        "offsetSet": { "x": -3.125, "y": 0 },
+                        "textureChange": "TriangleMorphFaceRight"
+                    }
+                ]
+            }
+        }
+    },
+    {
         "name": "RectangleEnemyTurnLeft",
         "keyframes": {
             "1": {
