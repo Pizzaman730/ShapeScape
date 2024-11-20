@@ -15,7 +15,9 @@ namespace ShapeScape
         }
         public override void OnButtonClick()
         {
-
+            string levelName = "NewLevel"; 
+            LevelEditor.LoadLevel(levelName);
+            Logger.Log($"Level {levelName}.json loaded.");
         }
     }
 }

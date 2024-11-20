@@ -119,13 +119,13 @@ namespace ShapeScape
 
         private static void DrawHitbox(Object obj)
         {
-            Logger.Log($"Original Hitbox Position: X={obj.Hitbox.X}, Y={obj.Hitbox.Y}");
+            // Logger.Log($"Original Hitbox Position: X={obj.Hitbox.X}, Y={obj.Hitbox.Y}");
 
             Vec2 objectPos = obj.position;
 
             Vec2 hitboxPos = (obj.tags.Contains("UI") && ((UIObject)obj).overlay) ? (WindowManager.size / 2 + (obj.corner + new Vec2(obj.size.x, 0)) * new Vec2(-1, 1)) : Camera.TranslatePos(new Vec2(obj.corner.x, obj.corner.y + obj.size.y) * new Vec2(1, -1));
 
-            Logger.Log($"Transformed Hitbox Position: X={hitboxPos.x}, Y={hitboxPos.y}");
+            // Logger.Log($"Transformed Hitbox Position: X={hitboxPos.x}, Y={hitboxPos.y}");
 
             // Set the color for the hitbox outline
             Color hitboxColor = Color.Red;
