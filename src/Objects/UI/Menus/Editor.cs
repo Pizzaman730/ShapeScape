@@ -8,8 +8,8 @@
          public void Show()
          {
             backButton = new BackButton(new Vec2(50, -50));
-            saveButton = new SaveButton(new Vec2(150, -25));
-            loadButton = new LoadButton(new Vec2(-50, -25));
+            saveButton = new SaveButton(new Vec2(200, -50));
+            loadButton = new LoadButton(new Vec2(-100, -50));
          }
 
 

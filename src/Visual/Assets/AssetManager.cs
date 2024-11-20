@@ -121,8 +121,12 @@ namespace ShapeScape
                     { "SwitchHalf", (50, 25) },
                     { "SwitchGreen", (50, 25) },
                     { "EditorButton", (200, 100) },
-                    { "SaveButton", (100, 50) },
-                    { "LoadButton", (100, 50) }
+                    { "SaveButton", (200, 100) },
+                    { "LoadButton", (200, 100) },
+                    { "StonePlatformLeft", (50, 50) },
+                    { "StonePlatformMiddle", (50, 50) },
+                    { "StonePlatformRight", (50, 50) },
+                    { "StonePlatformSingle", (50, 50) }
                 };
 
                 foreach (var texture in texturesToLoad)

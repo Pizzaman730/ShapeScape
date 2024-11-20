@@ -80,6 +80,7 @@ namespace ShapeScape
                 new Ground(new Vec2(-1400, -100), new Vec2(1000, 600));
                 new Ground(new Vec2(1650, -100), new Vec2(500, 600));
                 new Ground(new Vec2(4000, -100), new Vec2(1000, 800));
+                new StonePlatform(new Vec2(0, 500), new Vec2(1000, 50));
                 Camera.FollowTargets(false);
             }
         }

@@ -7,7 +7,7 @@ namespace ShapeScape
 {
     public class SaveButton : Button
     {
-        public SaveButton(Vec2 pos) : base("SaveButton", pos, new Vec2(100, 50))
+        public SaveButton(Vec2 pos) : base("SaveButton", pos, new Vec2(200, 100))
         {
             tags.Add("SaveButton");
             zone = OverlayZone.TopLeft;

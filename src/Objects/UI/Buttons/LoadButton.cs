@@ -7,7 +7,7 @@ namespace ShapeScape
 {
     public class LoadButton : Button
     {
-        public LoadButton(Vec2 pos) : base("LoadButton", pos, new Vec2(100, 50))
+        public LoadButton(Vec2 pos) : base("LoadButton", pos, new Vec2(200, 100))
         {
             tags.Add("LoadButton");
             zone = OverlayZone.TopRight;

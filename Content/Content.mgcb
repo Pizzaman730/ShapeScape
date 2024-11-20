@@ -732,6 +732,54 @@
 /processorParam:TextureFormat=Color
 /build:Textures/RectangleEnemy/RectangleEnemyFaceStraight.png;RectangleEnemyFaceStraight.png
 
+#begin Textures/StonePlatform/StonePlatformLeft.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/StonePlatform/StonePlatformLeft.png;StonePlatformLeft.png
+
+#begin Textures/StonePlatform/StonePlatformMiddle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/StonePlatform/StonePlatformMiddle.png;StonePlatformMiddle.png
+
+#begin Textures/StonePlatform/StonePlatformRight.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/StonePlatform/StonePlatformRight.png;StonePlatformRight.png
+
+#begin Textures/StonePlatform/StonePlatformSingle.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/StonePlatform/StonePlatformSingle.png;StonePlatformSingle.png
+
 #begin Textures/texturedata.json
 /copy:Textures/texturedata.json;texturedata.json
 

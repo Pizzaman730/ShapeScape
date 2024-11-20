@@ -154,6 +154,44 @@
         ]
     },
     {
+        "name": "StonePlatform",
+        "textures": 
+        [
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": false, 
+                "name": "Left",
+                "textureName": "StonePlatformLeft"
+            },
+            {
+                "offset": { "x": 50, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": false, 
+                "name": "Middle",
+                "textureName": "StonePlatformMiddle"
+            },
+            {
+                "offset": { "x": 50, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": false, 
+                "name": "Right",
+                "textureName": "StonePlatformRight"
+            },
+            {
+                "offset": { "x": 0, "y": 0}, 
+                "rotation": 0, 
+                "scale": { "x": 0, "y": 0}, 
+                "enabled": false, 
+                "name": "Single",
+                "textureName": "StonePlatformSingle"
+            }
+        ]
+    },
+    {
         "name": "StartButton",
         "textures": 
         [
