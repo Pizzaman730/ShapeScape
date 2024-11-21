@@ -10,6 +10,8 @@ namespace ShapeScape
         private SettingsButton settingsButton;
         private GameText playText;
         private GameText editorText;
+        private GameText titleText; // Title text for "Shape Scape"
+        private GameText versionText; // Version text
 
         public UIMainMenu()
         {
@@ -20,18 +22,24 @@ namespace ShapeScape
             // Show buttons and UI
             new Ground(new Vec2(0, 0), new Vec2(4000, 2000));
 
-            startButton = new StartButton(new Vec2()); 
-            playText = new GameText("Play", 2, new Vec2(0, 0), Color.Black);
-
+            // Start Button
+            startButton = new StartButton(new Vec2(-150, -100)); 
+            playText = new GameText("Play", 2, new Vec2(-150, -100), Color.Black);
 
             // Uncomment for editor
-            editorButton = new EditorButton(new Vec2(0, -150));
-            string text = "Editor";
-            if (AssetManager.font == AssetManager.shoppingCartFont) text = "Edi\ntor";
-            editorText = new GameText(text, 2, new Vec2(0, -150), Color.Black);
-            // UIManager.AddObject(editorButton);
+            editorButton = new EditorButton(new Vec2(150, -100));
+            editorText = new GameText("Editor", 2, new Vec2(150, -100), Color.Black);
 
+            // Settings Button
             settingsButton = new SettingsButton(new Vec2(-50, 50));
+
+            // Title Text - Shape Scape
+            titleText = new GameText("Shape Scape", 4, new Vec2(0, 50), Color.Black);
+
+            // Version Text - Displaying version number 
+            versionText = new GameText("Version 0.3.0-alpha", 1, new Vec2(125, 20), Color.Gray);
+            versionText.zone = OverlayZone.BottomLeft;
+            versionText.UpdatePosForOverlay();
 
             Camera.center = startButton.position;
         }
@@ -43,11 +51,12 @@ namespace ShapeScape
             UIManager.RemoveObject(settingsButton);
             UIManager.RemoveObject(playText);
             UIManager.RemoveObject(editorText);
+            UIManager.RemoveObject(titleText); 
+            UIManager.RemoveObject(versionText); 
         }
 
         public void Update()
         {
-
         }
     }
 }

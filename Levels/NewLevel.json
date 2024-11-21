@@ -2,23 +2,67 @@
   {
     "name": "Ground",
     "position": {
-      "x": -124,
-      "y": 2.5
+      "x": -86,
+      "y": -36
     },
     "size": {
-      "x": 56,
-      "y": 53
+      "x": 348,
+      "y": 204
     }
   },
   {
     "name": "Ground",
     "position": {
-      "x": 156.5,
-      "y": 18
+      "x": -188.5,
+      "y": 86.5
     },
     "size": {
-      "x": 385,
-      "y": 208
+      "x": 7,
+      "y": 1
+    }
+  },
+  {
+    "name": "Player",
+    "position": {
+      "x": -196,
+      "y": 93
+    },
+    "size": {
+      "x": 50,
+      "y": 50
+    }
+  },
+  {
+    "name": "CircleEnemy",
+    "position": {
+      "x": -48,
+      "y": 84
+    },
+    "size": {
+      "x": 50,
+      "y": 50
+    }
+  },
+  {
+    "name": "CircleEnemy",
+    "position": {
+      "x": 38,
+      "y": 96
+    },
+    "size": {
+      "x": 50,
+      "y": 50
+    }
+  },
+  {
+    "name": "CircleEnemy",
+    "position": {
+      "x": -726,
+      "y": 431
+    },
+    "size": {
+      "x": 50,
+      "y": 50
     }
   }
 ]
