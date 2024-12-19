@@ -8,6 +8,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ShapeScape
 {
+    /// <summary>
+    /// LevelEditor is responsible for managing the creation, modification, and saving of level objects.
+    /// </summary>
     public static class LevelEditor
     {
         public static List<EditorObject> currentLevelObjects = new();
@@ -16,8 +19,11 @@ namespace ShapeScape
         public static bool isPlacingPlatform = false;
         public static bool openedThisFrame = true;
         public static string placementType = "Ground";
-        public static Keys[] numKeys = {Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5, Keys.D6, Keys.D7, Keys.D8, Keys.D9};
+        public static Keys[] numKeys = { Keys.D1, Keys.D2, Keys.D3, Keys.D4, Keys.D5, Keys.D6, Keys.D7, Keys.D8, Keys.D9 };
 
+        /// <summary>
+        /// Updates the LevelEditor state each frame.
+        /// </summary>
         public static void Update()
         {
             Logger.Debug("Update called.");
@@ -30,6 +36,9 @@ namespace ShapeScape
             HandleInput();
         }
 
+        /// <summary>
+        /// Handles user input for object placement and selection.
+        /// </summary>
         private static void HandleInput()
         {
             Logger.Debug("Handling input.");
@@ -97,12 +106,21 @@ namespace ShapeScape
             }
         }
 
+        /// <summary>
+        /// Adds a new object to the current level.
+        /// </summary>
+        /// <param name="obj">The object to be added.</param>
         public static void AddObjectToLevel(EditorObject obj)
         {
             Logger.Debug($"Adding object to level: {obj.name} at {obj.position} with size {obj.size}");
             currentLevelObjects.Add(obj);
         }
 
+        /// <summary>
+        /// Creates a new platform in the level based on two positions.
+        /// </summary>
+        /// <param name="pos1">The starting position of the platform.</param>
+        /// <param name="pos2">The ending position of the platform.</param>
         public static void CreatePlatform(Vec2 pos1, Vec2 pos2)
         {
             Logger.Debug($"Creating platform. Start: {pos1}, End: {pos2}");
@@ -118,6 +136,10 @@ namespace ShapeScape
             currentLevelObjects.Add(new EditorObject("Ground", center, size));
         }
 
+        /// <summary>
+        /// Saves the current level to a JSON file.
+        /// </summary>
+        /// <param name="levelName">The name of the level to save.</param>
         public static void SaveLevel(string levelName)
         {
             Logger.Debug($"Saving level with name: {levelName}");
@@ -131,6 +153,10 @@ namespace ShapeScape
             Logger.Debug($"Level saved to Levels/{levelName}.json");
         }
 
+        /// <summary>
+        /// Loads a level from a JSON file.
+        /// </summary>
+        /// <param name="levelName">The name of the level to load.</param>
         public static void LoadLevel(string levelName)
         {
             Logger.Debug($"Loading level with name: {levelName}");
@@ -164,6 +190,9 @@ namespace ShapeScape
         }
     }
 
+    /// <summary>
+    /// Represents an object that can be placed within a level.
+    /// </summary>
     [Serializable]
     public class EditorObject
     {
@@ -171,9 +200,15 @@ namespace ShapeScape
         public Vec2 position { get; set; }
         public Vec2 size { get; set; }
 
-        [JsonIgnore] 
+        [JsonIgnore]
         public ObjectTexture objectTexture;
 
+        /// <summary>
+        /// Initializes a new instance of the EditorObject class.
+        /// </summary>
+        /// <param name="name">The name of the object.</param>
+        /// <param name="pos">The position of the object.</param>
+        /// <param name="size">The size of the object.</param>
         public EditorObject(string name, Vec2 pos, Vec2 size)
         {
             Logger.Debug($"Creating EditorObject: {name} at {pos} with size {size}");
@@ -183,8 +218,14 @@ namespace ShapeScape
             InitializeObjectTexture();
         }
 
+        /// <summary>
+        /// Default constructor for EditorObject.
+        /// </summary>
         public EditorObject() { }
 
+        /// <summary>
+        /// Initializes the texture for the object based on its type and size.
+        /// </summary>
         private void InitializeObjectTexture()
         {
             objectTexture = AssetManager.GetObjectTexture(name);
@@ -206,3 +247,4 @@ namespace ShapeScape
         }
     }
 }
+

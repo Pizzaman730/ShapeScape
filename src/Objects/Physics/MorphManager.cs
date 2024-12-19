@@ -3,110 +3,101 @@ using Microsoft.Xna.Framework.Input;
 
 namespace ShapeScape
 {
+    /// <summary>
+    /// Manages which morph is currently active.
+    /// </summary>
     public class MorphManager
     {
+        /// <summary>
+        /// The currently active morph.
+        /// </summary>
         private IMorph currentMorph;
+
+        /// <summary>
+        /// The name of the current morph (empty string if none).
+        /// </summary>
         public string morphName = "None";
 
+        /// <summary>
+        /// The number of frames that must pass before a morph can be switched again.
+        /// </summary>
         private int morphSwitchCooldown = 10;
+
+        /// <summary>
+        /// The number of frames remaining until a morph can be switched.
+        /// </summary>
         private int morphSwitchTimer = 0;
 
-        // Constructor
         public MorphManager()
         {
             Logger.Log("MorphManager instantiated.");
         }
 
-        // Switch the morph of the player
+        /// <summary>
+        /// Switches to the given morph.
+        /// </summary>
+        /// <param name="newMorph">The morph to switch to.</param>
+        /// <param name="player">The player object to apply the morph to.</param>
         public void SwitchMorph(IMorph newMorph, Player player)
         {
-            try
+            if (newMorph == null)
             {
-                Logger.Log("SwitchMorph method called.");
-
-                if (currentMorph != null && currentMorph.GetType() == newMorph.GetType())
-                {
-                    Logger.Log("Same morph selected, skipping switch.");
-                    return;
-                }
-
-                if (newMorph == null)
-                {
-                    Logger.LogError("Attempted to switch to a null morph.");
-                    throw new ArgumentNullException(nameof(newMorph), "New morph cannot be null.");
-                }
-
-                if (currentMorph != null)
-                {
-                    Logger.Log($"Reverting current morph: {currentMorph.GetType().Name}");
-                    currentMorph.RevertMorph(player);
-                }
-
-                Logger.Log($"Applying new morph: {newMorph.GetType().Name}");
-                currentMorph = newMorph;
-                currentMorph.ApplyMorph(player);
-
-                Logger.Log($"Morph switched to: {newMorph.GetType().Name}");
+                Logger.LogError("Attempted to switch to a null morph.");
+                throw new ArgumentNullException(nameof(newMorph), "New morph cannot be null.");
             }
-            catch (Exception ex)
+
+            if (currentMorph?.GetType() == newMorph.GetType())
             {
-                Logger.LogError($"Error in SwitchMorph: {ex.Message}");
+                Logger.Log("Same morph selected, skipping switch.");
+                return;
             }
+
+            currentMorph?.RevertMorph(player);
+            currentMorph = newMorph;
+            currentMorph.ApplyMorph(player);
+            morphName = newMorph.GetType().Name;
+            Logger.Log($"Morph switched to: {morphName}");
         }
 
-        // Update the state of morphing
+        /// <summary>
+        /// Updates the morph manager.
+        /// </summary>
+        /// <param name="player">The player object to check for morph switching.</param>
         public void Update(Player player)
         {
-            try
+            if (player == null)
             {
-                if (player == null)
-                {
-                    Logger.LogError("Player object is null.");
-                    throw new ArgumentNullException(nameof(player), "Player cannot be null.");
-                }
-
-                // Only allow morph switching if the cooldown has elapsed
-                if (morphSwitchTimer > 0)
-                {
-                    morphSwitchTimer--; // Decrease cooldown timer
-                    return; // Do nothing if cooldown is not complete
-                }
-
-                // Check for key presses
-                if (InputManager.GetKeyDown(player.inputs.playerMorphButton))
-                {
-                    morphName = "None";
-                    SwitchMorph(new PlayerMorph(), player);
-                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
-                }
-                if (InputManager.GetKeyDown(player.inputs.circleMorphButton)) 
-                {
-                    morphName = "Circle";
-                    SwitchMorph(new CircleMorph(), player);
-                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
-                }
-                if (InputManager.GetKeyDown(player.inputs.ovalMorphButton)) 
-                {
-                    morphName = "BouncyOval";
-                    SwitchMorph(new BouncyOvalMorph(), player);
-                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
-                }
-                if (InputManager.GetKeyDown(player.inputs.trapezoidMorphButton)) 
-                {
-                    morphName = "Trapezoid";
-                    SwitchMorph(new TrapezoidMorph(), player);
-                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
-                }
-                if (InputManager.GetKeyDown(player.inputs.triangleMorphButton)) 
-                {
-                    morphName = "Triangle";
-                    SwitchMorph(new TriangleMorph(), player);
-                    morphSwitchTimer = morphSwitchCooldown; // Reset the cooldown
-                }
+                Logger.LogError("Player object is null.");
+                throw new ArgumentNullException(nameof(player), "Player cannot be null.");
             }
-            catch (Exception ex)
+
+            if (morphSwitchTimer > 0)
             {
-                Logger.LogError($"Error in Update: {ex.Message}");
+                morphSwitchTimer--;
+                return;
+            }
+
+            TrySwitchMorph(player.inputs.PlayerMorphButton, new PlayerMorph(), player, "None");
+            TrySwitchMorph(player.inputs.CircleMorphButton, new CircleMorph(), player, "Circle");
+            TrySwitchMorph(player.inputs.OvalMorphButton, new BouncyOvalMorph(), player, "BouncyOval");
+            TrySwitchMorph(player.inputs.TrapezoidMorphButton, new TrapezoidMorph(), player, "Trapezoid");
+            TrySwitchMorph(player.inputs.TriangleMorphButton, new TriangleMorph(), player, "Triangle");
+        }
+
+        /// <summary>
+        /// Tries to switch to the given morph if the given key is down.
+        /// </summary>
+        /// <param name="morphKey">The key to check for.</param>
+        /// <param name="newMorph">The morph to switch to if the key is down.</param>
+        /// <param name="player">The player object to switch the morph on.</param>
+        /// <param name="morphName">The name of the morph to switch to.</param>
+        private void TrySwitchMorph(Keys morphKey, IMorph newMorph, Player player, string morphName)
+        {
+            if (InputManager.GetKeyDown(morphKey))
+            {
+                this.morphName = morphName;
+                SwitchMorph(newMorph, player);
+                morphSwitchTimer = morphSwitchCooldown;
             }
         }
     }

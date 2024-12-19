@@ -47,7 +47,7 @@ namespace ShapeScape
         }
         public void UpdateControls()
         {
-            if (InputManager.GetKeyDown(inputs.right)) 
+            if (InputManager.GetKeyDown(inputs.Right)) 
             {
                 velocity.x += 2;
                 if (!facingRight)
@@ -56,7 +56,7 @@ namespace ShapeScape
                     facingRight = true;
                 }
             }
-            if (InputManager.GetKeyDown(inputs.left)) 
+            if (InputManager.GetKeyDown(inputs.Left)) 
             {
                 velocity.x -= 2;
                 if (facingRight)
@@ -65,7 +65,7 @@ namespace ShapeScape
                     facingRight = false;
                 }
             }
-            if (InputManager.GetKeyDown(inputs.up))
+            if (InputManager.GetKeyDown(inputs.Up))
             {
                 if (jumpable && timeSinceOnFloor <= 5) 
                 {
@@ -77,7 +77,7 @@ namespace ShapeScape
             {
                 if (velocity.y > 0) velocity.y -= velocity.y * 0.25 * gravity * weight;
             }
-            if (InputManager.GetKeyDown(inputs.down))
+            if (InputManager.GetKeyDown(inputs.Down))
             {
                 velocity.y -= 1;
             }

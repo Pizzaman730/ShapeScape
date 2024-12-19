@@ -1,3 +1,4 @@
+/*************  ✨ Codeium Command 🌟  *************/
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,21 +16,50 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ShapeScape
 {
+    /// <summary>
+    /// The AssetManager class is responsible for managing game assets such as textures, object textures, 
+    /// and animations. It provides methods to initialize assets, fetch content, create textures, and retrieve them.
+    /// </summary>
     public static class AssetManager
     {
+        /// <summary>
+        /// Dictionary holding all loaded textures indexed by their names.
+        /// </summary>
         public static Dictionary<string, Texture2D> textures { get; private set; } = [];
+
+        /// <summary>
+        /// Dictionary holding all loaded object textures indexed by their names.
+        /// </summary>
         public static Dictionary<string, ObjectTexture> objectTextures { get; private set; } = [];
+
+        /// <summary>
+        /// Dictionary holding all loaded animations indexed by their names.
+        /// </summary>
         public static Dictionary<string, Animation> animations { get; private set; } = [];
+
         private static SpriteBatch spriteBatch;
         private static bool initialized = false;
         private static ContentManager contentManager;
+
+        /// <summary>
+        /// Property to access the graphics device from the sprite batch.
+        /// </summary>
         private static GraphicsDevice graphicsDevice => spriteBatch.GraphicsDevice;
+
         private static string textureDataFile;
         private static string animationDataFile;
+
+        /// <summary>
+        /// Fonts used in the game.
+        /// </summary>
         
         public static SpriteFont font;
         public static SpriteFont shoppingCartFont;
         public static SpriteFont grapeSodaFont;
+
+        /// <summary>
+        /// SamplerState configuration for texture filtering and addressing.
+        /// </summary>
         public static readonly SamplerState samplerState = new()
         {
             Filter = TextureFilter.Point,
@@ -37,6 +67,11 @@ namespace ShapeScape
             AddressV = TextureAddressMode.Clamp,
             AddressW = TextureAddressMode.Clamp
         };
+
+        /// <summary>
+        /// Initializes the AssetManager with the specified sprite batch.
+        /// </summary>
+        /// <param name="sb">The SpriteBatch for rendering.</param>
         public static void Init(SpriteBatch sb)
         {
             if (initialized)
@@ -48,6 +83,10 @@ namespace ShapeScape
             contentManager = Main.game.Content;
             initialized = true;
         }
+
+        /// <summary>
+        /// Loads all necessary game content including fonts, textures, and animations.
+        /// </summary>
         public static void FetchAllContent()
         {
             if (!initialized)
@@ -146,6 +185,9 @@ namespace ShapeScape
             }
         }
 
+        /// <summary>
+        /// Creates textures for all object textures using data from textureDataFile.
+        /// </summary>
         public static void CreateAllObjectTextures()
         {
             var options = new JsonSerializerOptions
@@ -170,6 +212,10 @@ namespace ShapeScape
                 }
             }
         }
+
+        /// <summary>
+        /// Creates all animations using data from animationDataFile.
+        /// </summary>
         public static void CreateAllAnimations()
         {
             var options = new JsonSerializerOptions
@@ -183,6 +229,15 @@ namespace ShapeScape
                 animations.Add(obj.name, obj);
             }
         }
+
+        /// <summary>
+        /// Creates a texture with the given name, width, and height.
+        /// If the texture cannot be loaded, a default "missing texture" is used.
+        /// </summary>
+        /// <param name="name">The name of the texture.</param>
+        /// <param name="width">The width of the texture.</param>
+        /// <param name="height">The height of the texture.</param>
+        /// <returns>The created texture.</returns>
         public static Texture2D CreateTexture(string name, int width, int height)
         {
             try
@@ -216,6 +271,12 @@ namespace ShapeScape
             }
         }
 
+        /// <summary>
+        /// Tiles a texture over a specified size, creating a new texture in the process.
+        /// </summary>
+        /// <param name="info">Information about the texture to tile.</param>
+        /// <param name="size">The size to tile the texture over.</param>
+        /// <returns>The tiled texture info.</returns>
 
         public static TextureInfo TileTexture(TextureInfo info, Vec2 size)
         {
@@ -244,12 +305,23 @@ namespace ShapeScape
             
             return info;
         }
+        /// <summary>
+        /// Retrieves a texture by its name. If the requested texture is "Text", null is returned.
+        /// </summary>
+        /// <param name="name">The name of the texture to retrieve.</param>
+        /// <returns>The requested Texture2D object.</returns>
         public static Texture2D GetTexture(string name)
         {
             //Logger.Log("Getting texture: " + name);
             if (name == "Text") return null;
             return textures[name];
         }
+
+        /// <summary>
+        /// Retrieves an object texture by its name. If the texture is not found, logs an error and returns an "Empty" texture.
+        /// </summary>
+        /// <param name="name">The name of the object texture to retrieve.</param>
+        /// <returns>A copy of the requested ObjectTexture.</returns>
         public static ObjectTexture GetObjectTexture(string name)
         {
             if (objectTextures.ContainsKey(name))
@@ -268,6 +340,11 @@ namespace ShapeScape
             }
         }
 
+        /// <summary>
+        /// Retrieves an animation by its name.
+        /// </summary>
+        /// <param name="name">The name of the animation to retrieve.</param>
+        /// <returns>A copy of the requested Animation.</returns>
         public static Animation GetAnimation(string name)
         {
             Animation animation = animations[name];
@@ -279,6 +356,10 @@ namespace ShapeScape
             
         }
 
+        /// <summary>
+        /// Creates a "missing texture" with a standard checkerboard pattern for use when a texture cannot be found.
+        /// </summary>
+        /// <returns>A Texture2D object representing the missing texture.</returns>
         private static Texture2D CreateMissingTexture()
         {
             int width = 64;  // Standard size for missing textures

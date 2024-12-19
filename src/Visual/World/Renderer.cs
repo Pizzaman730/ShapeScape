@@ -10,16 +10,30 @@ using MonoGame.Extended.Screens;
 
 namespace ShapeScape
 {
+    /// <summary>
+    /// The Renderer class is responsible for rendering objects in the game world.
+    /// It handles drawing all game objects, editor UI, and debug elements such as hitboxes.
+    /// </summary>
     public static class Renderer
     {
         private static SpriteBatch spriteBatch;
         private static Texture2D whiteTexture;
+
+        /// <summary>
+        /// Initializes the renderer with the specified SpriteBatch and GraphicsDevice.
+        /// </summary>
+        /// <param name="sb">The SpriteBatch for rendering.</param>
+        /// <param name="graphicsDevice">The GraphicsDevice used to create textures.</param>
         public static void Init(SpriteBatch sb, GraphicsDevice graphicsDevice)
         {
             spriteBatch = sb;
             whiteTexture = new Texture2D(graphicsDevice, 1, 1);
             whiteTexture.SetData([Color.White]);
         }
+
+        /// <summary>
+        /// Draws all objects in the game, including UI and debug elements.
+        /// </summary>
         public static void DrawAll()
         {
             List<Object> objects = ObjectManager.objects;
@@ -40,6 +54,11 @@ namespace ShapeScape
 
             spriteBatch.End();
         }
+
+        /// <summary>
+        /// Draws a single object, handling both graphical and UI elements.
+        /// </summary>
+        /// <param name="obj">The object to be drawn.</param>
         public static void Draw(Object obj)
         {
             if (obj.name == "Text")
@@ -65,10 +84,13 @@ namespace ShapeScape
                     1,
                     effects,
                     0
-                    );
+                );
             }
         }
 
+        /// <summary>
+        /// Draws the UI elements specific to the level editor, including platform previews.
+        /// </summary>
         private static void DrawEditorUI()
         {
             foreach (EditorObject obj in LevelEditor.currentLevelObjects)
@@ -100,11 +122,8 @@ namespace ShapeScape
                 pos2 *= new Vec2(1, -1);
                 pos1 = Camera.TranslatePos(pos1);
                 pos2 = Camera.TranslatePos(pos2);
-                //pos1.x -= WindowManager.size.x / 2;
-                //pos2 -= WindowManager.size / 2;
 
                 Vec2 size = new Vec2(Math.Abs(pos2.x - pos1.x), Math.Abs(pos2.y - pos1.y));
-    
                 Vec2 start = new Vec2(Math.Min(pos1.x, pos2.x), Math.Min(pos1.y, pos2.y));
 
                 // Draw a semi-transparent platform preview
@@ -116,6 +135,10 @@ namespace ShapeScape
             }
         }
 
+        /// <summary>
+        /// Draws the hitbox of an object for debugging purposes.
+        /// </summary>
+        /// <param name="obj">The object whose hitbox is to be drawn.</param>
 
         private static void DrawHitbox(Object obj)
         {

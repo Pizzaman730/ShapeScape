@@ -8,13 +8,34 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ShapeScape
 {
+    /// <summary>
+    /// Represents an animation, which is a sequence of keyframes.
+    /// </summary>
     public class Animation
     {
+        /// <summary>
+        /// The time in the animation, measured in milliseconds.
+        /// </summary>
         public int time = 0;
+        /// <summary>
+        /// Whether the animation is currently playing.
+        /// </summary>
         public bool active = false;
+        /// <summary>
+        /// The name of the animation.
+        /// </summary>
         public string name { get; set; }
+        /// <summary>
+        /// The keyframes of the animation.
+        /// </summary>
         public Dictionary<int, AnimationFrame> keyframes { get; set; }
+        /// <summary>
+        /// The ObjectTexture to which the animation belongs.
+        /// </summary>
         public ObjectTexture obj;
+        /// <summary>
+        /// Applies the changes defined in the given frame to the ObjectTexture.
+        /// </summary>
         public void DoAnimation(AnimationFrame frame)
         {
             foreach (AnimationFramePart framePart in frame.parts)
@@ -48,11 +69,17 @@ namespace ShapeScape
             }
 
         }
+        /// <summary>
+        /// Starts the animation.
+        /// </summary>
         public void Start()
         {
             time = 0;
             active = true;
         }
+        /// <summary>
+        /// Stops the animation.
+        /// </summary>
         public void End()
         {
             time = 0;
@@ -60,3 +87,4 @@ namespace ShapeScape
         }
     }
 }
+
